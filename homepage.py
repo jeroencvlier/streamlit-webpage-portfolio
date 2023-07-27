@@ -53,14 +53,14 @@ show_pages(
     [
         Page("homepage.py", name=None, icon="🏠"),
         Page("pages/contact.py", name="Contact", icon="🏠"),
-        Page(
-            "pages/thanks.py",
-            name=None,
-            icon="",
-            # is_section=True,
-            # in_section=False,
-            # use_relative_hash=True,
-        ),
+        # Page(
+        #     "pages/thanks.py",
+        #     name=None,
+        #     icon="",
+        # is_section=True,
+        # in_section=False,
+        # use_relative_hash=True,
+        # ),
     ]
 )
 
