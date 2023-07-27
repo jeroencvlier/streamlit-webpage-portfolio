@@ -3,8 +3,13 @@ from pathlib import Path
 from streamlit_option_menu import option_menu
 import streamlit as st
 from PIL import Image
-from st_pages import Page, add_page_title, show_pages
-from st_pages import show_pages_from_config, add_page_title, hide_pages
+from st_pages import (
+    show_pages_from_config,
+    add_page_title,
+    hide_pages,
+    Page,
+    show_pages,
+)
 
 
 # --- GENERAL SETTINGS ---
@@ -36,6 +41,12 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
 )
+
+
+show_pages_from_config()
+hide_pages(["Thanks"])
+
+
 # --- LOAD CSS, PDF & PROFIL PIC ---
 with open(css_file) as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
@@ -50,24 +61,6 @@ with open(css_file) as f:
 #     default_index=0,  # optional
 #     orientation="horizontal",
 # )
-
-# show_pages(
-#     [
-#         Page("homepage.py", name=None, icon="🏠"),
-#         Page("pages/contact.py", name="Contact", icon="🏠"),
-#         # Page(
-#         #     "pages/thanks.py",
-#         #     name=None,
-#         #     icon="",
-#         # is_section=True,
-#         # in_section=False,
-#         # use_relative_hash=True,
-#         # ),
-#     ]
-# )
-show_pages_from_config()
-
-hide_pages(["thanks", "Thank You"])
 
 
 # add_page_title()  # Optional method to add title and icon to current page
