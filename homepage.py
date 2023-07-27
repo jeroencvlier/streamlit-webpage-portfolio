@@ -1,3 +1,4 @@
+import base64
 from pathlib import Path
 from streamlit_option_menu import option_menu
 import streamlit as st
@@ -55,10 +56,10 @@ show_pages(
         Page(
             "pages/thanks.py",
             name=None,
-            icon="🏠",
-            is_section=True,
-            in_section=False,
-            use_relative_hash=True,
+            icon="",
+            # is_section=True,
+            # in_section=False,
+            # use_relative_hash=True,
         ),
     ]
 )
@@ -70,14 +71,22 @@ profile_pic = current_dir / "assets" / "profile-pic.png"
 
 with open(resume_file, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
-profile_pic = Image.open(profile_pic)
+
 linkedin_logo = Image.open(current_dir / "assets" / "linkedin.png")
+
+# Profile picture - > use this hack to center the image on iphone
+with open(profile_pic, "rb") as f:
+    image = f.read()
+image_bytes = base64.b64encode(image).decode()
+local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{image_bytes}" alt="Image" width = 260> </p>'
+
 
 # --- HERO SECTION ---
 col1, col2 = st.columns([0.9, 1.1], gap="small")
 with col1:
     col1.subheader("")
-    st.image(profile_pic, width=260)
+    st.markdown(local_file, unsafe_allow_html=True)
+    # st.image(profile_pic, width=260)
 
 with col2:
     st.title(NAME)

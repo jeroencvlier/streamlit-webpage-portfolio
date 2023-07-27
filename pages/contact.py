@@ -1,7 +1,7 @@
 import streamlit as st
 from pathlib import Path
 
-domain = "http://192.168.1.40:8501/Thank%20You"
+domain = "https://www.jeroencvlier.com/Thanks"
 
 
 st.title("Contact")
@@ -23,7 +23,7 @@ with st.container():
 
     # Documention: https://formsubmit.co/
     contact_form = f"""
-    <form action="https://formsubmit.co/jeroencvlier@gmail.COM" method="POST">
+    <form action="https://formsubmit.co/jurists-plywood-0b@icloud.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
