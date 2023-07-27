@@ -9,9 +9,9 @@ from st_pages import (
 )
 
 show_pages_from_config()
-hide_pages(["thanks"])
+hide_pages(["Thanks"])
 
-domain = "https://www.jeroencvlier.com/thanks"
+domain = "https://www.jeroencvlier.com/Thanks"
 
 
 st.title("Contact Form")

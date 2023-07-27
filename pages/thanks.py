@@ -1,8 +1,17 @@
 from pathlib import Path
 import streamlit as st
-from st_pages import Page, add_page_title, show_pages
+from st_pages import (
+    show_pages_from_config,
+    add_page_title,
+    hide_pages,
+    Page,
+    show_pages,
+)
 
-st.set_page_config(layout="centered",initial_sidebar_state="expanded")
+show_pages_from_config()
+hide_pages(["Thanks"])
+
+st.set_page_config(layout="centered", initial_sidebar_state="expanded")
 
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 parent_dir = current_dir.parent
