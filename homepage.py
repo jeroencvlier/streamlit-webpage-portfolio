@@ -4,6 +4,8 @@ from streamlit_option_menu import option_menu
 import streamlit as st
 from PIL import Image
 from st_pages import Page, add_page_title, show_pages
+from st_pages import show_pages_from_config, add_page_title, hide_pages
+
 
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Jeroen van Lier | Digital Portfolio"
@@ -39,35 +41,37 @@ with open(css_file) as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 
 
-# st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
-page = option_menu(
-    menu_title=None,  # required
-    options=["Home", "Contact", "Projects"],  # required
-    icons=["house", "book", "envelope"],  # optional
-    menu_icon="cast",  # optional
-    default_index=0,  # optional
-    orientation="horizontal",
-)
+# # st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
+# page = option_menu(
+#     menu_title=None,  # required
+#     options=["Home", "Contact", "Projects"],  # required
+#     icons=["house", "book", "envelope"],  # optional
+#     menu_icon="cast",  # optional
+#     default_index=0,  # optional
+#     orientation="horizontal",
+# )
 
-show_pages(
-    [
-        Page("homepage.py", name=None, icon="🏠"),
-        Page("pages/contact.py", name="Contact", icon="🏠"),
-        # Page(
-        #     "pages/thanks.py",
-        #     name=None,
-        #     icon="",
-        # is_section=True,
-        # in_section=False,
-        # use_relative_hash=True,
-        # ),
-    ]
-)
+# show_pages(
+#     [
+#         Page("homepage.py", name=None, icon="🏠"),
+#         Page("pages/contact.py", name="Contact", icon="🏠"),
+#         # Page(
+#         #     "pages/thanks.py",
+#         #     name=None,
+#         #     icon="",
+#         # is_section=True,
+#         # in_section=False,
+#         # use_relative_hash=True,
+#         # ),
+#     ]
+# )
+show_pages_from_config()
 
-add_page_title()  # Optional method to add title and icon to current page
+hide_pages(["thanks", "Thank You"])
 
 
-profile_pic = current_dir / "assets" / "profile-pic.png"
+# add_page_title()  # Optional method to add title and icon to current page
+
 
 with open(resume_file, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
@@ -75,6 +79,7 @@ with open(resume_file, "rb") as pdf_file:
 linkedin_logo = Image.open(current_dir / "assets" / "linkedin.png")
 
 # Profile picture - > use this hack to center the image on iphone
+profile_pic = current_dir / "assets" / "profile-pic.png"
 with open(profile_pic, "rb") as f:
     image = f.read()
 image_bytes = base64.b64encode(image).decode()
