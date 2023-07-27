@@ -29,7 +29,7 @@ with st.container():
         <input type="email" name="email" placeholder="Your email" required>
         <textarea name="message" placeholder="Your message here" required></textarea>
         <button type="submit">Send</button>
-        <input type="hidden" name="_webhook" value="{domain}">
+        <input type="hidden" name="_next" value="{domain}">
     </form>
     """
 
