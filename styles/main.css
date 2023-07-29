@@ -13,7 +13,7 @@ a {
 }
 
 a:hover {
-    color: #17b524 !important;
+    color: #131b14 !important;
     text-decoration: none;
 }
 
@@ -58,6 +58,8 @@ button[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    /* width: 100%; */
+
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
@@ -78,3 +80,17 @@ footer {
 header {
     visibility: hidden;
 }
+
+/* Style columns */
+[data-testid="stHorizontalBlock"]:has(div.PortMarker) {
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+    border-radius: 15px;
+    padding: 5% 5% 5% 10%;
+}
+
+/* button[kind="primary"] { */
+/* background-color: #04AA6D; */
+
+/* background-color: rgb(222, 213, 187); */
+/* width: 100%; */
+/* } */

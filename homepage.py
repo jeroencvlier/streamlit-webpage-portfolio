@@ -1,16 +1,9 @@
 import base64
-from pathlib import Path
-from streamlit_option_menu import option_menu
 import streamlit as st
 from PIL import Image
-from st_pages import (
-    show_pages_from_config,
-    add_page_title,
-    hide_pages,
-    Page,
-    show_pages,
-)
+from pages.utils import *
 
+load_css()
 
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Jeroen van Lier | Digital Portfolio"
@@ -29,86 +22,72 @@ PROJECTS = {
     "🏆 Desktop Application - Excel2CSV converter with user settings & menubar": "https://youtu.be/LzCfNanQ_9c",
     "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
 }
-# --- PATH SETTINGS ---
-current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-css_file = current_dir / "styles" / "main.css"
-resume_file = current_dir / "assets" / "resume.pdf"
 
 
-st.set_page_config(
-    page_title=PAGE_TITLE,
-    page_icon=PAGE_ICON,
-    layout="centered",
-    initial_sidebar_state="expanded",
-)
 
 
-show_pages_from_config()
-hide_pages(["Thanks"])
-
-
-# --- LOAD CSS, PDF & PROFIL PIC ---
-with open(css_file) as f:
-    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
-
-
-# # st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
-# page = option_menu(
-#     menu_title=None,  # required
-#     options=["Home", "Contact", "Projects"],  # required
-#     icons=["house", "book", "envelope"],  # optional
-#     menu_icon="cast",  # optional
-#     default_index=0,  # optional
-#     orientation="horizontal",
-# )
-
-
-# add_page_title()  # Optional method to add title and icon to current page
-
-
-with open(resume_file, "rb") as pdf_file:
+with open(RESUME_FILE, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
-
-linkedin_logo = Image.open(current_dir / "assets" / "linkedin.png")
+    
 
 # Profile picture - > use this hack to center the image on iphone
-profile_pic = current_dir / "assets" / "profile-pic.png"
-with open(profile_pic, "rb") as f:
-    image = f.read()
-image_bytes = base64.b64encode(image).decode()
-local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{image_bytes}" alt="Image" width = 260> </p>'
+with open(PROFILE_PIC, "rb") as f:
+    pp = f.read()
+pp_bytes = base64.b64encode(pp).decode()
+pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" width = 260> </p>'
 
-
-# --- HERO SECTION ---
+# --------------------------------------------------------------
+# HERO SECTIOM
+# --------------------------------------------------------------
 col1, col2 = st.columns([0.9, 1.1], gap="small")
 with col1:
     col1.subheader("")
-    st.markdown(local_file, unsafe_allow_html=True)
-    # st.image(profile_pic, width=260)
-
+    st.markdown(pp_local_file, unsafe_allow_html=True)
 with col2:
     st.title(NAME)
     st.write(DESCRIPTION)
 
-st.download_button(
-    label=" 📄 Download Resume",
-    data=PDFbyte,
-    file_name=resume_file.name,
-    mime="application/octet-stream",
-)
-# st.button(label="Schedule a meeting",link="https://calendly.com/jeroencvlier/30min")
+# --------------------------------------------------------------
+# BUTTONS
+# --------------------------------------------------------------
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
+    st.download_button(
+        label="Download Resume",
+        data=PDFbyte,
+        file_name=RESUME_FILE.name,
+        mime="application/octet-stream",
+        use_container_width=True
+    )
 
-# https://calendly.com/jeroencvlier/30min
-st.write("📫", EMAIL)
+with col2:
+    st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
+    if st.button('Book some time with me', use_container_width=True):
+        webbrowser.open_new_tab("https://calendly.com/jeroencvlier/30min")
 
-# --- SOCIAL LINKS ---
-st.write("\n")
-cols = st.columns(len(SOCIAL_MEDIA))
-for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
-    cols[index].image(linkedin_logo, width=30)
-    cols[index].write(f":wave:[{platform}]({link})")
+with col3:
+    st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
+    if st.button('Email me', disabled=True, use_container_width=True,):
+        pass
+                
+    
+    
+# --------------------------------------------------------------
+# Social Section
+# --------------------------------------------------------------
+linkedin_logo = Image.open(LINKEDIN_LOGO)
 
-# --- EXPERIENCE & QUALIFICATIONS ---
+# st.write("\n")
+# cols = st.columns(len(SOCIAL_MEDIA))
+# for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
+#     cols[index].image(linkedin_logo, width=30)
+#     cols[index].write(f":wave:[{platform}]({link})")
+
+
+# --------------------------------------------------------------
+# Experience & Qualifications
+# --------------------------------------------------------------
 st.write("\n")
 st.subheader("Experience & Qulifications")
 st.write(
@@ -172,9 +151,9 @@ st.write(
 """
 )
 
-# --- Projects & Accomplishments ---
-st.write("\n")
-st.subheader("Projects & Accomplishments")
-st.write("---")
-for project, link in PROJECTS.items():
-    st.write(f"[{project}]({link})")
+# # --- Projects & Accomplishments ---
+# st.write("\n")
+# st.subheader("Projects & Accomplishments")
+# st.write("---")
+# for project, link in PROJECTS.items():
+#     st.write(f"[{project}]({link})")

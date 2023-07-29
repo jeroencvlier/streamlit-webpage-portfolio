@@ -1,28 +1,10 @@
-import streamlit as st
-from pathlib import Path
-from st_pages import (
-    show_pages_from_config,
-    add_page_title,
-    hide_pages,
-    Page,
-    show_pages,
-)
+from pages.utils import *
 
-show_pages_from_config()
-hide_pages(["Thanks"])
-
-domain = "https://www.jeroencvlier.com/Thanks"
-
+load_css()
 
 st.title("Contact Form")
 
-current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-parent_dir = current_dir.parent
-css_file = parent_dir / "styles" / "main.css"
-
-
-with open(css_file) as f:
-    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
+domain = "https://www.jeroencvlier.com/Thanks"
 
 
 # ---- CONTACT ----
@@ -43,8 +25,12 @@ with st.container():
     </form>
     """
 
-    left_column, right_column = st.columns(2)
-    with left_column:
+    email_column, right_column = st.columns([0.8,0.2])
+    with email_column:
+        st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
+
         st.markdown(contact_form, unsafe_allow_html=True)
     with right_column:
+        st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
+
         st.empty()

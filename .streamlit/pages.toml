@@ -17,7 +17,6 @@ icon = ":wave:"
 path = "pages/projects.py"
 name = "Projects"
 icon = ":wave:"
-is_section = true
 
 [[pages]]
 path = "pages/project1.py"
@@ -33,5 +32,4 @@ icon = ":bee:"
 path = "pages/project3.py"
 name = "Project 3"
 icon = ":bee:"
-is_section = false
 
