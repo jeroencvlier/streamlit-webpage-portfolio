@@ -25,7 +25,7 @@ with st.container():
     </form>
     """
 
-    email_column, right_column = st.columns([0.8,0.2])
+    email_column, right_column = st.columns([0.8, 0.2])
     with email_column:
         st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
 
