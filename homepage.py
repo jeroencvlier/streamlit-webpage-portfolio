@@ -5,6 +5,7 @@ from pages.utils import *
 
 load_css()
 
+
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Jeroen van Lier | Digital Portfolio"
 PAGE_ICON = ":wave:"
@@ -12,10 +13,7 @@ NAME = "Jeroen van Lier"
 DESCRIPTION = """
 Data Scientist with 7 years of experience in extracting actionable insights from data. Strong hands on experience and knowledge in Python and Excel. Good understanding of statistical principles and their respective applications. Excellent team-player and displaying strong sense of initiative on tasks."""
 EMAIL = "jeroencvlier@gmail.com"
-SOCIAL_MEDIA = {
-    "LinkedIn": "https://linkedin.com/in/jeroencvlier",
-    "GitHub": "https://github.com/jeroencvlier",
-}
+
 PROJECTS = {
     "🏆 Sales Dashboard - Comparing sales across three stores": "https://youtu.be/Sb0A9i6d320",
     "🏆 Income and Expense Tracker - Web app with NoSQL database": "https://youtu.be/3egaMfE9388",
@@ -23,12 +21,9 @@ PROJECTS = {
     "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
 }
 
-
-
-
 with open(RESUME_FILE, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
-    
+
 
 # Profile picture - > use this hack to center the image on iphone
 with open(PROFILE_PIC, "rb") as f:
@@ -58,31 +53,49 @@ with col1:
         data=PDFbyte,
         file_name=RESUME_FILE.name,
         mime="application/octet-stream",
-        use_container_width=True
+        use_container_width=True,
     )
 
 with col2:
     st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
-    if st.button('Book some time with me', use_container_width=True):
+    if st.button("Virtual Coffee?", use_container_width=True):
         webbrowser.open_new_tab("https://calendly.com/jeroencvlier/30min")
 
 with col3:
     st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
-    if st.button('Email me', disabled=True, use_container_width=True,):
+    if st.button(
+        "Get In Touch!",
+        disabled=False,
+        use_container_width=True,
+    ):
+        switch_page("contact")
         pass
-                
-    
-    
+
+
 # --------------------------------------------------------------
 # Social Section
 # --------------------------------------------------------------
-linkedin_logo = Image.open(LINKEDIN_LOGO)
+SOCIAL_MEDIA = {
+    "LinkedIn": "https://linkedin.com/in/jeroencvlier",
+    "GitHub": "https://github.com/jeroencvlier",
+}
+SOCIAL_MEDIA_LOGOS = {"LinkedIn": LINKEDIN_LOGO, "GitHub": LINKEDIN_LOGO}
 
-# st.write("\n")
-# cols = st.columns(len(SOCIAL_MEDIA))
-# for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
-#     cols[index].image(linkedin_logo, width=30)
-#     cols[index].write(f":wave:[{platform}]({link})")
+linkedin_logo = Image.open(LINKEDIN_LOGO)
+linkedin_logo = base64.b64encode(
+    open(LINKEDIN_LOGO, "rb").read()
+).decode()  # you will have to import base64 for this
+
+cols = st.columns(len(SOCIAL_MEDIA))
+for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
+    with cols[index]:
+        st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
+        if st.button(
+            platform,
+            disabled=False,
+            use_container_width=True,
+        ):
+            webbrowser.open_new_tab(link)
 
 
 # --------------------------------------------------------------

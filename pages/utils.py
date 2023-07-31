@@ -8,25 +8,30 @@ CSS_FILE = BASE_DIR / "styles" / "main.css"
 
 # Now you can use these paths in other files
 import streamlit as st
-from st_pages import hide_pages, show_pages_from_config 
+from st_pages import hide_pages, show_pages_from_config
+
+st.set_page_config(initial_sidebar_state="collapsed")
+
 
 def load_css():
     hide_pages(["Thanks"])
+
     with open(CSS_FILE) as f:
         st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
-    
     show_pages_from_config()
+
     return
+
+
+
 
 import os
 import webbrowser
 from st_pages import add_page_title
+from streamlit_extras.switch_page_button import switch_page
+
 
 RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
 LINKEDIN_LOGO = BASE_DIR / "assets" / "linkedin.png"
 PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
 RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
-
-
-    
-    
