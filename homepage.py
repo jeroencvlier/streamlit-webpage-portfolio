@@ -9,7 +9,6 @@ load_css()
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Jeroen van Lier | Digital Portfolio"
 PAGE_ICON = ":wave:"
-NAME = "Jeroen van Lier"
 DESCRIPTION = """
 Data Scientist with 7 years of experience in extracting actionable insights from data. Strong hands on experience and knowledge in Python and Excel. Good understanding of statistical principles and their respective applications. Excellent team-player and displaying strong sense of initiative on tasks."""
 EMAIL = "jeroencvlier@gmail.com"
@@ -25,25 +24,82 @@ with open(RESUME_FILE, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
 
 
-# Profile picture - > use this hack to center the image on iphone
-with open(PROFILE_PIC, "rb") as f:
-    pp = f.read()
-pp_bytes = base64.b64encode(pp).decode()
-pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" width = 260> </p>'
+# --------------------------------------------------------------
+# Menu
+# --------------------------------------------------------------
+
+st.markdown(
+    """
+    <style>
+    .myButton {
+        border-radius: 20px;
+        display: inline-block;
+        position: relative;
+        padding: 10px 20px;
+        border: 2px solid rgb(70,70,70);  /* Initial border */
+        font-size: 1em;
+        text-decoration: none; /* Removes underline */
+        height: 60px;
+        width: 100%;  /* Set width to 100% */
+        background-color: rgb(211,211,211);
+        overflow: hidden; /* Ensure the content doesn't overflow the border */
+    }
+
+    .myButton:hover {
+        background-size: 150% auto;
+        animation: Gradient 4s ease infinite;
+        background-image: linear-gradient(135deg, rgba(176,107,199,0.7), rgba(83,180,200,0.7));
+    }
+
+    @keyframes Gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+for col, text, page in zip(st.columns(2), ["Home", "Project"], ["home", "projects"]):
+    with col:
+        # st.write("""<div class='myButton'/>""", unsafe_allow_html=True)
+        # if st.button(
+        #     text,
+        #     key=text,
+        #     disabled=False,
+        #     use_container_width=True,
+        # ):
+        st.markdown(f"<button class='myButton'>{text}</button>", unsafe_allow_html=True)
+
+        # pass
+# --------------------------------------------------------------
+# PAGE TITLE
+# --------------------------------------------------------------
+title_header("Jeroen van Lier")
+
 
 # --------------------------------------------------------------
 # HERO SECTIOM
 # --------------------------------------------------------------
-col1, col2 = st.columns([0.9, 1.1], gap="small")
+# Profile picture - > use this hack to center the image on iphone
+with open(PROFILE_PIC, "rb") as f:
+    pp = f.read()
+pp_bytes = base64.b64encode(pp).decode()
+# pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" width = 240> </p>'
+pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" style="width:100%;"> </p>'
+
+
+col1, col2 = st.columns([0.325, 0.675], gap="large")
 with col1:
-    col1.subheader("")
+    # col1.subheader("")
     st.markdown(pp_local_file, unsafe_allow_html=True)
 with col2:
-    st.title(NAME)
-    st.write(DESCRIPTION)
+    # st.title(NAME)
+    st.write("\n" + DESCRIPTION)
 
 # --------------------------------------------------------------
-# BUTTONS
+# CONTACT BUTTONS
 # --------------------------------------------------------------
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -72,7 +128,7 @@ with col3:
         pass
 
 # --------------------------------------------------------------
-# Social Section
+# SOCIAL BUTTONS
 # --------------------------------------------------------------
 SOCIAL_MEDIA = {
     "LinkedIn": "https://linkedin.com/in/jeroencvlier",
@@ -100,7 +156,9 @@ for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
 # --------------------------------------------------------------
 # Experience & Qualifications
 # --------------------------------------------------------------
-st.write("\n")
+st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
+# st.write("\n")
+# st.markdown(contact_form, unsafe_allow_html=True)
 st.subheader("Experience & Qulifications")
 st.write(
     """
@@ -111,9 +169,25 @@ st.write(
 """
 )
 
+st.markdown(
+    """<div class='PortMarker'>
+<h3>Experience & Qulifications</h3>
+<p>
+- ✔️ 7 Years expereince extracting actionable insights from data <br/>
+- ✔️ Strong hands on experience and knowledge in Python and Excel <br/>
+- ✔️ Good understanding of statistical principles and their respective applications <br/>
+- ✔️ Excellent team-player and displaying strong sense of initiative on tasks <br/>
+</p>
+</div>""",
+    unsafe_allow_html=True,
+)
+
+
 # --- SKILLS ---
 st.write("\n")
 st.subheader("Hard Skills")
+st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
+
 st.write(
     """
 - 👩‍💻 Programming: Python (Scikit-learn, Pandas), SQL, VBA

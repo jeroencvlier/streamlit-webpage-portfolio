@@ -2,7 +2,9 @@ from pages.utils import *
 
 load_css()
 
-st.title("Contact Form")
+
+title_header("Contact Form")
+# st.title("Contact Form")
 
 domain = "https://www.jeroencvlier.com/Thanks"
 
@@ -27,10 +29,8 @@ with st.container():
 
     email_column, right_column = st.columns([0.8, 0.2])
     with email_column:
-        st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
-
+        # st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
         st.markdown(contact_form, unsafe_allow_html=True)
     with right_column:
-        st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
-
+        # st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
         st.empty()

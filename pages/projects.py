@@ -1,6 +1,9 @@
 from pages.utils import *
 
 load_css()
+title_header("Projects")
+
+st.write("\n\n")
 
 st.markdown(
     """
@@ -35,25 +38,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
-st.markdown(
-    f"""
-    <style>
-        .title {{
-            font-size:80px;
-            text-align:center;
-            color: black; 
-            background: -webkit-linear-gradient(315deg, rgba(176,107,199,1) 30%, rgba(83,180,200,1) 70%); 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family={FONT_FAMILY_1};
-        }}
-    </style>
-    <div class="title">Projects</div>
-""",
-    unsafe_allow_html=True,
-)
-st.write("\n\n")
 
 projects13 = ["project1", "project2", "project3"]
 projects46 = ["project4", "project5", "project6"]

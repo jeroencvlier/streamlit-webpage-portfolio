@@ -57,3 +57,24 @@ for rule in sheet:
                 # We're only interested in the font-family property
                 if property.name == "font-family":
                     FONT_FAMILY_1 = str(property.value)
+
+
+def title_header(title):
+    t = st.markdown(
+        f"""
+        <style>
+            .title {{
+                font-size:80px;
+                text-align:center;
+                color: black; 
+                background: -webkit-linear-gradient(315deg, rgba(176,107,199,1) 30%, rgba(83,180,200,1) 70%); 
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-family={FONT_FAMILY_1};
+            }}
+        </style>
+        <div class="title">{title}</div>
+    """,
+        unsafe_allow_html=True,
+    )
+    return t
