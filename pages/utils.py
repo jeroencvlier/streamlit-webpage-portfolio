@@ -23,8 +23,6 @@ def load_css():
     return
 
 
-
-
 import os
 import webbrowser
 from st_pages import add_page_title
@@ -35,3 +33,27 @@ RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
 LINKEDIN_LOGO = BASE_DIR / "assets" / "linkedin.png"
 PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
 RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
+
+import cssutils
+
+# Define the path to your CSS file
+css_file_path = "styles/main.css"
+
+# Read the CSS file
+with open(css_file_path, "r") as file:
+    css = file.read()
+
+# Parse the CSS
+sheet = cssutils.parseString(css)
+
+# Iterate over the rules in the CSS
+for rule in sheet:
+    # We're only interested in style rules
+    if isinstance(rule, cssutils.css.CSSStyleRule):
+        # Check if the rule's selector is *
+        if rule.selectorText == "*":
+            # Iterate over the properties in the rule
+            for property in rule.style:
+                # We're only interested in the font-family property
+                if property.name == "font-family":
+                    FONT_FAMILY_1 = str(property.value)

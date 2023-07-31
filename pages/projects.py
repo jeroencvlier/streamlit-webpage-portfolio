@@ -20,12 +20,40 @@ st.markdown(
     }
 
     .myButton:hover {
-        background-color: rgb(169,169,169);  /* Darker background color on hover */
+        background-size: 150% auto;
+        animation: Gradient 4s ease infinite;
+        background-image: linear-gradient(135deg, rgba(176,107,199,0.7), rgba(83,180,200,0.7));
+    }
+
+    @keyframes Gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
+
+st.markdown(
+    f"""
+    <style>
+        .title {{
+            font-size:80px;
+            text-align:center;
+            color: black; 
+            background: -webkit-linear-gradient(315deg, rgba(176,107,199,1) 30%, rgba(83,180,200,1) 70%); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family={FONT_FAMILY_1};
+        }}
+    </style>
+    <div class="title">Projects</div>
+""",
+    unsafe_allow_html=True,
+)
+st.write("\n\n")
 
 projects13 = ["project1", "project2", "project3"]
 projects46 = ["project4", "project5", "project6"]

@@ -49,7 +49,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
     st.download_button(
-        label="Download Resume",
+        label="Pull CV!",
         data=PDFbyte,
         file_name=RESUME_FILE.name,
         mime="application/octet-stream",
@@ -70,7 +70,6 @@ with col3:
     ):
         switch_page("contact")
         pass
-
 
 # --------------------------------------------------------------
 # Social Section
