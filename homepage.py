@@ -168,7 +168,7 @@ st.markdown(
 
     .skill p {
         margin: 0px;
-        width: 250px;
+        width: 260px;
     }
 
     .bar-container {
