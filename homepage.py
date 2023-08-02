@@ -163,7 +163,7 @@ st.markdown(
     .skill {
         display: flex;
         align-items: center;
-        margin-bottom: -0.0em;
+        margin-bottom: 0.5em;
     }
 
     .skill p {
