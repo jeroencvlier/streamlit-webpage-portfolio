@@ -158,7 +158,47 @@ st.markdown(
         border: 1px solid #7a7c7c;  /* Border around the box - light gray color */
         border-radius: 15px;
         padding: 5% 5% 5% 10%;
+            }
+            
+    .skill {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1em;
     }
+
+    .skill p {
+        margin: 10px;
+        width: 300px;
+    }
+
+    .bar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .bar {
+        width: 8%;
+        height: 10px;
+        margin-right: 2px;
+        border-radius: 5px;
+    }
+
+    .bar.filled:nth-child(1) { background-color: rgba(176,107,199,0.7); }
+    .bar.filled:nth-child(2) { background-color: rgba(168,113,198,0.7); }
+    .bar.filled:nth-child(3) { background-color: rgba(160,119,197,0.7); }
+    .bar.filled:nth-child(4) { background-color: rgba(152,125,196,0.7); }
+    .bar.filled:nth-child(5) { background-color: rgba(144,131,195,0.7); }
+    .bar.filled:nth-child(6) { background-color: rgba(136,137,194,0.7); }
+    .bar.filled:nth-child(7) { background-color: rgba(128,143,193,0.7); }
+    .bar.filled:nth-child(8) { background-color: rgba(120,149,192,0.7); }
+    .bar.filled:nth-child(9) { background-color: rgba(112,155,191,0.7); }
+    .bar.filled:nth-child(10) { background-color: rgba(83,180,200,0.7); }
+
+    .bar.unfilled { background-color: #ccc; }
+
+
     .StyledHR {
         width: 25%; /* Change this to the width you want */
         height:5px;
@@ -173,6 +213,7 @@ st.markdown(
         50% {background-position: 0% 100%;}
         100% {background-position: 100% 0%;}
     }
+    
     </style>
     """,
     unsafe_allow_html=True,
