@@ -17,11 +17,10 @@
     "Python Machine Learning Libraries": {
         "Scikit-Learn": 7,
         "Ray[RLLIB]": 6,
-        "Keras": 6,
         "Pytorch": 5,
-        "Gym": 5,
+        "Gym": 7,
         "XGBoost": 6,
-        "Streamlit": 6
+        "Keras": 4,
     },
     "Platforms": {
         "Visual Studio Code": 8,
