@@ -163,12 +163,12 @@ st.markdown(
     .skill {
         display: flex;
         align-items: center;
-        margin-bottom: 1em;
+        margin-bottom: -0.5em;
     }
 
     .skill p {
         margin: 10px;
-        width: 300px;
+        width: 220px;
     }
 
     .bar-container {
@@ -219,14 +219,34 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
 # --------------------------------------------------------------
 # SKILLS
 # --------------------------------------------------------------
-with open(f"{portfolio_folder}/skills.md", "r") as f:
-    skills_text = f.read()
+
+
+def skill_builder(skills):
+    skills_html = "<div class='PortMarker'>"
+    skills_html += f"<h2>Skills</h2>"
+    for skill_level in skills:
+        skills_html += "<br><div class='StyledHR'></div><br>"
+        skill_set = skills[skill_level]
+        skills_html += f"<h3>{skill_level}</h3>"
+        for skill, score in skill_set.items():
+            skills_html += (
+                f'<div class="skill">\t<p>{skill}</p>\t<div class="bar-container">'
+            )
+            skills_html += '\t\t<div class="bar filled"></div>\n' * score
+            skills_html += '\t\t<div class="bar unfilled"></div>\n' * (10 - score)
+            skills_html += "\t</div>\n</div>\n"
+    return skills_html
+
+
+with open(f"{portfolio_folder}/skills.json", "r") as f:
+    skills = json.load(f)
 
 with st.container():
-    st.markdown(skills_text, unsafe_allow_html=True)
+    st.markdown(skill_builder(skills), unsafe_allow_html=True)
 st.write("##")
 
 # --------------------------------------------------------------
