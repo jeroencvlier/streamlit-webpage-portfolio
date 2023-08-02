@@ -167,7 +167,7 @@ st.markdown(
     }
 
     .skill p {
-        margin: 10px;
+        margin: 0px;
         width: 220px;
     }
 
