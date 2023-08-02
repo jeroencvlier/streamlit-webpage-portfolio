@@ -3,8 +3,6 @@ from pages.utils import *
 load_css()
 title_header("Projects")
 
-st.write("\n\n")
-
 st.markdown(
     """
     <style>

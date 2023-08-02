@@ -9,16 +9,8 @@ load_css()
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Jeroen van Lier | Digital Portfolio"
 PAGE_ICON = ":wave:"
-DESCRIPTION = """
-Data Scientist with 7 years of experience in extracting actionable insights from data. Strong hands on experience and knowledge in Python and Excel. Good understanding of statistical principles and their respective applications. Excellent team-player and displaying strong sense of initiative on tasks."""
 EMAIL = "jeroencvlier@gmail.com"
 
-PROJECTS = {
-    "🏆 Sales Dashboard - Comparing sales across three stores": "https://youtu.be/Sb0A9i6d320",
-    "🏆 Income and Expense Tracker - Web app with NoSQL database": "https://youtu.be/3egaMfE9388",
-    "🏆 Desktop Application - Excel2CSV converter with user settings & menubar": "https://youtu.be/LzCfNanQ_9c",
-    "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
-}
 
 with open(RESUME_FILE, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
@@ -28,56 +20,57 @@ with open(RESUME_FILE, "rb") as pdf_file:
 # Menu
 # --------------------------------------------------------------
 
-st.markdown(
-    """
-    <style>
-    .myButton {
-        border-radius: 20px;
-        display: inline-block;
-        position: relative;
-        padding: 10px 20px;
-        border: 2px solid rgb(70,70,70);  /* Initial border */
-        font-size: 1em;
-        text-decoration: none; /* Removes underline */
-        height: 60px;
-        width: 100%;  /* Set width to 100% */
-        background-color: rgb(211,211,211);
-        overflow: hidden; /* Ensure the content doesn't overflow the border */
-    }
+# st.markdown(
+#     """
+#     <style>
+#     div.stButton > Button:first-child  {
+#         border-radius: 20px;
+#         display: inline-block;
+#         position: relative;
+#         padding: 10px 20px;
+#         border: 2px solid rgb(70,70,70);  /* Initial border */
+#         font-size: 1em;
+#         text-decoration: none; /* Removes underline */
+#         height: 110px;
+#         width: 100%;  /* Set width to 100% */
+#         background-color: rgb(211,211,211);
+#         overflow: hidden; /* Ensure the content doesn't overflow the border */
+#     }
 
-    .myButton:hover {
-        background-size: 150% auto;
-        animation: Gradient 4s ease infinite;
-        background-image: linear-gradient(135deg, rgba(176,107,199,0.7), rgba(83,180,200,0.7));
-    }
+#     div.stButton > Button:first-child:hover {
+#         background-size: 150% auto;
+#         animation: Gradient 4s ease infinite;
+#         background-image: linear-gradient(135deg, rgba(176,107,199,0.7), rgba(83,180,200,0.7));
+#     }
 
-    @keyframes Gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+#     @keyframes Gradient {
+#         0% { background-position: 0% 50%; }
+#         50% { background-position: 100% 50%; }
+#         100% { background-position: 0% 50%; }
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
+
 
 for col, text, page in zip(st.columns(2), ["Home", "Project"], ["home", "projects"]):
     with col:
-        # st.write("""<div class='myButton'/>""", unsafe_allow_html=True)
-        # if st.button(
-        #     text,
-        #     key=text,
-        #     disabled=False,
-        #     use_container_width=True,
-        # ):
-        st.markdown(f"<button class='myButton'>{text}</button>", unsafe_allow_html=True)
+        if st.button(
+            text,
+            key=page,
+            disabled=False,
+            use_container_width=True,
+        ):
+            switch_page(page)
+            pass
 
-        # pass
+
 # --------------------------------------------------------------
 # PAGE TITLE
 # --------------------------------------------------------------
 title_header("Jeroen van Lier")
-
+st.write("##")
 
 # --------------------------------------------------------------
 # HERO SECTIOM
@@ -85,25 +78,26 @@ title_header("Jeroen van Lier")
 # Profile picture - > use this hack to center the image on iphone
 with open(PROFILE_PIC, "rb") as f:
     pp = f.read()
+with open(f"{portfolio_folder}/hero.md", "r") as f:
+    hero_text = f.read()
+
 pp_bytes = base64.b64encode(pp).decode()
-# pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" width = 240> </p>'
-pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" style="width:100%;"> </p>'
-
-
+pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" style="width:100%;max-width:250px;"> </p>'
+# with st.container():
 col1, col2 = st.columns([0.325, 0.675], gap="large")
 with col1:
-    # col1.subheader("")
+    st.write("\n")
     st.markdown(pp_local_file, unsafe_allow_html=True)
 with col2:
-    # st.title(NAME)
-    st.write("\n" + DESCRIPTION)
+    st.markdown(hero_text, unsafe_allow_html=True)
 
+st.write("##")
 # --------------------------------------------------------------
 # CONTACT BUTTONS
 # --------------------------------------------------------------
+
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
     st.download_button(
         label="Pull CV!",
         data=PDFbyte,
@@ -113,12 +107,10 @@ with col1:
     )
 
 with col2:
-    st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
     if st.button("Virtual Coffee?", use_container_width=True):
         webbrowser.open_new_tab("https://calendly.com/jeroencvlier/30min")
 
 with col3:
-    st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
     if st.button(
         "Get In Touch!",
         disabled=False,
@@ -152,90 +144,91 @@ for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
         ):
             webbrowser.open_new_tab(link)
 
-
 # --------------------------------------------------------------
-# Experience & Qualifications
+# Container STYLE
 # --------------------------------------------------------------
-st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
-# st.write("\n")
-# st.markdown(contact_form, unsafe_allow_html=True)
-st.subheader("Experience & Qulifications")
-st.write(
-    """
-- ✔️ 7 Years expereince extracting actionable insights from data
-- ✔️ Strong hands on experience and knowledge in Python and Excel
-- ✔️ Good understanding of statistical principles and their respective applications
-- ✔️ Excellent team-player and displaying strong sense of initiative on tasks
-"""
-)
-
 st.markdown(
-    """<div class='PortMarker'>
-<h3>Experience & Qulifications</h3>
-<p>
-- ✔️ 7 Years expereince extracting actionable insights from data <br/>
-- ✔️ Strong hands on experience and knowledge in Python and Excel <br/>
-- ✔️ Good understanding of statistical principles and their respective applications <br/>
-- ✔️ Excellent team-player and displaying strong sense of initiative on tasks <br/>
-</p>
-</div>""",
+    """
+    <style>
+    .PortMarker {
+        background-color: #313636;  /* Background color of the box same as the page background */
+        
+        box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3);
+
+        border: 1px solid #7a7c7c;  /* Border around the box - light gray color */
+        border-radius: 15px;
+        padding: 5% 5% 5% 10%;
+    }
+    .StyledHR {
+        width: 25%; /* Change this to the width you want */
+        height:5px;
+        border:none;
+        background: linear-gradient(270deg, rgba(176,107,199,0.7), rgba(83,180,200,0.7));
+        background-size: 200% 200%;
+        animation: Gradient 6s ease infinite;
+        border-radius: 15px;
+    }  
+    @keyframes Gradient {
+        0% {background-position: 100% 0%;}
+        50% {background-position: 0% 100%;}
+        100% {background-position: 100% 0%;}
+    }
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
+# --------------------------------------------------------------
+# SKILLS
+# --------------------------------------------------------------
+with open(f"{portfolio_folder}/skills.md", "r") as f:
+    skills_text = f.read()
 
-# --- SKILLS ---
-st.write("\n")
-st.subheader("Hard Skills")
-st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
+with st.container():
+    st.markdown(skills_text, unsafe_allow_html=True)
+st.write("##")
 
-st.write(
-    """
-- 👩‍💻 Programming: Python (Scikit-learn, Pandas), SQL, VBA
-- 📊 Data Visulization: PowerBi, MS Excel, Plotly
-- 📚 Modeling: Logistic regression, linear regression, decition trees
-- 🗄️ Databases: Postgres, MongoDB, MySQL
-"""
-)
+# --------------------------------------------------------------
+# EDUCATION
+# --------------------------------------------------------------
+with open(f"{portfolio_folder}/education.md", "r") as f:
+    education_text = f.read()
 
-# --- WORK HISTORY ---
-st.write("\n")
-st.subheader("Work History")
-st.write("---")
+with st.container():
+    st.markdown(education_text, unsafe_allow_html=True)
+st.write("##")
 
-# --- JOB 1
-st.write("🚧", "**Senior Data Analyst | Ross Industries**")
-st.write("02/2020 - Present")
-st.write(
-    """
-- ► Used PowerBI and SQL to redeﬁne and track KPIs surrounding marketing initiatives, and supplied recommendations to boost landing page conversion rate by 38%
-- ► Led a team of 4 analysts to brainstorm potential marketing and sales improvements, and implemented A/B tests to generate 15% more client leads
-- ► Redesigned data model through iterations that improved predictions by 12%
-"""
-)
+# --------------------------------------------------------------
+# Qualifications
+# --------------------------------------------------------------
+with open(f"{portfolio_folder}/qualifications.md", "r") as f:
+    qualifications_text = f.read()
 
-# --- JOB 2
-st.write("\n")
-st.write("🚧", "**Data Analyst | Liberty Mutual Insurance**")
-st.write("01/2018 - 02/2022")
-st.write(
-    """
-- ► Built data models and maps to generate meaningful insights from customer data, boosting successful sales eﬀorts by 12%
-- ► Modeled targets likely to renew, and presented analysis to leadership, which led to a YoY revenue increase of $300K
-- ► Compiled, studied, and inferred large amounts of data, modeling information to drive auto policy pricing
-"""
-)
+with st.container():
+    st.markdown(qualifications_text, unsafe_allow_html=True)
+st.write("##")
 
-# --- JOB 3
-st.write("\n")
-st.write("🚧", "**Data Analyst | Chegg**")
-st.write("04/2015 - 01/2018")
-st.write(
-    """
-- ► Devised KPIs using SQL across company website in collaboration with cross-functional teams to achieve a 120% jump in organic traﬃc
-- ► Analyzed, documented, and reported user survey results to improve customer communication processes by 18%
-- ► Collaborated with analyst team to oversee end-to-end process surrounding customers' return data
-"""
-)
+# --------------------------------------------------------------
+# Certificates
+# --------------------------------------------------------------
+with open(f"{portfolio_folder}/certificates.md", "r") as f:
+    certificates_text = f.read()
+
+with st.container():
+    st.markdown(certificates_text, unsafe_allow_html=True)
+st.write("##")
+
+# --------------------------------------------------------------
+# WORK HISTORY
+# --------------------------------------------------------------
+
+with open(f"{portfolio_folder}/experience.md", "r") as f:
+    experience_text = f.read()
+
+with st.container():
+    st.markdown(experience_text, unsafe_allow_html=True)
+st.write("##")
+
 
 # # --- Projects & Accomplishments ---
 # st.write("\n")

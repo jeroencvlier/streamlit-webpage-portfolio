@@ -4,17 +4,15 @@ load_css()
 
 
 title_header("Contact Form")
-# st.title("Contact Form")
-
 domain = "https://www.jeroencvlier.com/Thanks"
 
 
 # ---- CONTACT ----
 with st.container():
-    st.write("---")
-    st.header("Get In Touch With Me!")
-    st.write("##")
-
+    st.markdown(
+        "<h1 style='text-align: center; color: white;'>Get In Touch With Me!</h1>",
+        unsafe_allow_html=True,
+    )
     # Documention: https://formsubmit.co/
     contact_form = f"""
     <form action="https://formsubmit.co/jurists-plywood-0b@icloud.com" method="POST">
@@ -27,10 +25,10 @@ with st.container():
     </form>
     """
 
-    email_column, right_column = st.columns([0.8, 0.2])
+    left_column, email_column, right_column = st.columns([0.1, 0.8, 0.1])
     with email_column:
-        # st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
         st.markdown(contact_form, unsafe_allow_html=True)
+    with left_column:
+        st.empty()
     with right_column:
-        # st.write("""<div class='PortMarker'/>""", unsafe_allow_html=True)
         st.empty()

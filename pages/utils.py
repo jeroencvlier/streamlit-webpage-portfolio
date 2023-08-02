@@ -1,6 +1,7 @@
 # utils.py
 from pathlib import Path
 
+
 # Define directory paths
 CURRENT_DIR = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 BASE_DIR = CURRENT_DIR.parent
@@ -27,12 +28,15 @@ import os
 import webbrowser
 from st_pages import add_page_title
 from streamlit_extras.switch_page_button import switch_page
+import re
 
 
 RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
 LINKEDIN_LOGO = BASE_DIR / "assets" / "linkedin.png"
 PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
 RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
+portfolio_folder = BASE_DIR / "assets" / "portfolio"
+
 
 import cssutils
 
@@ -60,6 +64,11 @@ for rule in sheet:
 
 
 def title_header(title):
+    st.write("\n")
+    if len(title.split(" ")) > 1:
+        lh = "1.0"
+    else:
+        lh = "1.127"
     t = st.markdown(
         f"""
         <style>
@@ -67,6 +76,7 @@ def title_header(title):
                 font-size:80px;
                 text-align:center;
                 color: black; 
+                line-height: {lh};
                 background: -webkit-linear-gradient(315deg, rgba(176,107,199,1) 30%, rgba(83,180,200,1) 70%); 
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -77,4 +87,7 @@ def title_header(title):
     """,
         unsafe_allow_html=True,
     )
+    st.write("###")
+    st.write("---")
+
     return t
