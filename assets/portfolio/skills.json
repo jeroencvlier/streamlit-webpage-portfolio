@@ -20,7 +20,7 @@
         "Pytorch": 5,
         "Gym": 7,
         "XGBoost": 6,
-        "Keras": 4,
+        "Keras": 4
     },
     "Platforms": {
         "Visual Studio Code": 8,
