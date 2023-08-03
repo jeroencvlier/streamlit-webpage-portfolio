@@ -14,6 +14,11 @@ name = "Thanks"
 icon = ":wave:"
 
 [[pages]]
+path = "pages/skills.py"
+name = "Skills"
+icon = ":tool:"
+
+[[pages]]
 path = "pages/projects.py"
 name = "Projects"
 icon = ":wave:"

@@ -1,35 +1,42 @@
 {
-    "Coding Skills": {
+    "Top Skills": {
         "Python": 9,
         "SQL": 5,
         "Git": 7
     },
-    "Python Libraries": {
-        "Numpy": 8,
-        "Pandas": 8,
-        "SciPy": 7,
-        "PySpark": 6,
-        "Matplotlib": 7,
-        "Seaborn": 7,
-        "Plotly": 7,
-        "Streamlit": 6
-    },
-    "Python Machine Learning Libraries": {
-        "Scikit-Learn": 7,
-        "Ray[RLLIB]": 6,
-        "Pytorch": 5,
-        "Gym": 7,
-        "XGBoost": 6,
-        "Keras": 4
-    },
-    "Platforms": {
-        "VS Code": 8,
-        "Docker": 7,
-        "Jupyter": 7,
-        "Gradient": 7,
-        "Azure": 6,
-        "AWS S3": 6,
-        "Python Anywhere": 6,
-        "Github": 7
+    "All Skills": {
+        "Coding Skills": {
+            "Python": 9,
+            "SQL": 5,
+            "Git": 7
+        },
+        "Python Libraries": {
+            "Numpy": 8,
+            "Pandas": 8,
+            "SciPy": 7,
+            "PySpark": 6,
+            "Matplotlib": 7,
+            "Seaborn": 7,
+            "Plotly": 7,
+            "Streamlit": 6
+        },
+        "Python Machine Learning Libraries": {
+            "Scikit-Learn": 7,
+            "Ray[RLLIB]": 6,
+            "Pytorch": 5,
+            "Gym": 7,
+            "XGBoost": 6,
+            "Keras": 4
+        },
+        "Platforms": {
+            "VS Code": 8,
+            "Docker": 7,
+            "Jupyter": 7,
+            "Gradient": 7,
+            "Azure": 6,
+            "AWS S3": 6,
+            "PythonAnywhere": 6,
+            "Github": 7
+        }
     }
 }
