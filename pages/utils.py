@@ -78,7 +78,8 @@ def skill_builder(skills, level=None):
         skills_html += f"<h2>Skills</h2>"
         skills_html += "<br><div class='StyledHR'></div><br>"
         skills_html += skill_score(skills)
-        skills_html += '<p></p><div class="click_link"><a href="https://www.jeroencvlier.com/Skills" target="_blank">Click here for more info on skills</a></div>'
+        skills_html += '<p></p><div class="click_link"><a href="https://www.jeroencvlier.com/Skills">Click here for more info on skills</a></div>'
+        # skills_html += '<p></p><div class="click_link"><a href="https://www.jeroencvlier.com/Skills" target="_blank">Click here for more info on skills</a></div>'
     elif level == "All Skills":
         skills = skills[level]
         for en, skill_section in enumerate(skills):

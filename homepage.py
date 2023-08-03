@@ -108,7 +108,7 @@ solical_media = {
         "logo": f"{logo_folder}/github_logo.png",
     },
     "WhatsApp": {
-        "link": "https://wa.me/31617315952",
+        "link": "https://wa.me/message/3CEWOJJYMHLWA1",
         "logo": f"{logo_folder}/whatsapp_logo.png",
     },
 }
@@ -131,6 +131,7 @@ style_github = "height:100%; max-height:50px; margin-right:30px;"
 style_whatsapp = "height:100%; max-height:50px;"
 
 social_links = f"""
+
 <div style="text-align:center">
     <a href="{solical_media['LinkedIn']["link"]}"><img src="data:image/png;base64,{linkedin_logo}"  style="{style_linkedin}"/></a>
     <a href="{solical_media['GitHub']["link"]}"><img src="data:image/png;base64,{github_logo}" style="{style_github}"/></a>
@@ -144,6 +145,35 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # CONTACT BUTTONS
 # -------------------------------------------------------------
+# Define some example styles for the button
+button_style = """
+<style>
+.myButton {
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+"""
+
+# # Define the HTML for the button
+# button_html = f"""
+# {button_style}
+# <a href="https://your-server.com/path/to/file" download class="myButton">Download</a>
+# <a href="https://calendly.com/jeroencvlier/30min" class="myButton">Virtual Coffee?</a>
+# <a href="https://www.jeroencvlier.com/Contact" class="myButton">Contact</a></div>
+# """
+
+# Write the button HTML to the Streamlit app
+st.markdown(button_html, unsafe_allow_html=True)
 
 
 col1, col2, col3 = st.columns(3)
