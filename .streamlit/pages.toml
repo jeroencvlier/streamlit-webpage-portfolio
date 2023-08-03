@@ -16,7 +16,7 @@ icon = ":wave:"
 [[pages]]
 path = "pages/skills.py"
 name = "Skills"
-icon = ":tool:"
+icon = ":hammer:"
 
 [[pages]]
 path = "pages/projects.py"

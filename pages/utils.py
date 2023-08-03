@@ -32,58 +32,22 @@ import re
 
 
 RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
-LINKEDIN_LOGO = BASE_DIR / "assets" / "linkedin.png"
+logo_folder = BASE_DIR / "assets" / "logos"
+
 PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
 RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
 portfolio_folder = BASE_DIR / "assets" / "portfolio"
 
 
-import cssutils
-
-# Define the path to your CSS file
-css_file_path = "styles/main.css"
-
-# Read the CSS file
-with open(css_file_path, "r") as file:
-    css = file.read()
-
-# Parse the CSS
-sheet = cssutils.parseString(css)
-
-# Iterate over the rules in the CSS
-for rule in sheet:
-    # We're only interested in style rules
-    if isinstance(rule, cssutils.css.CSSStyleRule):
-        # Check if the rule's selector is *
-        if rule.selectorText == "*":
-            # Iterate over the properties in the rule
-            for property in rule.style:
-                # We're only interested in the font-family property
-                if property.name == "font-family":
-                    FONT_FAMILY_1 = str(property.value)
-
-
 def title_header(title, line=True):
-    st.write("\n")
+    # st.write("\n")
     if len(title.split(" ")) > 1:
-        lh = "1.0"
+        title_class = "title1"
     else:
-        lh = "1.127"
+        title_class = "title2"
     t = st.markdown(
         f"""
-        <style>
-            .title {{
-                font-size:80px;
-                text-align:center;
-                color: black; 
-                line-height: {lh};
-                background: -webkit-linear-gradient(315deg, rgba(176,107,199,1) 30%, rgba(83,180,200,1) 70%); 
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                font-family={FONT_FAMILY_1};
-            }}
-        </style>
-        <div class="title">{title}</div>
+        <div class="{title_class}">{title}</div>
     """,
         unsafe_allow_html=True,
     )
@@ -112,13 +76,14 @@ def skill_builder(skills, level=None):
     if level == "Top Skills":
         skills = skills[level]
         skills_html += f"<h2>Skills</h2>"
-        skills_html += "<div class='StyledHR'></div><br>"
+        skills_html += "<br><div class='StyledHR'></div><br>"
         skills_html += skill_score(skills)
-
+        skills_html += '<p></p><div class="click_link"><a href="https://www.jeroencvlier.com/Skills" target="_blank">Click here for more info on skills</a></div>'
     elif level == "All Skills":
         skills = skills[level]
-        for skill_section in skills:
-            skills_html += "<br><div class='StyledHR'></div><br>"
+        for en, skill_section in enumerate(skills):
+            if en != 0:
+                skills_html += "<br><div class='StyledHR'></div><br>"
             skill_set = skills[skill_section]
             skills_html += f"<h3>{skill_section}</h3>"
             skills_html += skill_score(skill_set)

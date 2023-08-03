@@ -1,8 +1,10 @@
 {
     "Top Skills": {
         "Python": 9,
-        "SQL": 5,
-        "Git": 7
+        "Pandas": 8,
+        "PySpark": 7,
+        "Scikit-Learn": 7,
+        "SQL": 6
     },
     "All Skills": {
         "Coding Skills": {
@@ -14,7 +16,7 @@
             "Numpy": 8,
             "Pandas": 8,
             "SciPy": 7,
-            "PySpark": 6,
+            "PySpark": 7,
             "Matplotlib": 7,
             "Seaborn": 7,
             "Plotly": 7,

@@ -2,12 +2,17 @@
 
 ## Education
 
-<div class='StyledHR'></div><br>
+<br><div class='StyledHR'></div>
 
 #### Ludwig Maximilian University of Munich
-**Masters's Degree in Geology** (2014 - 2017)
+2014 - 2017
 
-<div class='StyledHR'></div><br>
+**Masters's Degree in Geology**
+
+
+<br><div class='StyledHR'></div>
 
 #### Stellenbosch University
-**Bachelor's Degree in Earth Science** (2007 - 2011)
+2007 - 2011
+
+**Bachelor's Degree in Earth Science** 

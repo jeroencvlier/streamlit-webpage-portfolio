@@ -54,16 +54,16 @@ with open(RESUME_FILE, "rb") as pdf_file:
 # )
 
 
-for col, text, page in zip(st.columns(2), ["Home", "Project"], ["home", "projects"]):
-    with col:
-        if st.button(
-            text,
-            key=page,
-            disabled=False,
-            use_container_width=True,
-        ):
-            switch_page(page)
-            pass
+# for col, text, page in zip(st.columns(2), ["Home", "Project"], ["home", "projects"]):
+#     with col:
+#         if st.button(
+#             text,
+#             key=page,
+#             disabled=False,
+#             use_container_width=True,
+#         ):
+#             switch_page(page)
+#             pass
 
 
 # --------------------------------------------------------------
@@ -83,15 +83,64 @@ with open(f"{portfolio_folder}/hero.md", "r") as f:
 
 pp_bytes = base64.b64encode(pp).decode()
 pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" style="width:100%;max-width:250px;"> </p>'
-# with st.container():
+
 col1, col2 = st.columns([0.325, 0.675], gap="large")
 with col1:
     st.write("\n")
     st.markdown(pp_local_file, unsafe_allow_html=True)
+
 with col2:
     st.markdown(hero_text, unsafe_allow_html=True)
 
 st.write("##")
+
+# --------------------------------------------------------------
+# SOCIAL BUTTONS
+# --------------------------------------------------------------
+# Your social media links
+solical_media = {
+    "LinkedIn": {
+        "link": "https://linkedin.com/in/jeroencvlier",
+        "logo": f"{logo_folder}/linkedin_logo.png",
+    },
+    "GitHub": {
+        "link": "https://github.com/jeroencvlier",
+        "logo": f"{logo_folder}/github_logo.png",
+    },
+    "WhatsApp": {
+        "link": "https://wa.me/31617315952",
+        "logo": f"{logo_folder}/whatsapp_logo.png",
+    },
+}
+
+# Generate base64 encodings of the logos
+linkedin_logo = base64.b64encode(
+    open(solical_media["LinkedIn"]["logo"], "rb").read()
+).decode()
+github_logo = base64.b64encode(
+    open(solical_media["GitHub"]["logo"], "rb").read()
+).decode()
+whatsapp_logo = base64.b64encode(
+    open(solical_media["WhatsApp"]["logo"], "rb").read()
+).decode()
+
+# Prepare the social links HTML
+
+style_linkedin = "height:100%; max-height:50px; margin-right:30px;"  # 10px right margin
+style_github = "height:100%; max-height:50px; margin-right:30px;"
+style_whatsapp = "height:100%; max-height:50px;"
+
+social_links = f"""
+<div style="text-align:center">
+    <a href="{solical_media['LinkedIn']["link"]}"><img src="data:image/png;base64,{linkedin_logo}"  style="{style_linkedin}"/></a>
+    <a href="{solical_media['GitHub']["link"]}"><img src="data:image/png;base64,{github_logo}" style="{style_github}"/></a>
+    <a href="{solical_media['WhatsApp']["link"]}"><img src="data:image/png;base64,{whatsapp_logo}" style="{style_whatsapp}"/></a>
+    <br></br>
+</div>
+"""
+st.markdown(social_links, unsafe_allow_html=True)
+
+
 # --------------------------------------------------------------
 # CONTACT BUTTONS
 # -------------------------------------------------------------
@@ -120,35 +169,6 @@ with col3:
         switch_page("contact")
         pass
 
-# --------------------------------------------------------------
-# SOCIAL BUTTONS
-# --------------------------------------------------------------
-SOCIAL_MEDIA = {
-    "LinkedIn": "https://linkedin.com/in/jeroencvlier",
-    "GitHub": "https://github.com/jeroencvlier",
-}
-SOCIAL_MEDIA_LOGOS = {"LinkedIn": LINKEDIN_LOGO, "GitHub": LINKEDIN_LOGO}
-
-linkedin_logo = Image.open(LINKEDIN_LOGO)
-linkedin_logo = base64.b64encode(
-    open(LINKEDIN_LOGO, "rb").read()
-).decode()  # you will have to import base64 for this
-
-cols = st.columns(len(SOCIAL_MEDIA))
-for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
-    with cols[index]:
-        st.write("""<div class='ButtonWidth'/>""", unsafe_allow_html=True)
-        if st.button(
-            platform,
-            disabled=False,
-            use_container_width=True,
-        ):
-            webbrowser.open_new_tab(link)
-
-# --------------------------------------------------------------
-# Container STYLE
-# --------------------------------------------------------------
-
 
 # --------------------------------------------------------------
 # SKILLS
@@ -160,15 +180,6 @@ with open(f"{portfolio_folder}/skills.json", "r") as f:
 
 with st.container():
     st.markdown(skill_builder(skills_json, level="Top Skills"), unsafe_allow_html=True)
-    _, col, _ = st.columns([0.2, 0.6, 0.2])
-    with col:
-        if st.button(
-            "View All Skills!",
-            disabled=False,
-            use_container_width=True,
-        ):
-            switch_page("skills")
-            pass
 st.write("##")
 
 # --------------------------------------------------------------

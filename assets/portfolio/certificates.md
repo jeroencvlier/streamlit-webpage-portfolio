@@ -2,22 +2,30 @@
 
 ## Certificates
 
-<div class='StyledHR'></div><br>
+<br><div class='StyledHR'></div>
 
 #### Udemy
-**Spark and Python for Big Data with PySparkSpark and Python for Big Data with PySpark** (November 2022)
+November 2022
 
-<div class='StyledHR'></div><br>
+**Spark and Python for Big Data with PySparkSpark and Python for Big Data with PySpark** 
 
-#### Udemy
-**PyTorch for Deep Learning with Python** (March 2022)
-
-<div class='StyledHR'></div><br>
+<br><div class='StyledHR'></div>
 
 #### Udemy
-**Python and Django Full Stack Web Developer** (October 2020)
+March 2022
 
-<div class='StyledHR'></div><br>
+**PyTorch for Deep Learning with Python** 
+
+<br><div class='StyledHR'></div>
+
+#### Udemy
+October 2020
+
+**Python and Django Full Stack Web Developer** 
+
+<br><div class='StyledHR'></div>
 
 #### DataCamp
-**Data Scientist with Python** (March 2022)
+March 2022
+
+**Data Scientist with Python** 
