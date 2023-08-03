@@ -173,7 +173,7 @@ button_style = """
 # """
 
 # Write the button HTML to the Streamlit app
-st.markdown(button_html, unsafe_allow_html=True)
+# st.markdown(button_html, unsafe_allow_html=True)
 
 
 col1, col2, col3 = st.columns(3)
