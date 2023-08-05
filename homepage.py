@@ -1,70 +1,6 @@
-import base64
-import streamlit as st
-from PIL import Image
 from pages.utils import *
 
 load_css()
-
-
-# --- GENERAL SETTINGS ---
-PAGE_TITLE = "Jeroen van Lier | Digital Portfolio"
-PAGE_ICON = ":wave:"
-EMAIL = "jeroencvlier@gmail.com"
-
-
-with open(RESUME_FILE, "rb") as pdf_file:
-    PDFbyte = pdf_file.read()
-
-
-# --------------------------------------------------------------
-# Menu
-# --------------------------------------------------------------
-
-# st.markdown(
-#     """
-#     <style>
-#     div.stButton > Button:first-child  {
-#         border-radius: 20px;
-#         display: inline-block;
-#         position: relative;
-#         padding: 10px 20px;
-#         border: 2px solid rgb(70,70,70);  /* Initial border */
-#         font-size: 1em;
-#         text-decoration: none; /* Removes underline */
-#         height: 110px;
-#         width: 100%;  /* Set width to 100% */
-#         background-color: rgb(211,211,211);
-#         overflow: hidden; /* Ensure the content doesn't overflow the border */
-#     }
-
-#     div.stButton > Button:first-child:hover {
-#         background-size: 150% auto;
-#         animation: Gradient 4s ease infinite;
-#         background-image: linear-gradient(135deg, rgba(176,107,199,0.7), rgba(83,180,200,0.7));
-#     }
-
-#     @keyframes Gradient {
-#         0% { background-position: 0% 50%; }
-#         50% { background-position: 100% 50%; }
-#         100% { background-position: 0% 50%; }
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
-# )
-
-
-# for col, text, page in zip(st.columns(2), ["Home", "Project"], ["home", "projects"]):
-#     with col:
-#         if st.button(
-#             text,
-#             key=page,
-#             disabled=False,
-#             use_container_width=True,
-#         ):
-#             switch_page(page)
-#             pass
-
 
 # --------------------------------------------------------------
 # PAGE TITLE
@@ -145,39 +81,12 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # CONTACT BUTTONS
 # -------------------------------------------------------------
-# Define some example styles for the button
-button_style = """
-<style>
-.myButton {
-  border-radius: 5px;
-  padding: 10px;
-  color: white;
-  background-color: #4CAF50;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-</style>
-"""
-
-# # Define the HTML for the button
-# button_html = f"""
-# {button_style}
-# <a href="https://your-server.com/path/to/file" download class="myButton">Download</a>
-# <a href="https://calendly.com/jeroencvlier/30min" class="myButton">Virtual Coffee?</a>
-# <a href="https://www.jeroencvlier.com/Contact" class="myButton">Contact</a></div>
-# """
-
-# Write the button HTML to the Streamlit app
-# st.markdown(button_html, unsafe_allow_html=True)
-
 
 col1, col2, col3 = st.columns(3)
 with col1:
+    with open(RESUME_FILE, "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+
     st.download_button(
         label="Pull CV!",
         data=PDFbyte,
@@ -255,10 +164,10 @@ with st.container():
     st.markdown(experience_text, unsafe_allow_html=True)
 st.write("##")
 
+# --------------------------------------------------------------
+# Languages
+# --------------------------------------------------------------
 
-# # --- Projects & Accomplishments ---
-# st.write("\n")
-# st.subheader("Projects & Accomplishments")
-# st.write("---")
-# for project, link in PROJECTS.items():
-#     st.write(f"[{project}]({link})")
+with st.container():
+    st.markdown(skill_builder(skills_json, level="Languages"), unsafe_allow_html=True)
+st.write("##")

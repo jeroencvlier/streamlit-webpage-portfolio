@@ -40,5 +40,10 @@
             "PythonAnywhere": 6,
             "Github": 7
         }
+    },
+    "Languages": {
+        "English": 10,
+        "Dutch": 7,
+        "German": 2
     }
 }
