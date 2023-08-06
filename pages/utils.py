@@ -6,12 +6,26 @@ import json
 CURRENT_DIR = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 BASE_DIR = CURRENT_DIR.parent
 CSS_FILE = BASE_DIR / "styles" / "main.css"
+RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
+logo_folder = BASE_DIR / "assets" / "logos"
+
+PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
+RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
+portfolio_folder = BASE_DIR / "assets" / "portfolio"
+page_icon = BASE_DIR / "assets" / "page_icon.ico"
 
 # Now you can use these paths in other files
 import streamlit as st
 from st_pages import hide_pages, show_pages_from_config
+from PIL import Image
 
-st.set_page_config(initial_sidebar_state="collapsed")
+
+im = Image.open(page_icon)
+st.set_page_config(
+    initial_sidebar_state="collapsed",
+    page_title="Jeroen | Web Portfolio!",
+    page_icon=im,
+)
 
 
 def load_css():
@@ -30,16 +44,6 @@ from st_pages import add_page_title
 from streamlit_extras.switch_page_button import switch_page
 import re
 import base64
-import streamlit as st
-from PIL import Image
-
-
-RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
-logo_folder = BASE_DIR / "assets" / "logos"
-
-PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
-RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
-portfolio_folder = BASE_DIR / "assets" / "portfolio"
 
 
 def title_header(title, line=True):
@@ -84,7 +88,6 @@ def skill_builder(skills, level=None):
         skills_html += '<div style="text-align: right;"><a class="click_link" href="https://www.jeroencvlier.com/Skills" target="_self">Details >></a></div>'
         # skills_html += '<p></p><div class="click_link"><a href="https://www.jeroencvlier.com/Skills"Click here for more details >></a></div>'
     elif level == "Languages":
-
         skills = skills[level]
         skills_html += f"<h2>Languages</h2>"
         skills_html += "<br><div class='StyledHR'></div><br>"
