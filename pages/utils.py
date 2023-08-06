@@ -21,11 +21,6 @@ from PIL import Image
 
 
 im = Image.open(page_icon)
-st.set_page_config(
-    initial_sidebar_state="collapsed",
-    page_title="Jeroen | Web Portfolio!",
-    page_icon=im,
-)
 
 
 def load_css():

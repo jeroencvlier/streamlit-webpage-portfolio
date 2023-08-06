@@ -1,5 +1,12 @@
 from pages.utils import *
 
+st.set_page_config(
+    initial_sidebar_state="collapsed",
+    page_title="Jeroen | Contact!",
+    page_icon=im,
+)
+
+
 load_css()
 
 
