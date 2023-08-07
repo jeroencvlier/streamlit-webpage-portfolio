@@ -10,7 +10,7 @@ RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
 logo_folder = BASE_DIR / "assets" / "logos"
 
 PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
-RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
+resume_file = BASE_DIR / "assets" / "resume.pdf"
 portfolio_folder = BASE_DIR / "assets" / "portfolio"
 page_icon = BASE_DIR / "assets" / "page_icon.ico"
 

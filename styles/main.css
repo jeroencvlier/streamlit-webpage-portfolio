@@ -99,6 +99,9 @@ button[type=primary]:hover {
     background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.7));
 }
 
+
+
+
 @keyframes Gradient {
     0% {
         background-position: 0% 50%;
@@ -234,7 +237,7 @@ header {
     border-radius: 15px;
 }
 
-@keyframes Gradient {
+/* @keyframes Gradient {
     0% {
         background-position: 100% 0%;
     }
@@ -246,7 +249,7 @@ header {
     100% {
         background-position: 100% 0%;
     }
-}
+} */
 
 .title1 {
     font-size: 80px;
@@ -275,4 +278,39 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
+}
+
+
+
+.homepageButton {
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    /* Center align the text */
+}
+
+.homepageButton:hover {
+    background-size: 150% auto;
+    animation: Gradient 4s ease infinite;
+    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.7));
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

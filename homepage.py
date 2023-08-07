@@ -88,32 +88,64 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # CONTACT BUTTONS
 # -------------------------------------------------------------
+# Initialize session state
+if "get_in_touch" not in st.session_state:
+    st.session_state.my_variable = False
+
+
+with open(resume_file, "rb") as pdf_file:
+    pdf_bytes = pdf_file.read()
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    with open(RESUME_FILE, "rb") as pdf_file:
-        PDFbyte = pdf_file.read()
-
-    st.download_button(
-        label="Pull CV!",
-        data=PDFbyte,
-        file_name=RESUME_FILE.name,
-        mime="application/octet-stream",
-        use_container_width=True,
-    )
+    b64_pdf_content = base64.b64encode(pdf_bytes).decode()
+    download_pdf_href = f"""<a href="data:application/pdf;base64,{b64_pdf_content}" class="PortMarker homepageButton" download="{resume_file}">Download Resume!</a>"""
+    st.markdown(download_pdf_href, unsafe_allow_html=True)
 
 with col2:
-    if st.button("Virtual Coffee?", use_container_width=True):
-        webbrowser.open_new_tab("https://calendly.com/jeroencvlier/30min")
+    # Creating a button with a link using HTML and markdown
+    button_html = """
+        <a href="https://calendly.com/jeroencvlier/30min" target="_blank">
+            <button class='PortMarker homepageButton'>Virtual Coffee?</button>
+        </a>
+    """
+    st.markdown(button_html, unsafe_allow_html=True)
 
 with col3:
-    if st.button(
-        "Get In Touch!",
-        disabled=False,
-        use_container_width=True,
-    ):
-        switch_page("contact")
-        pass
+    # Creating a button with a link using HTML and markdown
+    contact_html = """
+        <a href="https://jeroencvlier.com/Contact" target="_blank">
+            <button class='PortMarker homepageButton'>Get In Touch?</button>
+        </a>
+    """
+    st.markdown(contact_html, unsafe_allow_html=True)
+
+
+# col1, col2, col3 = st.columns(3)
+# with col1:
+#     with open(RESUME_FILE, "rb") as pdf_file:
+#         PDFbyte = pdf_file.read()
+
+#     st.download_button(
+#         label="Pull CV!",
+#         data=PDFbyte,
+#         file_name=RESUME_FILE.name,
+#         mime="application/octet-stream",
+#         use_container_width=True,
+#     )
+
+# with col2:
+#     if st.button("Virtual Coffee?", use_container_width=True):
+#         webbrowser.open_new_tab("https://calendly.com/jeroencvlier/30min")
+
+# with col3:
+#     if st.button(
+#         "Get In Touch!",
+#         disabled=False,
+#         use_container_width=True,
+#     ):
+#         switch_page("contact")
+#         pass
 
 
 # --------------------------------------------------------------
