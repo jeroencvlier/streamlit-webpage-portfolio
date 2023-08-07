@@ -33,16 +33,17 @@ with col1:
 with col2:
     # Creating a button with a link using HTML and markdown
     button_html = """<p>
-        <a href="https://calendly.com/jeroencvlier/30min">
+        <a href="https://calendly.com/jeroencvlier/30min" target="_self">
             <button class='PortMarker homepageButton'>Virtual Coffee?</button>
         </a></p>
     """
+
     st.markdown(button_html, unsafe_allow_html=True)
 
 with col3:
     # Creating a button with a link using HTML and markdown
     contact_html = """
-        <a href="https://jeroencvlier.com/Contact">
+        <a href="https://jeroencvlier.com/Contact" target="_self">
             <button class='PortMarker homepageButton'>Get In Touch?</button>
         </a>
     """
@@ -60,7 +61,7 @@ def load_hero(portfolio_folder):
     return hero_text
 
 
-@st.cache_resource()
+@st.cache_data()
 def load_pp(profile_pic):
     with open(profile_pic, "rb") as f:
         pp = f.read()
@@ -87,7 +88,7 @@ st.write("##")
 # SOCIAL BUTTONS
 # --------------------------------------------------------------
 # Your social media links
-solical_media = {
+social_media = {
     "LinkedIn": {
         "link": "https://linkedin.com/in/jeroencvlier",
         "logo": f"{logo_folder}/linkedin_logo.png",
@@ -103,23 +104,19 @@ solical_media = {
 }
 
 
-@st.cache_resource()
-def load_logos(solical_media):
-    # Generate base64 encodings of the logos
+def load_image(file_path):
+    return base64.b64encode(open(file_path, "rb").read()).decode()
 
-    linkedin_logo = base64.b64encode(
-        open(solical_media["LinkedIn"]["logo"], "rb").read()
-    ).decode()
-    github_logo = base64.b64encode(
-        open(solical_media["GitHub"]["logo"], "rb").read()
-    ).decode()
-    whatsapp_logo = base64.b64encode(
-        open(solical_media["WhatsApp"]["logo"], "rb").read()
-    ).decode()
+
+@st.cache_data()
+def load_logos(social_media):
+    linkedin_logo = load_image(social_media["LinkedIn"]["logo"])
+    github_logo = load_image(social_media["GitHub"]["logo"])
+    whatsapp_logo = load_image(social_media["WhatsApp"]["logo"])
     return linkedin_logo, github_logo, whatsapp_logo
 
 
-linkedin_logo, github_logo, whatsapp_logo = load_logos(solical_media)
+linkedin_logo, github_logo, whatsapp_logo = load_logos(social_media)
 
 # Prepare the social links HTML
 
@@ -130,9 +127,9 @@ style_whatsapp = "height:100%; max-height:50px;"
 social_links = f"""
 
 <div style="text-align:center">
-    <a href="{solical_media['LinkedIn']["link"]}"><img src="data:image/png;base64,{linkedin_logo}"  style="{style_linkedin}"/></a>
-    <a href="{solical_media['GitHub']["link"]}"><img src="data:image/png;base64,{github_logo}" style="{style_github}"/></a>
-    <a href="{solical_media['WhatsApp']["link"]}"><img src="data:image/png;base64,{whatsapp_logo}" style="{style_whatsapp}"/></a>
+    <a href="{social_media['LinkedIn']["link"]}"><img src="data:image/png;base64,{linkedin_logo}"  style="{style_linkedin}"/></a>
+    <a href="{social_media['GitHub']["link"]}"><img src="data:image/png;base64,{github_logo}" style="{style_github}"/></a>
+    <a href="{social_media['WhatsApp']["link"]}"><img src="data:image/png;base64,{whatsapp_logo}" style="{style_whatsapp}"/></a>
     <br></br>
 </div>
 """

@@ -18,16 +18,25 @@ from st_pages import hide_pages, show_pages_from_config
 from PIL import Image
 
 
-im = Image.open(page_icon)
+@st.cache_data()
+def cache_page_icon(page_icon):
+    return Image.open(page_icon)
+
+
+im = cache_page_icon(page_icon)
+
+
+@st.cache_data()
+def cache_css(css_file):
+    with open(css_file) as f:
+        return f.read()
 
 
 def load_css():
     hide_pages(["Thanks"])
-
-    with open(css_file) as f:
-        st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
+    css_loaded = cache_css(css_file)
+    st.markdown("<style>{}</style>".format(css_loaded), unsafe_allow_html=True)
     show_pages_from_config()
-
     return
 
 
