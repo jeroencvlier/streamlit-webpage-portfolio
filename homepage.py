@@ -23,23 +23,23 @@ title_header("Jeroen van Lier")
 with open(resume_file, "rb") as pdf_file:
     pdf_bytes = pdf_file.read()
 
-col2, col3, col4 = st.columns([4, 4, 4])
+col1, col2, col3 = st.columns([1, 1, 1])
 
-with col2:
+with col1:
     b64_pdf_content = base64.b64encode(pdf_bytes).decode()
-    download_pdf_href = f"""<a  href="data:application/pdf;base64,{b64_pdf_content}"  class="PortMarker homepageButton" download="{resume_file}">Download Resume!</a>"""
+    download_pdf_href = f"""<a  href="data:application/pdf;base64,{b64_pdf_content}"  class="PortMarker homepageButton" download="{resume_file.name}">Download Resume!</a>"""
     st.markdown(download_pdf_href, unsafe_allow_html=True)
 
-with col3:
+with col2:
     # Creating a button with a link using HTML and markdown
     button_html = """<p>
-        <a href="https://calendly.com/jeroencvlier/30min" target="_blank">
+        <a href="https://calendly.com/jeroencvlier/30min">
             <button class='PortMarker homepageButton'>Virtual Coffee?</button>
         </a></p>
     """
     st.markdown(button_html, unsafe_allow_html=True)
 
-with col4:
+with col3:
     # Creating a button with a link using HTML and markdown
     contact_html = """
         <a href="https://jeroencvlier.com/Contact">
@@ -47,7 +47,6 @@ with col4:
         </a>
     """
     st.markdown(contact_html, unsafe_allow_html=True)
-
 st.write("\n")
 # --------------------------------------------------------------
 # HERO SECTIOM
