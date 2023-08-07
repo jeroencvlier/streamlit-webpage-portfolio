@@ -99,7 +99,7 @@ with open(resume_file, "rb") as pdf_file:
 col1, col2, col3 = st.columns(3)
 with col1:
     b64_pdf_content = base64.b64encode(pdf_bytes).decode()
-    download_pdf_href = f"""<a href="data:application/pdf;base64,{b64_pdf_content}" class="PortMarker homepageButton" download="{resume_file}">Download Resume!</a>"""
+    download_pdf_href = f"""<a  href="data:application/pdf;base64,{b64_pdf_content}"  class="PortMarker homepageButton" download="{resume_file}">Download Resume!</a>"""
     st.markdown(download_pdf_href, unsafe_allow_html=True)
 
 with col2:
