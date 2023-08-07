@@ -251,9 +251,9 @@ header {
     text-align: center !important;
 }
 
-/* .projectButton {
-    height: 10px;
-} */
+.projectButton {
+    height: 110px;
+}
 
 .homepageButton:hover {
     background-size: 150% auto;

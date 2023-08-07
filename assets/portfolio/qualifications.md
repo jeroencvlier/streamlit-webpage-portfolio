@@ -10,5 +10,6 @@
 <br><div class='StyledHR'></div>
 
 #### Ironhack
-**Bootcamp, Data Analytics & Machine Learning** (September 2020 - December 2020)
+(September 2020 - December 2020)
+**Bootcamp, Data Analytics & Machine Learning** 
 

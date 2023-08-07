@@ -3,16 +3,14 @@ from pathlib import Path
 import json
 
 # Define directory paths
-CURRENT_DIR = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-BASE_DIR = CURRENT_DIR.parent
-CSS_FILE = BASE_DIR / "styles" / "main.css"
-RESUME_FILE = BASE_DIR / "assets" / "resume.pdf"
-logo_folder = BASE_DIR / "assets" / "logos"
-
-PROFILE_PIC = BASE_DIR / "assets" / "profile-pic.png"
-resume_file = BASE_DIR / "assets" / "resume.pdf"
-portfolio_folder = BASE_DIR / "assets" / "portfolio"
-page_icon = BASE_DIR / "assets" / "page_icon.ico"
+current_directory = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+base_directory = current_directory.parent
+css_file = base_directory / "styles" / "main.css"
+logo_folder = base_directory / "assets" / "logos"
+profile_pic = base_directory / "assets" / "profile-pic.png"
+resume_file = base_directory / "assets" / "jeroen-resume-short.pdf"
+portfolio_folder = base_directory / "assets" / "portfolio"
+page_icon = base_directory / "assets" / "page_icon.ico"
 
 # Now you can use these paths in other files
 import streamlit as st
@@ -26,7 +24,7 @@ im = Image.open(page_icon)
 def load_css():
     hide_pages(["Thanks"])
 
-    with open(CSS_FILE) as f:
+    with open(css_file) as f:
         st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
     show_pages_from_config()
 
@@ -81,7 +79,6 @@ def skill_builder(skills, level=None):
         skills_html += "<br><div class='StyledHR'></div><br>"
         skills_html += skill_score(skills)
         skills_html += '<div style="text-align: right;"><a class="click_link" href="https://www.jeroencvlier.com/Skills" target="_self">Details >></a></div>'
-        # skills_html += '<p></p><div class="click_link"><a href="https://www.jeroencvlier.com/Skills"Click here for more details >></a></div>'
     elif level == "Languages":
         skills = skills[level]
         skills_html += f"<h2>Languages</h2>"

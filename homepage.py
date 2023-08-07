@@ -12,7 +12,7 @@ load_css()
 # --------------------------------------------------------------
 # PAGE TITLE
 # --------------------------------------------------------------
-title_header("Jeroen van Lier")
+title_header("Jeroen van Lier", line=True)
 
 
 # --------------------------------------------------------------
@@ -51,14 +51,27 @@ st.write("\n")
 # --------------------------------------------------------------
 # HERO SECTIOM
 # --------------------------------------------------------------
-# Profile picture - > use this hack to center the image on iphone
-with open(PROFILE_PIC, "rb") as f:
-    pp = f.read()
-with open(f"{portfolio_folder}/hero.md", "r") as f:
-    hero_text = f.read()
 
-pp_bytes = base64.b64encode(pp).decode()
-pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" style="width:100%;max-width:250px;"> </p>'
+
+@st.cache_data()
+def load_hero(portfolio_folder):
+    with open(f"{portfolio_folder}/hero.md", "r") as f:
+        hero_text = f.read()
+    return hero_text
+
+
+@st.cache_resource()
+def load_pp(profile_pic):
+    with open(profile_pic, "rb") as f:
+        pp = f.read()
+    # Profile picture - > use this hack to center the image on iphone
+    pp_bytes = base64.b64encode(pp).decode()
+    pp_local_file = f'<p style="text-align:center;"><img src="data:image/jpeg;base64,{pp_bytes}" alt="Image" style="width:100%;max-width:250px;"> </p>'
+    return pp_local_file
+
+
+pp_local_file = load_pp(profile_pic)
+hero_text = load_hero(portfolio_folder)
 
 col1, col2 = st.columns([0.325, 0.675], gap="large")
 with col1:
@@ -89,16 +102,24 @@ solical_media = {
     },
 }
 
-# Generate base64 encodings of the logos
-linkedin_logo = base64.b64encode(
-    open(solical_media["LinkedIn"]["logo"], "rb").read()
-).decode()
-github_logo = base64.b64encode(
-    open(solical_media["GitHub"]["logo"], "rb").read()
-).decode()
-whatsapp_logo = base64.b64encode(
-    open(solical_media["WhatsApp"]["logo"], "rb").read()
-).decode()
+
+@st.cache_resource()
+def load_logos(solical_media):
+    # Generate base64 encodings of the logos
+
+    linkedin_logo = base64.b64encode(
+        open(solical_media["LinkedIn"]["logo"], "rb").read()
+    ).decode()
+    github_logo = base64.b64encode(
+        open(solical_media["GitHub"]["logo"], "rb").read()
+    ).decode()
+    whatsapp_logo = base64.b64encode(
+        open(solical_media["WhatsApp"]["logo"], "rb").read()
+    ).decode()
+    return linkedin_logo, github_logo, whatsapp_logo
+
+
+linkedin_logo, github_logo, whatsapp_logo = load_logos(solical_media)
 
 # Prepare the social links HTML
 
@@ -132,19 +153,31 @@ st.markdown(project_html, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # SKILLS
 # --------------------------------------------------------------
+@st.cache_data()
+def skill_loader(portfolio_folder):
+    with open(f"{portfolio_folder}/skills.json", "r") as f:
+        skills_json = json.load(f)
+    return skills_json
 
-with open(f"{portfolio_folder}/skills.json", "r") as f:
-    skills_json = json.load(f)
+
+skills_json = skill_loader(portfolio_folder)
 
 with st.container():
     st.markdown(skill_builder(skills_json, level="Top Skills"), unsafe_allow_html=True)
 st.markdown("<p></p>", unsafe_allow_html=True)
 
+
 # --------------------------------------------------------------
 # EDUCATION
 # --------------------------------------------------------------
-with open(f"{portfolio_folder}/education.md", "r") as f:
-    education_text = f.read()
+@st.cache_data()
+def education_loader(portfolio_folder):
+    with open(f"{portfolio_folder}/education.md", "r") as f:
+        education_text = f.read()
+    return education_text
+
+
+education_text = education_loader(portfolio_folder)
 
 with st.container():
     st.markdown(education_text, unsafe_allow_html=True)
@@ -154,29 +187,48 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Qualifications
 # --------------------------------------------------------------
-with open(f"{portfolio_folder}/qualifications.md", "r") as f:
-    qualifications_text = f.read()
+@st.cache_data()
+def qualifications_loader(portfolio_folder):
+    with open(f"{portfolio_folder}/qualifications.md", "r") as f:
+        qualifications_text = f.read()
+    return qualifications_text
+
+
+qualifications_text = qualifications_loader(portfolio_folder)
 
 with st.container():
     st.markdown(qualifications_text, unsafe_allow_html=True)
 st.markdown("<p></p>", unsafe_allow_html=True)
 
+
 # --------------------------------------------------------------
 # Certificates
 # --------------------------------------------------------------
-with open(f"{portfolio_folder}/certificates.md", "r") as f:
-    certificates_text = f.read()
+@st.cache_data()
+def certificates_loader(portfolio_folder):
+    with open(f"{portfolio_folder}/certificates.md", "r") as f:
+        certificates_text = f.read()
+    return certificates_text
+
+
+certificates_text = certificates_loader(portfolio_folder)
 
 with st.container():
     st.markdown(certificates_text, unsafe_allow_html=True)
 st.markdown("<p></p>", unsafe_allow_html=True)
 
+
 # --------------------------------------------------------------
 # WORK HISTORY
 # --------------------------------------------------------------
+@st.cache_data()
+def experience_loader(portfolio_folder):
+    with open(f"{portfolio_folder}/experience.md", "r") as f:
+        experience_text = f.read()
+    return experience_text
 
-with open(f"{portfolio_folder}/experience.md", "r") as f:
-    experience_text = f.read()
+
+experience_text = experience_loader(portfolio_folder)
 
 with st.container():
     st.markdown(experience_text, unsafe_allow_html=True)
@@ -186,6 +238,9 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # Languages
 # --------------------------------------------------------------
 
+
+lang = skill_builder(skills_json, level="Languages")
+
 with st.container():
-    st.markdown(skill_builder(skills_json, level="Languages"), unsafe_allow_html=True)
+    st.markdown(lang, unsafe_allow_html=True)
 st.markdown("<p></p>", unsafe_allow_html=True)
