@@ -144,7 +144,7 @@ header {
 .bar {
     width: 8%;
     height: 10px;
-    margin-right: 2px;
+    margin-right: 5px;
     border-radius: 5px;
 }
 
@@ -203,6 +203,23 @@ header {
     animation: Gradient 6s ease infinite;
     border-radius: 15px;
 }
+
+
+.StyledCircle {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(270deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.9));
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.CircleContainer {
+    display: flex;
+    align-items: center; /* This will vertically align the children */
+}
+
 
 .title1 {
     font-size: 80px;
