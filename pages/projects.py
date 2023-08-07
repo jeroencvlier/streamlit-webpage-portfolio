@@ -20,6 +20,6 @@ for project in [projects13, projects46, projects79]:
     for col, proj in zip(columns, project):
         with col:
             st.markdown(
-                f"<button class='gradientButton'>{proj}</button>",
+                f"<button class='PortMarker homepageButton projectButton'>{proj}</button>",
                 unsafe_allow_html=True,
             )

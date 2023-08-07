@@ -13,8 +13,42 @@ load_css()
 # PAGE TITLE
 # --------------------------------------------------------------
 title_header("Jeroen van Lier")
-st.write("##")
 
+
+# --------------------------------------------------------------
+# CONTACT BUTTONS
+# -------------------------------------------------------------
+
+
+with open(resume_file, "rb") as pdf_file:
+    pdf_bytes = pdf_file.read()
+
+col2, col3, col4 = st.columns([4, 4, 4])
+
+with col2:
+    b64_pdf_content = base64.b64encode(pdf_bytes).decode()
+    download_pdf_href = f"""<a  href="data:application/pdf;base64,{b64_pdf_content}"  class="PortMarker homepageButton" download="{resume_file}">Download Resume!</a>"""
+    st.markdown(download_pdf_href, unsafe_allow_html=True)
+
+with col3:
+    # Creating a button with a link using HTML and markdown
+    button_html = """<p>
+        <a href="https://calendly.com/jeroencvlier/30min" target="_blank">
+            <button class='PortMarker homepageButton'>Virtual Coffee?</button>
+        </a></p>
+    """
+    st.markdown(button_html, unsafe_allow_html=True)
+
+with col4:
+    # Creating a button with a link using HTML and markdown
+    contact_html = """
+        <a href="https://jeroencvlier.com/Contact">
+            <button class='PortMarker homepageButton'>Get In Touch?</button>
+        </a>
+    """
+    st.markdown(contact_html, unsafe_allow_html=True)
+
+st.write("\n")
 # --------------------------------------------------------------
 # HERO SECTIOM
 # --------------------------------------------------------------
@@ -84,81 +118,28 @@ social_links = f"""
 """
 st.markdown(social_links, unsafe_allow_html=True)
 
-
 # --------------------------------------------------------------
-# CONTACT BUTTONS
-# -------------------------------------------------------------
-# Initialize session state
-if "get_in_touch" not in st.session_state:
-    st.session_state.my_variable = False
+# Projects
+# --------------------------------------------------------------
 
-
-with open(resume_file, "rb") as pdf_file:
-    pdf_bytes = pdf_file.read()
-
-col1, col2, col3 = st.columns(3)
-with col1:
-    b64_pdf_content = base64.b64encode(pdf_bytes).decode()
-    download_pdf_href = f"""<a  href="data:application/pdf;base64,{b64_pdf_content}"  class="PortMarker homepageButton" download="{resume_file}">Download Resume!</a>"""
-    st.markdown(download_pdf_href, unsafe_allow_html=True)
-
-with col2:
-    # Creating a button with a link using HTML and markdown
-    button_html = """
-        <a href="https://calendly.com/jeroencvlier/30min" target="_blank">
-            <button class='PortMarker homepageButton'>Virtual Coffee?</button>
-        </a>
-    """
-    st.markdown(button_html, unsafe_allow_html=True)
-
-with col3:
-    # Creating a button with a link using HTML and markdown
-    contact_html = """
-        <a href="https://jeroencvlier.com/Contact" target="_blank">
-            <button class='PortMarker homepageButton'>Get In Touch?</button>
-        </a>
-    """
-    st.markdown(contact_html, unsafe_allow_html=True)
-
-
-# col1, col2, col3 = st.columns(3)
-# with col1:
-#     with open(RESUME_FILE, "rb") as pdf_file:
-#         PDFbyte = pdf_file.read()
-
-#     st.download_button(
-#         label="Pull CV!",
-#         data=PDFbyte,
-#         file_name=RESUME_FILE.name,
-#         mime="application/octet-stream",
-#         use_container_width=True,
-#     )
-
-# with col2:
-#     if st.button("Virtual Coffee?", use_container_width=True):
-#         webbrowser.open_new_tab("https://calendly.com/jeroencvlier/30min")
-
-# with col3:
-#     if st.button(
-#         "Get In Touch!",
-#         disabled=False,
-#         use_container_width=True,
-#     ):
-#         switch_page("contact")
-#         pass
+project_html = """
+    <p><a href="https://jeroencvlier.com/Projects">
+        <button class='PortMarker homepageButton'> >>>  Check out my projects  <<< </button>
+    </a></p>
+"""
+st.markdown(project_html, unsafe_allow_html=True)
 
 
 # --------------------------------------------------------------
 # SKILLS
 # --------------------------------------------------------------
 
-
 with open(f"{portfolio_folder}/skills.json", "r") as f:
     skills_json = json.load(f)
 
 with st.container():
     st.markdown(skill_builder(skills_json, level="Top Skills"), unsafe_allow_html=True)
-st.write("##")
+st.markdown("<p></p>", unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # EDUCATION
@@ -168,9 +149,8 @@ with open(f"{portfolio_folder}/education.md", "r") as f:
 
 with st.container():
     st.markdown(education_text, unsafe_allow_html=True)
+st.markdown("<p></p>", unsafe_allow_html=True)
 
-
-st.write("##")
 
 # --------------------------------------------------------------
 # Qualifications
@@ -180,7 +160,7 @@ with open(f"{portfolio_folder}/qualifications.md", "r") as f:
 
 with st.container():
     st.markdown(qualifications_text, unsafe_allow_html=True)
-st.write("##")
+st.markdown("<p></p>", unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # Certificates
@@ -190,7 +170,7 @@ with open(f"{portfolio_folder}/certificates.md", "r") as f:
 
 with st.container():
     st.markdown(certificates_text, unsafe_allow_html=True)
-st.write("##")
+st.markdown("<p></p>", unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # WORK HISTORY
@@ -201,7 +181,7 @@ with open(f"{portfolio_folder}/experience.md", "r") as f:
 
 with st.container():
     st.markdown(experience_text, unsafe_allow_html=True)
-st.write("##")
+st.markdown("<p></p>", unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # Languages
@@ -209,4 +189,4 @@ st.write("##")
 
 with st.container():
     st.markdown(skill_builder(skills_json, level="Languages"), unsafe_allow_html=True)
-st.write("##")
+st.markdown("<p></p>", unsafe_allow_html=True)

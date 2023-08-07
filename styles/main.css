@@ -245,12 +245,15 @@ header {
     font-size: 1em;
     color: white !important;
     text-decoration: none;
-    /* height: 600px; */
+    height: 50px;
     /* Removed or adjusted to a more reasonable value */
     width: 100%;
     text-align: center !important;
-
 }
+
+/* .projectButton {
+    height: 10px;
+} */
 
 .homepageButton:hover {
     background-size: 150% auto;
