@@ -27,3 +27,17 @@ icon = ":wave:"
 path = "projects/StreamlitPortfolio/StreamlitPortfolio.py"
 name = "Streamlit Portfolio"
 icon = ":bee:"
+
+[[pages]]
+path = "projects/Multi-agentReinforcementLearning/Multi-agentReinforcementLearning.py"
+name = "Multi-agent Reinforcement Learning"
+icon = ":bee:"
+
+[[pages]]
+path = "projects/ContinuousControlReinforcementLearning/ContinuousControlReinforcementLearning.py"
+name = "Continuous Control Reinforcement Learning"
+icon = ":bee:"
+
+
+
+

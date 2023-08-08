@@ -10,20 +10,20 @@ load_css()
 title_header("Projects")
 
 
-projects = {
-    "StreamlitPortfolio": "Streamlit Portfolio",
-    "project2": "Project 2",
-    "project3": "Project 3",
-    "project4": "Project 4",
-    "project5": "Project 5",
-    "project6": "Project 6",
-    "project7": "Project 7",
-    "project8": "Project 8",
-}
+project_items = [
+    "Streamlit Portfolio",
+    "Multi-agent Reinforcement Learning",
+    "Continuous Control Reinforcement Learning",
+    "Project 4",
+    "Project 5",
+    "Project 6",
+    "Project 7",
+    "Project 8",
+]
 
 
 # Convert the dictionary items to a list
-project_items = list(projects.items())
+# project_items = list(projects.items())
 
 # Iterate over the list in chunks of 3
 for i in range(0, len(project_items), 3):
@@ -43,12 +43,12 @@ for i in range(0, len(project_items), 3):
             st.empty()
         with blank2:
             st.empty()
-    for en, (key, value) in enumerate(chunk):
+    for en, project in enumerate(chunk):
         # for col, proj in zip(columns, chunk):
         with columns[en]:
             st.markdown(
-                f"""<p><a href="https://jeroencvlier.com/{value.replace(' ','%20')}" target="_self">
-                <button class='PortMarker homepageButton projectButton'>{value}</button>
+                f"""<p><a href="https://jeroencvlier.com/{project.replace(' ','%20')}" target="_self">
+                <button class='PortMarker homepageButton projectButton'>{project}</button>
                 </a></p>""",
                 unsafe_allow_html=True,
             )

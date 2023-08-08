@@ -8,8 +8,16 @@ st.set_page_config(
 
 load_css()
 title_header("Digital Portfolio Streamlit", line=True)
-
 this_project = project_folder / "StreamlitPortfolio"
+
+import numpy as np
+
+
+
+
+# --------------------------------------------------------------
+# Project Description
+# --------------------------------------------------------------
 
 with open(f"{this_project}/project_readme.md", "r") as f:
     project_readme = f.read()
@@ -17,3 +25,9 @@ with open(f"{this_project}/project_readme.md", "r") as f:
 
 with st.container():
     st.markdown(project_readme, unsafe_allow_html=True)
+
+# --------------------------------------------------------------
+# Project Image
+# --------------------------------------------------------------
+image = Image.open(f"{this_project}/streamlit-logo.png")
+st.image(image)
