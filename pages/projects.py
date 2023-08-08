@@ -10,7 +10,6 @@ load_css()
 title_header("Projects")
 
 
-
 projects = {
     "StreamlitPortfolio": "Streamlit Portfolio",
     "project2": "Project 2",
@@ -48,7 +47,7 @@ for i in range(0, len(project_items), 3):
         # for col, proj in zip(columns, chunk):
         with columns[en]:
             st.markdown(
-                f"""<p><a href="https://jeroencvlier.com/{key}" target="_self">
+                f"""<p><a href="https://jeroencvlier.com/{value.replace(' ','%20')}" target="_self">
                 <button class='PortMarker homepageButton projectButton'>{value}</button>
                 </a></p>""",
                 unsafe_allow_html=True,
