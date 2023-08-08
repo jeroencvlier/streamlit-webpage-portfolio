@@ -18,7 +18,7 @@ from st_pages import hide_pages, show_pages_from_config
 from PIL import Image
 
 
-@st.cache_data()
+# @st.cache_data()
 def cache_page_icon(page_icon):
     return Image.open(page_icon)
 
@@ -26,7 +26,7 @@ def cache_page_icon(page_icon):
 im = cache_page_icon(page_icon)
 
 
-@st.cache_data()
+# @st.cache_data()
 def cache_css(css_file):
     with open(css_file) as f:
         return f.read()
