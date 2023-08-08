@@ -11,6 +11,7 @@ profile_pic = base_directory / "assets" / "profile-pic.png"
 resume_file = base_directory / "assets" / "jeroen-resume-short.pdf"
 portfolio_folder = base_directory / "assets" / "portfolio"
 page_icon = base_directory / "assets" / "page_icon.ico"
+project_folder = base_directory / "projects"
 
 # Now you can use these paths in other files
 import streamlit as st

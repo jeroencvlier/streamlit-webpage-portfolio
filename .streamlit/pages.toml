@@ -24,17 +24,6 @@ name = "Projects"
 icon = ":wave:"
 
 [[pages]]
-path = "pages/project1.py"
-name = "Project 1"
+path = "projects/StreamlitPortfolio/StreamlitPortfolio.py"
+name = "Streamlit Portfolio"
 icon = ":bee:"
-
-[[pages]]
-path = "pages/project2.py"
-name = "Project 2"
-icon = ":bee:"
-
-[[pages]]
-path = "pages/project3.py"
-name = "Project 3"
-icon = ":bee:"
-

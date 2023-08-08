@@ -33,7 +33,7 @@ with col1:
 with col2:
     # Creating a button with a link using HTML and markdown
     button_html = """<p>
-        <a href="https://calendly.com/jeroencvlier/30min" target="_self">
+        <a href="https://calendly.com/jeroencvlier/30min" target="_blank">
             <button class='PortMarker homepageButton'>Virtual Coffee?</button>
         </a></p>
     """
@@ -140,7 +140,7 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 
 project_html = """
-    <p><a href="https://jeroencvlier.com/Projects">
+    <p><a href="https://jeroencvlier.com/Projects" target="_self">
         <button class='PortMarker homepageButton'> >>>  Check out my projects  <<< </button>
     </a></p>
 """
