@@ -27,18 +27,5 @@ with st.container():
 # --------------------------------------------------------------
 st.write("##")
 
-import time
-
-import time
-import streamlit as st
-
-with st.spinner("Loading GIF..."):
-    st.markdown(load_gif(f"{this_project}/Tennis.gif"), unsafe_allow_html=True)
-
-
-with open(f"{this_project}/project_readme.md", "r") as f:
-    project_readme = f.read()
-
-
-with st.container():
-    st.markdown(project_readme, unsafe_allow_html=True)
+video_file_path = f"{this_project}/Tennis.mp4"
+st.markdown(load_mp4(video_file_path), unsafe_allow_html=True)

@@ -106,6 +106,10 @@ def skill_builder(skills, level=None):
     return skills_html
 
 
+from PIL import Image
+import io
+
+
 def load_gif(gif_location):
     with open(gif_location, "rb") as f:
         gif = f.read()
@@ -113,7 +117,22 @@ def load_gif(gif_location):
     gif_bytes = base64.b64encode(gif).decode()
     # gif_local_file = f'<p style="text-align:center;"><img src="data:image/gif;base64,{gif_bytes}" alt="Image" style="width:100%;"> </p>'
     gif_local_file = f"""<p style="text-align:center;">
-        <img src="data:image/gif;base64,{gif_bytes}" alt="Image" 
+        <img src="data:image/gif;base64,{gif_bytes}" alt="Image"
         class="PortMarker gifContainer">
         </p>"""
     return gif_local_file
+
+
+def load_mp4(video_file_path):
+    # Open the file
+    video_file = open(video_file_path, "rb")
+    video_bytes = video_file.read()
+
+    video_url = f"data:video/mp4;base64,{base64.b64encode(video_bytes).decode()}"
+
+    html_code = f"""
+    <video autoplay muted loop class="PortMarker gifContainer">
+    <source src="{video_url}" type="video/mp4">
+    </video>
+    """
+    return html_code
