@@ -27,7 +27,7 @@ with st.container():
 # --------------------------------------------------------------
 # Project Image
 # --------------------------------------------------------------
-write("##")
+st.write("##")
 
 gif_local_file = load_gif(f"{this_project}/ContinuousControl.gif")
 with st.container():
