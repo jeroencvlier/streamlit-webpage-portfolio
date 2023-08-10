@@ -1,0 +1,29 @@
+<!-- og_tags_component/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Your Unique Title" />
+    <meta property="og:description" content="A unique description for your app" />
+    <meta property="og:image" content="URL_TO_YOUR_IMAGE" />
+    <title>Your App</title>
+</head>
+
+<body>
+    <script>
+        window.onload = () => {
+            // This is needed to tell Streamlit that the component has loaded successfully
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/@streamlit/component-lib@1.2.0/dist/streamlit-component-lib.umd.js';
+            script.onload = () => {
+                streamlitComponentLib.Streamlit.setComponentReady();
+            };
+            document.body.appendChild(script);
+        };
+    </script>
+</body>
+
+</html>

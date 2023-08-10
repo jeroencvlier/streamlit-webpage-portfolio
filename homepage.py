@@ -1,3 +1,7 @@
+from og_tags_component.og_tags import og_tags
+
+og_tags()
+
 from pages.utils import (
     load_css,
     skill_builder,
@@ -8,6 +12,8 @@ from pages.utils import (
     portfolio_folder,
     logo_folder,
 )
+
+
 import base64
 import streamlit as st
 import json
