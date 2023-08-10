@@ -26,4 +26,12 @@ with st.container():
 # Project Image
 # --------------------------------------------------------------
 st.write("##")
-st.image(f"{this_project}/Tennis.gif")
+
+
+
+
+gif_local_file = load_gif(f"{this_project}/Tennis.gif")
+
+
+with st.container():
+    st.markdown(gif_local_file, unsafe_allow_html=True)

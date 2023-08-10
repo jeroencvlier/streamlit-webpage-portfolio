@@ -104,3 +104,16 @@ def skill_builder(skills, level=None):
             skills_html += skill_score(skill_set)
 
     return skills_html
+
+
+def load_gif(gif_location):
+    with open(gif_location, "rb") as f:
+        gif = f.read()
+    # Profile picture - use this hack to center the image on iPhone
+    gif_bytes = base64.b64encode(gif).decode()
+    # gif_local_file = f'<p style="text-align:center;"><img src="data:image/gif;base64,{gif_bytes}" alt="Image" style="width:100%;"> </p>'
+    gif_local_file = f"""<p style="text-align:center;">
+        <img src="data:image/gif;base64,{gif_bytes}" alt="Image" 
+        class="PortMarker gifContainer">
+        </p>"""
+    return gif_local_file

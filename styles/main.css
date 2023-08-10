@@ -84,7 +84,7 @@ button[type=primary]:hover {
 
 
 
-@keyframes Gradient {
+/* @keyframes Gradient {
     0% {
         background-position: 0% 50%;
     }
@@ -96,7 +96,7 @@ button[type=primary]:hover {
     100% {
         background-position: 0% 50%;
     }
-}
+} */
 
 /* Hide Streamlit Branding */
 #MainMenu {
@@ -113,12 +113,8 @@ header {
 
 .PortMarker {
     background-color: #313636;
-    /* Background color of the box same as the page background */
-
     box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3);
-
     border: 1px solid #7a7c7c;
-    /* Border around the box - light gray color */
     border-radius: 15px;
     padding: 5% 5% 5% 10%;
 }
@@ -217,7 +213,8 @@ header {
 
 .CircleContainer {
     display: flex;
-    align-items: center; /* This will vertically align the children */
+    align-items: center;
+    /* This will vertically align the children */
 }
 
 
@@ -254,22 +251,19 @@ header {
 .homepageButton {
     display: flex;
     align-items: center;
-    /* Center vertically */
     justify-content: center;
-    /* Center horizontally */
     border-radius: 20px;
     position: relative;
     font-size: 1em;
     color: white !important;
     text-decoration: none;
     height: 50px;
-    /* Removed or adjusted to a more reasonable value */
     width: 100%;
     text-align: center !important;
 }
 
 .projectButton {
-    height: 110px;
+    height: 90px;
 }
 
 .homepageButton:hover {
@@ -290,4 +284,11 @@ header {
     100% {
         background-position: 0% 50%;
     }
+}
+
+.gifContainer {
+    padding: 0% 0% 0% 0% !important;
+    width: 100% !important;
+    ;
+
 }
