@@ -1,4 +1,5 @@
-from pages.utils import *
+import streamlit as st
+from pages.utils import im, back_button, load_css
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
@@ -22,3 +23,9 @@ gif_url = "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"
 st.title("Thank you for your reaching out!")
 st.image(gif_url)
 st.write("I will get back to you as soon as possible.")
+
+
+# --------------------------------------------------------------
+# Home
+# --------------------------------------------------------------
+back_button("Home")

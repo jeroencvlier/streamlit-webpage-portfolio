@@ -60,19 +60,17 @@ with col3:
     """
     st.markdown(contact_html, unsafe_allow_html=True)
 st.write("\n")
+
+
 # --------------------------------------------------------------
 # HERO SECTIOM
 # --------------------------------------------------------------
-
-
-# @st.cache_data()
 def load_hero(portfolio_folder):
     with open(f"{portfolio_folder}/hero.md", "r") as f:
         hero_text = f.read()
     return hero_text
 
 
-# @st.cache_data()
 def load_pp(profile_pic):
     with open(profile_pic, "rb") as f:
         pp = f.read()
@@ -149,7 +147,6 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Projects
 # --------------------------------------------------------------
-
 project_html = """
     <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
         <button class='PortMarker homepageButton'> >>>  Check out my projects  <<< </button>
@@ -161,7 +158,6 @@ st.markdown(project_html, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # SKILLS
 # --------------------------------------------------------------
-# @st.cache_data()
 def skill_loader(portfolio_folder):
     with open(f"{portfolio_folder}/skills.json", "r") as f:
         skills_json = json.load(f)
@@ -178,7 +174,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # EDUCATION
 # --------------------------------------------------------------
-# @st.cache_data()
 def education_loader(portfolio_folder):
     with open(f"{portfolio_folder}/education.md", "r") as f:
         education_text = f.read()
@@ -195,7 +190,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Qualifications
 # --------------------------------------------------------------
-# @st.cache_data()
 def qualifications_loader(portfolio_folder):
     with open(f"{portfolio_folder}/qualifications.md", "r") as f:
         qualifications_text = f.read()
@@ -212,7 +206,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Certificates
 # --------------------------------------------------------------
-# @st.cache_data()
 def certificates_loader(portfolio_folder):
     with open(f"{portfolio_folder}/certificates.md", "r") as f:
         certificates_text = f.read()
@@ -229,7 +222,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # WORK HISTORY
 # --------------------------------------------------------------
-# @st.cache_data()
 def experience_loader(portfolio_folder):
     with open(f"{portfolio_folder}/experience.md", "r") as f:
         experience_text = f.read()
