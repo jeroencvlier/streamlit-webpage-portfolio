@@ -54,7 +54,7 @@ with col2:
 with col3:
     # Creating a button with a link using HTML and markdown
     contact_html = """
-        <a href="https://jeroencvlier.com/Contact" target="_self">
+        <a href="https://www.jeroencvlier.com/Contact" target="_self">
             <button class='PortMarker homepageButton'>Get In Touch?</button>
         </a>
     """

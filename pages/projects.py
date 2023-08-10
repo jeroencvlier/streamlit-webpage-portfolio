@@ -15,11 +15,6 @@ project_items = [
     "Streamlit Portfolio",
     "Multi-agent Reinforcement Learning",
     "Continuous Control Reinforcement Learning",
-    "Project 4",
-    "Project 5",
-    "Project 6",
-    "Project 7",
-    "Project 8",
 ]
 
 
