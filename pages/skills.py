@@ -1,11 +1,19 @@
-from pages.utils import *
+import streamlit as st
+from pages.utils import (
+    im,
+    load_css,
+    title_header,
+    portfolio_folder,
+    back_button,
+    skill_builder,
+)
+import json
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
     page_title="Jeroen | Skills",
     page_icon=im,
 )
-
 
 load_css()
 

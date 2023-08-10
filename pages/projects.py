@@ -1,4 +1,5 @@
-from pages.utils import *
+import streamlit as st
+from pages.utils import load_css, title_header, im, back_button
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
@@ -57,4 +58,6 @@ for i in range(0, len(project_items), 3):
 # --------------------------------------------------------------
 # Back
 # --------------------------------------------------------------
+st.write("---")
+
 back_button("Homepage")

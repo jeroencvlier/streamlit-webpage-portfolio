@@ -1,4 +1,12 @@
-from pages.utils import *
+from pages.utils import (
+    load_css,
+    title_header,
+    project_folder,
+    project_buttons,
+    load_mp4,
+)
+import streamlit as st
+
 
 st.set_page_config(
     initial_sidebar_state="collapsed",

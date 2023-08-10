@@ -1,4 +1,13 @@
-from pages.utils import *
+from PIL import Image
+from pages.utils import (
+    load_css,
+    title_header,
+    project_folder,
+    project_buttons,
+    im,
+)
+import streamlit as st
+
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
@@ -9,10 +18,6 @@ st.set_page_config(
 load_css()
 title_header("Digital Portfolio Streamlit", line=True)
 this_project = project_folder / "StreamlitPortfolio"
-
-import numpy as np
-
-
 
 
 # --------------------------------------------------------------

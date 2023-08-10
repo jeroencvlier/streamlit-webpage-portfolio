@@ -1,11 +1,22 @@
-from pages.utils import *
+from pages.utils import (
+    load_css,
+    skill_builder,
+    title_header,
+    im,
+    resume_file,
+    profile_pic,
+    portfolio_folder,
+    logo_folder,
+)
+import base64
+import streamlit as st
+import json
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
     page_title="Jeroen | Web Portfolio!",
     page_icon=im,
 )
-
 
 load_css()
 

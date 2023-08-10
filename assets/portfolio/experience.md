@@ -18,16 +18,16 @@ At Flash, I play a key role in creating machine-learning models such as time ser
 ### Option Intelligence
 December 2020 - March 20203
 
-**Data Analyst** 
+**Data Scientist** 
 
 During my time at Option Intelligence, I constructed reinforcement learning DQN agents to optimise various options trading strategies, significantly outperforming traditional buy-and-hold strategies. In addition, I engineered an options trading prediction tool, with a concentrated focus on earnings, and successfully deployed this predictive model to the cloud, enabling real-time predictions. To further enhance the user experience, I integrated a Telegram bot sending out personalised trade alerts.
 
 <br><div class='StyledHR'></div>
 
-### Data Analytics Teaching Assistant
+### Ironhack
 December 2020 - March 20203
 
-**Data Analyst** 
+**Data Analytics Teaching Assistant** 
 
 As a Teaching Assistant at Ironhack, I was actively involved in mentoring students through complex boot camp challenges in statistics, data analysis, and machine learning. I guided projects and helped improve students' coding practices and data analytics understanding. In addition, I supported the lead teacher in administrative tasks and organized online icebreakers and team events.
 
