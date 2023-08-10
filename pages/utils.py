@@ -131,3 +131,40 @@ def load_mp4(video_file_path):
     </video>
     """
     return html_code
+
+
+def project_buttons(project_link):
+    """Add back button and code link button to the project page"""
+    st.write("##")
+
+    back_button = """
+        <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
+            <button class='PortMarker homepageButton'><<< Back to project page</button>
+        </a></p>
+    """
+
+    github_button = f"""
+        <p><a href="{project_link}" target="_blank">
+            <button class='PortMarker homepageButton'>Check out the code >>></button>
+        </a></p>
+    """
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(back_button, unsafe_allow_html=True)
+    with col2:
+        st.markdown(github_button, unsafe_allow_html=True)
+
+
+def back_button(previous_page):
+    """Provide a back button to the previous page"""
+    if "home" in previous_page.lower():
+        previous_page = ""
+    previous_page = previous_page.capitalize()
+    previous_page = previous_page.replace(" ", "%20")
+    project_html = f"""
+        <p><a href="https://www.jeroencvlier.com/{previous_page}" target="_self">
+            <button class='PortMarker homepageButton'><<< Back to main page</button>
+        </a></p>
+    """
+    st.markdown(project_html, unsafe_allow_html=True)

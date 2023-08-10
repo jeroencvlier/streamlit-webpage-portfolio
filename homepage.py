@@ -140,7 +140,7 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 
 project_html = """
-    <p><a href="https://jeroencvlier.com/Projects" target="_self">
+    <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
         <button class='PortMarker homepageButton'> >>>  Check out my projects  <<< </button>
     </a></p>
 """

@@ -23,9 +23,4 @@ st.write("##")
 # Home
 # --------------------------------------------------------------
 
-project_html = """
-    <p><a href="https://jeroencvlier.com/#skills" target="_self">
-        <button class='PortMarker homepageButton'><<< Back to main page</button>
-    </a></p>
-"""
-st.markdown(project_html, unsafe_allow_html=True)
+back_button("#skills")
