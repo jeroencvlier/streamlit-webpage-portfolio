@@ -27,11 +27,18 @@ with st.container():
 # --------------------------------------------------------------
 st.write("##")
 
+import time
+
+import time
+import streamlit as st
+
+with st.spinner("Loading GIF..."):
+    st.markdown(load_gif(f"{this_project}/Tennis.gif"), unsafe_allow_html=True)
 
 
-
-gif_local_file = load_gif(f"{this_project}/Tennis.gif")
+with open(f"{this_project}/project_readme.md", "r") as f:
+    project_readme = f.read()
 
 
 with st.container():
-    st.markdown(gif_local_file, unsafe_allow_html=True)
+    st.markdown(project_readme, unsafe_allow_html=True)
