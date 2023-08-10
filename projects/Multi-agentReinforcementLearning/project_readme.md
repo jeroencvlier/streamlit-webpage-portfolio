@@ -2,7 +2,18 @@
 
 ### Description
 
+#### Collaboration and Competition in Tennis:
 
-The primary objective of this project is to construct a fully functional web application utilizing the Streamlit library within Python. Specifically designed to serve as a digital resume, this app showcases various Data Science projects in an engaging and interactive manner. By blending creativity with functionality, the application provides a unique platform to exhibit my skills, creativity, and passion for Data Science.
+In this innovative project, a sophisticated collaborative training approach was implemented to teach two agents to play tennis against each other in a Tennis environment.
 
-Deployed on [render.com](https://www.render.com), the application is readily accessible to users interested in exploring my work. For those who wish to delve into the code and explore the technical intricacies, the [GitHub repository is available at the following link](https://www.github.com/jeroencvlier/streamlit-webpage-portfolio). Feel free to explore, share feedback, or even contribute to this dynamic and evolving project!
+The agents, each controlling a racket, aimed to keep the ball in play by hitting it over the net. Rewards were structured to incentivize successful play, with a reward of +0.1 for successful volleys and a penalty of -0.01 for letting the ball hit the ground or sending it out of bounds.
+
+The complexity of the environment was captured through an observation space encompassing 24 variables, detailing the position and velocity of both the ball and racket. The agents had access to two continuous action spaces, governing movement left/right and up/down within the range of [-1:1].
+
+Collaboration and competition were at the heart of this project, with the goal set to achieve an average score of +0.5 over 100 consecutive episodes. The scoring mechanism involved summing the rewards for each agent per episode, then taking the maximum of the two scores, yielding a single score per episode.
+
+The environment's solution was defined by an average score of at least +0.5 over 100 episodes, considering the maximum of the two agents' scores.
+
+A GIF displaying the trained network in action visually represents the success of the model in learning both cooperative and competitive strategies, underscoring the model's ability to handle nuanced multi-agent interactions.
+
+This project serves as an excellent demonstration of the potential applications of machine learning in creating intelligent agents capable of both collaboration and competition, with direct relevance to more complex real-world tasks.

@@ -49,12 +49,7 @@ import re
 import base64
 
 
-def title_header(title, line=True):
-    # st.write("\n")
-    if len(title.split(" ")) > 1:
-        title_class = "title1"
-    else:
-        title_class = "title2"
+def title_header(title, title_class="title1", line=True):
     t = st.markdown(
         f"""
         <div class="{title_class}">{title}</div>

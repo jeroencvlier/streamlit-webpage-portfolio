@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 load_css()
-title_header("Continuous Control Reinforcement Learning", line=True)
+title_header("Dynamic Control RL", title_class="title3", line=True)
 this_project = project_folder / "ContinuousControlReinforcementLearning"
 
 import numpy as np
@@ -31,3 +31,16 @@ st.write("##")
 
 video_file_path = f"{this_project}/ContinuousControl.mp4"
 st.markdown(load_mp4(video_file_path), unsafe_allow_html=True)
+
+
+# --------------------------------------------------------------
+# Github link
+# --------------------------------------------------------------
+st.write("##")
+
+project_html = """
+    <p><a href="https://github.com/jeroencvlier/DDPG-Continuous-Control" target="_blank">
+        <button class='PortMarker homepageButton'>Check out the code >>></button>
+    </a></p>
+"""
+st.markdown(project_html, unsafe_allow_html=True)
