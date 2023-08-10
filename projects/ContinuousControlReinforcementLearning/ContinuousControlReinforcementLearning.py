@@ -29,8 +29,5 @@ with st.container():
 # --------------------------------------------------------------
 st.write("##")
 
-
-
-gif_local_file = load_gif(f"{this_project}/ContinuousControl.gif")
-with st.container():
-    st.markdown(gif_local_file, unsafe_allow_html=True)
+video_file_path = f"{this_project}/ContinuousControl.mp4"
+st.markdown(load_mp4(video_file_path), unsafe_allow_html=True)
