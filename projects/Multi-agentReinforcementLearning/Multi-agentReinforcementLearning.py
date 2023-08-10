@@ -11,7 +11,6 @@ title_header("Multi Agent RL", title_class="title3", line=True)
 this_project = project_folder / "Multi-agentReinforcementLearning"
 
 
-
 # --------------------------------------------------------------
 # Project Description
 # --------------------------------------------------------------
