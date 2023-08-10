@@ -1,12 +1,4 @@
-# utils.py
-
-# from st_pages import add_page_title
-# from streamlit_extras.switch_page_button import switch_page
-# import re
 import streamlit as st
-
-
-# Define directory paths
 from pathlib import Path
 
 current_directory = Path(__file__).parent if "__file__" in locals() else Path.cwd()
@@ -106,7 +98,7 @@ def load_mp4(video_file_path):
     video_url = f"data:video/mp4;base64,{base64.b64encode(video_bytes).decode()}"
 
     html_code = f"""
-    <video autoplay muted loop class="PortMarker gifContainer">
+    <video autoplay playsinline muted loop class="PortMarker gifContainer">
     <source src="{video_url}" type="video/mp4">
     </video>
     """
