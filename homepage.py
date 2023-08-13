@@ -36,14 +36,14 @@ col1, col2, col3 = st.columns([1, 1, 1])
 
 with col1:
     b64_pdf_content = base64.b64encode(pdf_bytes).decode()
-    download_pdf_href = f"""<a  href="data:application/pdf;base64,{b64_pdf_content}"  class="PortMarker homepageButton" download="{resume_file.name}">Download Resume!</a>"""
+    download_pdf_href = f"""<a  href="data:application/pdf;base64,{b64_pdf_content}"  class="PortMarker homepageButton singleButton" download="{resume_file.name}">Download Resume!</a>"""
     st.markdown(download_pdf_href, unsafe_allow_html=True)
 
 with col2:
     # Creating a button with a link using HTML and markdown
     button_html = """<p>
         <a href="https://calendly.com/jeroencvlier/30min" target="_blank">
-            <button class='PortMarker homepageButton'>Virtual Coffee?</button>
+            <button class='PortMarker homepageButton singleButton'>Virtual Coffee?</button>
         </a></p>
     """
 
@@ -53,7 +53,7 @@ with col3:
     # Creating a button with a link using HTML and markdown
     contact_html = """
         <a href="https://www.jeroencvlier.com/Contact" target="_self">
-            <button class='PortMarker homepageButton'>Get In Touch?</button>
+            <button class='PortMarker homepageButton singleButton'>Get In Touch?</button>
         </a>
     """
     st.markdown(contact_html, unsafe_allow_html=True)
@@ -143,12 +143,6 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Projects
 # --------------------------------------------------------------
-# project_html = """
-#     <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
-#         <button class='PortMarker homepageButton projectButton'> >>>  Check out my projects  <<< </button>
-#     </a></p>
-# """
-
 
 project_html = """
     <p><a href="https://www.jeroencvlier.com/Projects" target="_self" class='PortMarker homepageButton singleButton'>

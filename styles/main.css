@@ -243,6 +243,7 @@ button[type=submit]:hover {
 
 
 .homepageButton {
+
     display: flex;
     align-items: center;
     justify-content: center;
