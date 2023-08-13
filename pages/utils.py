@@ -109,6 +109,21 @@ def load_mp4(video_file_path):
     return html_code
 
 
+def load_png(image_file_path):
+    # Open the image file
+    import base64
+
+    image_file = open(image_file_path, "rb")
+    image_bytes = image_file.read()
+
+    image_url = f"data:image/png;base64,{base64.b64encode(image_bytes).decode()}"
+
+    html_code = f"""
+    <img src="{image_url}" class="PortMarker pngContainer" />
+    """
+    return html_code
+
+
 def project_buttons(project_link):
     """Add back button and code link button to the project page"""
     st.write("##")

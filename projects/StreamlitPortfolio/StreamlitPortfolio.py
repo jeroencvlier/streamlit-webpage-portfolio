@@ -5,6 +5,7 @@ from pages.utils import (
     project_folder,
     project_buttons,
     im,
+    load_png,
 )
 import streamlit as st
 
@@ -16,7 +17,7 @@ st.set_page_config(
 )
 
 load_css()
-title_header("Digital Portfolio Streamlit", line=True)
+title_header("Digital Portfolio Streamlit", line=False)
 this_project = project_folder / "StreamlitPortfolio"
 
 
@@ -34,10 +35,9 @@ with st.container():
 # --------------------------------------------------------------
 # Project Image
 # --------------------------------------------------------------
-image = Image.open(f"{this_project}/streamlit-logo.png")
-with st.container():
-    st.image(image)
-
+st.write("##")
+image_file_path = f"{this_project}/streamlit-logo.png"
+st.markdown(load_png(image_file_path), unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # Buttons

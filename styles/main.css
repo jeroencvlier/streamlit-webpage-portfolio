@@ -150,6 +150,12 @@ header {
     border-radius: 15px;
 }
 
+.StyledHRProjects {
+    margin-top: 5px !important;
+    margin-bottom: 15px !important;
+
+}
+
 
 .StyledCircle {
     width: 20px;
@@ -292,6 +298,14 @@ button[type=submit]:hover {
 
 .gifContainer {
     padding: 0% 0% 0% 0% !important;
+    width: 100% !important;
+    ;
+
+}
+
+.pngContainer {
+    padding: 0% 10% 0% 10% !important;
+
     width: 100% !important;
     ;
 

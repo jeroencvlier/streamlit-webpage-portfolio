@@ -16,14 +16,14 @@ st.set_page_config(
 )
 
 load_css()
-title_header("Dynamic Control RL", title_class="title3", line=True)
+title_header("Dynamic Control RL", title_class="title3", line=False)
 this_project = project_folder / "ContinuousControlReinforcementLearning"
 
 # --------------------------------------------------------------
-# Project Description
+# Project Introduction
 # --------------------------------------------------------------
 
-with open(f"{this_project}/project_readme.md", "r") as f:
+with open(f"{this_project}/introduction.md", "r") as f:
     project_readme = f.read()
 
 
@@ -37,6 +37,19 @@ st.write("##")
 
 video_file_path = f"{this_project}/ContinuousControl.mp4"
 st.markdown(load_mp4(video_file_path), unsafe_allow_html=True)
+
+
+# --------------------------------------------------------------
+# Project Description
+# --------------------------------------------------------------
+st.write("##")
+
+with open(f"{this_project}/description.md", "r") as f:
+    project_readme = f.read()
+
+
+with st.container():
+    st.markdown(project_readme, unsafe_allow_html=True)
 
 
 # --------------------------------------------------------------
