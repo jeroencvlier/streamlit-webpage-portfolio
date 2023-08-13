@@ -115,7 +115,7 @@ def load_image(file_path):
     return base64.b64encode(open(file_path, "rb").read()).decode()
 
 
-@st.cache_data()
+# @st.cache_data()
 def load_logos(social_media):
     linkedin_logo = load_image(social_media["LinkedIn"]["logo"])
     github_logo = load_image(social_media["GitHub"]["logo"])

@@ -12,7 +12,7 @@ page_icon = base_directory / "assets" / "page_icon.ico"
 project_folder = base_directory / "projects"
 
 
-@st.cache_data()
+# @st.cache_data()
 def cache_page_icon(page_icon):
     from PIL import Image
 
