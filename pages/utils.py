@@ -115,13 +115,13 @@ def project_buttons(project_link):
 
     back_button = """
         <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
-            <button class='PortMarker homepageButton'><<< Back to project page</button>
+            <button class='PortMarker homepageButton singleButton'><<< Back to project page</button>
         </a></p>
     """
 
     github_button = f"""
         <p><a href="{project_link}" target="_blank">
-            <button class='PortMarker homepageButton'>Check out the code >>></button>
+            <button class='PortMarker homepageButton singleButton'>Check out the code >>></button>
         </a></p>
     """
 

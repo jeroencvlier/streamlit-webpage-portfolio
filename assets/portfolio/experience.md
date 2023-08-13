@@ -5,9 +5,11 @@
 <div class='StyledHR'></div>
 
 ### Flash
+
+###### Data Scientist
+
 June 2021 - Present
 
-**Data Scientist** 
 
 At Flash, I play a key role in creating machine-learning models such as time series analysis for outlier detections for fraud prevention, as well as detecting traders with a high risk of churn by implementing various strategies for prevention. I also help define the company's data science workflow and the automation of CI/CD pipelines using Docker and Azure.
 
@@ -15,28 +17,33 @@ At Flash, I play a key role in creating machine-learning models such as time ser
 
 
 ### Option Intelligence
-December 2020 - March 2023
 
-**Data Scientist** 
+###### Data Scientist
+
+December 2020 - March 2023
 
 During my time at Option Intelligence, I constructed reinforcement learning DQN agents to optimise various options trading strategies, significantly outperforming traditional buy-and-hold strategies. In addition, I engineered an options trading prediction tool, with a concentrated focus on earnings, and successfully deployed this predictive model to the cloud, enabling real-time predictions. To further enhance the user experience, I integrated a Telegram bot sending out personalised trade alerts.
 
 <div class='StyledHR'></div>
 
 ### Ironhack
+
+###### Data Analytics Teaching Assistant
+
 December 2020 - March 20203
 
-**Data Analytics Teaching Assistant** 
 
 As a Teaching Assistant at Ironhack, I was actively involved in mentoring students through complex boot camp challenges in statistics, data analysis, and machine learning. I guided projects and helped improve students' coding practices and data analytics understanding. In addition, I supported the lead teacher in administrative tasks and organized online icebreakers and team events.
 
 
 <div class='StyledHR'></div>
 
-### Research Geophysicist
+### Mapxact
+
+###### Research Geophysicist
+
 December 2020 - March 20203
 
-**Data Analyst** 
 
 As a Research Geophysicist at MapXact, I led the research department and collaborated with two universities to investigate the limitations of ground-penetrating radars. I also mentored PhD students and facilitated geophysical interpretations. A significant part of my role involved advising on the integration of artificial intelligence to automate interpretations of geophysical data.
 
