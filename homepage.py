@@ -143,9 +143,16 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Projects
 # --------------------------------------------------------------
+# project_html = """
+#     <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
+#         <button class='PortMarker homepageButton projectButton'> >>>  Check out my projects  <<< </button>
+#     </a></p>
+# """
+
+
 project_html = """
-    <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
-        <button class='PortMarker homepageButton'> >>>  Check out my projects  <<< </button>
+    <p><a href="https://www.jeroencvlier.com/Projects" target="_self" class='PortMarker homepageButton singleButton'>
+        >>>  Check out my projects  <<<
     </a></p>
 """
 st.markdown(project_html, unsafe_allow_html=True)

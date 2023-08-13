@@ -12,7 +12,7 @@ page_icon = base_directory / "assets" / "page_icon.ico"
 project_folder = base_directory / "projects"
 
 
-@st.cache()
+@st.cache_data()
 def cache_page_icon(page_icon):
     from PIL import Image
 
@@ -137,7 +137,7 @@ def back_button(previous_page):
     previous_page = previous_page.replace(" ", "%20")
     project_html = f"""
         <p><a href="https://www.jeroencvlier.com/{previous_page}" target="_self">
-            <button class='PortMarker homepageButton'><<< Back to main page</button>
+            <button class='PortMarker homepageButton singleButton'><<< Back to main page</button>
         </a></p>
     """
     st.markdown(project_html, unsafe_allow_html=True)

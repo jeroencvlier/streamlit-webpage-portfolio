@@ -247,7 +247,6 @@ button[type=submit]:hover {
     width: 100%;
     text-align: center !important;
 
-
     background-size: 150% auto;
     animation: Gradient 4s ease infinite;
     background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.35), rgba(83, 180, 200, 0.35));
@@ -256,6 +255,10 @@ button[type=submit]:hover {
 
 .projectButton {
     height: 90px;
+}
+
+.singleButton {
+    padding: 0% 0% 0% 0% !important;
 }
 
 .homepageButton:hover {
