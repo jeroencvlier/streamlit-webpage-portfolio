@@ -12,6 +12,7 @@ page_icon = base_directory / "assets" / "page_icon.ico"
 project_folder = base_directory / "projects"
 
 
+@st.cache()
 def cache_page_icon(page_icon):
     from PIL import Image
 
@@ -70,7 +71,7 @@ def skill_builder(skills, level=None):
         skills_html += f"<h2>Skills</h2>"
         skills_html += "<br><div class='StyledHR'></div><br>"
         skills_html += skill_score(skills)
-        skills_html += '<div style="text-align: right;"><a class="click_link" href="https://www.jeroencvlier.com/Skills" target="_self">Details >></a></div>'
+        skills_html += '<div style="text-align: right;"><a class="click_link" href="https://www.jeroencvlier.com/Skills" target="_self">Click here for more details >></a></div>'
     elif level == "Languages":
         skills = skills[level]
         skills_html += f"<h2>Languages</h2>"
@@ -140,5 +141,3 @@ def back_button(previous_page):
         </a></p>
     """
     st.markdown(project_html, unsafe_allow_html=True)
-    
-

@@ -29,8 +29,6 @@ title_header("Jeroen van Lier", line=True)
 # --------------------------------------------------------------
 # CONTACT BUTTONS
 # -------------------------------------------------------------
-
-
 with open(resume_file, "rb") as pdf_file:
     pdf_bytes = pdf_file.read()
 
@@ -117,7 +115,7 @@ def load_image(file_path):
     return base64.b64encode(open(file_path, "rb").read()).decode()
 
 
-# @st.cache_data()
+@st.cache_data()
 def load_logos(social_media):
     linkedin_logo = load_image(social_media["LinkedIn"]["logo"])
     github_logo = load_image(social_media["GitHub"]["logo"])
@@ -126,8 +124,6 @@ def load_logos(social_media):
 
 
 linkedin_logo, github_logo, whatsapp_logo = load_logos(social_media)
-
-# Prepare the social links HTML
 
 style_linkedin = "height:100%; max-height:50px; margin-right:30px;"  # 10px right margin
 style_github = "height:100%; max-height:50px; margin-right:30px;"

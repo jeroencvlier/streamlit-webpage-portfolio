@@ -35,13 +35,12 @@ with st.container():
 # Project Image
 # --------------------------------------------------------------
 image = Image.open(f"{this_project}/streamlit-logo.png")
-st.image(image)
+with st.container():
+    st.image(image)
 
 
 # --------------------------------------------------------------
 # Buttons
 # --------------------------------------------------------------
-
-
 github_link = "https://www.github.com/jeroencvlier/DDPG-Continuous-Control"
 project_buttons(github_link)

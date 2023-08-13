@@ -31,72 +31,14 @@ input[type=email],
 input[type=text],
 textarea {
     width: 100%;
-    /* Full width */
     padding: 12px;
-    /* Some padding */
     border: 1px solid #ccc;
-    /* Gray border */
     border-radius: 4px;
-    /* Rounded borders */
     box-sizing: border-box;
-    /* Make sure that padding and width stays in place */
     margin-top: 6px;
-    /* Add a top margin */
     margin-bottom: 16px;
-    /* Bottom margin */
     resize: vertical
-        /* Allow the user to vertically resize the textarea (not horizontally) */
 }
-
-button[type=submit] {
-    border-radius: 20px;
-    display: block;
-    position: relative;
-    padding: 10px 20px;
-    border: 2px solid rgb(70, 70, 70);
-    /* Initial border */
-    font-size: 1em;
-    text-decoration: none;
-    /* Removes underline */
-    height: 60px;
-    width: 50%;
-    /* Set width to 100% */
-    background-color: rgb(211, 211, 211);
-    overflow: hidden;
-    /* Ensure the content doesn't overflow the border */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-button[type=submit]:hover {
-    background-size: 150% auto;
-    animation: Gradient 4s ease infinite;
-    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.7));
-}
-
-button[type=primary]:hover {
-    background-size: 150% auto;
-    animation: Gradient 4s ease infinite;
-    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.7));
-}
-
-
-
-
-/* @keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-} */
 
 /* Hide Streamlit Branding */
 #MainMenu {
@@ -254,8 +196,42 @@ header {
     background: rgba(83, 180, 200, 1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
 }
+
+
+
+button[type=submit] {
+    border-radius: 20px;
+    color: white !important;
+    border: 1px solid #7a7c7c;
+    display: block;
+    position: relative;
+    padding: 10px 20px;
+    font-size: 1em;
+    text-decoration: none;
+    height: 60px;
+    width: 50%;
+    background-color: #313636;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 150% auto;
+    animation: Gradient 4s ease infinite;
+    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.35), rgba(83, 180, 200, 0.35));
+}
+
+
+button[type=submit]:hover {
+    background-size: 150% auto;
+    animation: Gradient 4s ease infinite;
+    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.8), rgba(83, 180, 200, 0.8));
+}
+
+/* button[type=primary]:hover {
+    background-size: 150% auto;
+    animation: Gradient 4s ease infinite;
+    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.7));
+} */
 
 
 .homepageButton {
@@ -270,6 +246,12 @@ header {
     height: 50px;
     width: 100%;
     text-align: center !important;
+
+
+    background-size: 150% auto;
+    animation: Gradient 4s ease infinite;
+    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.35), rgba(83, 180, 200, 0.35));
+
 }
 
 .projectButton {
@@ -279,7 +261,7 @@ header {
 .homepageButton:hover {
     background-size: 150% auto;
     animation: Gradient 4s ease infinite;
-    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.7));
+    background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.8), rgba(83, 180, 200, 0.8));
 }
 
 @keyframes Gradient {
