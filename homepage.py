@@ -207,6 +207,22 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 
 
 # --------------------------------------------------------------
+# WORK HISTORY
+# --------------------------------------------------------------
+def experience_loader(portfolio_folder):
+    with open(f"{portfolio_folder}/experience.md", "r") as f:
+        experience_text = f.read()
+    return experience_text
+
+
+experience_text = experience_loader(portfolio_folder)
+
+with st.container():
+    st.markdown(experience_text, unsafe_allow_html=True)
+st.markdown("<p></p>", unsafe_allow_html=True)
+
+
+# --------------------------------------------------------------
 # Certificates
 # --------------------------------------------------------------
 def certificates_loader(portfolio_folder):
@@ -221,21 +237,6 @@ with st.container():
     st.markdown(certificates_text, unsafe_allow_html=True)
 st.markdown("<p></p>", unsafe_allow_html=True)
 
-
-# --------------------------------------------------------------
-# WORK HISTORY
-# --------------------------------------------------------------
-def experience_loader(portfolio_folder):
-    with open(f"{portfolio_folder}/experience.md", "r") as f:
-        experience_text = f.read()
-    return experience_text
-
-
-experience_text = experience_loader(portfolio_folder)
-
-with st.container():
-    st.markdown(experience_text, unsafe_allow_html=True)
-st.markdown("<p></p>", unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # Languages

@@ -2,22 +2,18 @@
 
 ## Education
 <div class='StyledHR'></div>
-<br>
+
+#### Ludwig Maximilian University of Munich
 
 
-<div class="CircleContainer">
-    <span class='StyledCircle'></span> <h4>Ludwig Maximilian University of Munich</h4>
-</div>
-
-2014 - 2017
+October 2014 - January 2017
 
 **Masters's Degree in Geology**
 
+<div class='StyledHR'></div>
 
-<div class="CircleContainer">
-    <span class='StyledCircle'></span> <h4>Stellenbosch University</h4>
-</div>
+#### Stellenbosch University
 
-2007 - 2011
+January 2007 - February 2011
 
 **Bachelor's Degree in Earth Science** 

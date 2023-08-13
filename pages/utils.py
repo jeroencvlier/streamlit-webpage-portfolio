@@ -69,19 +69,22 @@ def skill_builder(skills, level=None):
     if level == "Top Skills":
         skills = skills[level]
         skills_html += f"<h2>Skills</h2>"
-        skills_html += "<br><div class='StyledHR'></div><br>"
+        skills_html += "<br>"
+
+        # skills_html += "<div class='StyledHR'></div>"
         skills_html += skill_score(skills)
         skills_html += '<div style="text-align: right;"><a class="click_link" href="https://www.jeroencvlier.com/Skills" target="_self">Click here for more details >></a></div>'
     elif level == "Languages":
         skills = skills[level]
         skills_html += f"<h2>Languages</h2>"
-        skills_html += "<br><div class='StyledHR'></div><br>"
+        skills_html += "<br>"
+        # skills_html += "<div class='StyledHR'></div>"
         skills_html += skill_score(skills)
     elif level == "All Skills":
         skills = skills[level]
         for en, skill_section in enumerate(skills):
             if en != 0:
-                skills_html += "<br><div class='StyledHR'></div><br>"
+                skills_html += "<div class='StyledHR'></div>"
             skill_set = skills[skill_section]
             skills_html += f"<h3>{skill_section}</h3>"
             skills_html += skill_score(skill_set)
