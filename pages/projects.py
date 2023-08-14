@@ -11,11 +11,12 @@ load_css()
 title_header("Projects")
 
 
-project_items = [
-    "Streamlit Portfolio",
-    "Multi-agent Reinforcement Learning",
-    "Continuous Control Reinforcement Learning",
-]
+project_items = {
+    "Streamlit Portfolio": "Streamlit Portfolio",
+    "Multi-agent Reinforcement Learning": "Multi-agent Reinforcement Learning",
+    "Continuous Control Reinforcement Learning": "Continuous Control Reinforcement Learning",
+    "Forecasting Dengue Fever": "DengAI",
+}
 
 
 # Convert the dictionary items to a list
@@ -23,7 +24,9 @@ project_items = [
 
 # Iterate over the list in chunks of 3
 for i in range(0, len(project_items), 3):
-    chunk = project_items[i : i + 3]
+    keys = list(project_items.keys())
+    sliced_keys = keys[i : i + 3]
+    chunk = {key: project_items[key] for key in sliced_keys}
 
     if len(chunk) == 1:
         blank1, col, blank2 = st.columns([0.33, 0.33, 0.33])
@@ -39,11 +42,11 @@ for i in range(0, len(project_items), 3):
             st.empty()
         with blank2:
             st.empty()
-    for en, project in enumerate(chunk):
+    for en, (project, page) in enumerate(chunk.items()):  # No zip here
         # for col, proj in zip(columns, chunk):
         with columns[en]:
             st.markdown(
-                f"""<p><a href="https://www.jeroencvlier.com/{project.replace(' ','%20')}" target="_self">
+                f"""<p><a href="https://www.jeroencvlier.com/{page.replace(' ','%20')}" target="_self">
                 <button class='PortMarker homepageButton projectButton'>{project}</button>
                 </a></p>""",
                 unsafe_allow_html=True,

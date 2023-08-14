@@ -310,3 +310,12 @@ button[type=submit]:hover {
     ;
 
 }
+
+
+.mapboxgl-map {
+    background-color: #313636 !important;
+    box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid #7a7c7c !important;
+    border-radius: 15px !important;
+    padding: 3% 5% 5% 5% !important;
+}

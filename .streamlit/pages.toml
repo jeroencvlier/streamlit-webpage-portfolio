@@ -38,6 +38,13 @@ path = "projects/ContinuousControlReinforcementLearning/ContinuousControlReinfor
 name = "Continuous Control Reinforcement Learning"
 icon = ":bee:"
 
+[[pages]]
+path = "projects/DengAI/DengAI.py"
+name = "DengAI"
+icon = ":bee:"
+
+
+
 
 
 
