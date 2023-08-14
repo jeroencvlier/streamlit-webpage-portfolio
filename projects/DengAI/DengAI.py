@@ -54,8 +54,8 @@ df_city_longlat = pd.read_csv(f"{this_project}/data/city_longlat.csv")
 # st.markdown(custom_css, unsafe_allow_html=True)
 
 # Wrapping the map in a custom-styled container
-with st.container():
-    st.map(df_city_longlat, size=100000, zoom=3.5)
+# with st.container():
+st.map(df_city_longlat, size=100000, zoom=3.5)
 
 # --------------------------------------------------------------
 # Project Description
