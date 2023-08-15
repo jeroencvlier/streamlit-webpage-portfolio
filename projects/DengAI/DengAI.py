@@ -3,10 +3,8 @@ from pages.utils import (
     title_header,
     project_folder,
     project_buttons,
-    load_mp4,
     im,
 )
-
 
 import streamlit as st
 
@@ -137,6 +135,7 @@ with st.container():
 
     # Update the layout to create a secondary y-axis on the left and add a date slider
     fig.update_layout(
+        autosize=True,
         # width=600,
         # margin_pad=60,
         # title_pad=dict(l=20, r=20, t=20, b=20),  # Adjust the values as needed
