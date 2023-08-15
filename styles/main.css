@@ -311,7 +311,7 @@ button[type=submit]:hover {
 
 }
 
-
+/* Overwrite the mapbox css styling to put inside a shadow box */
 .mapboxgl-map {
     background-color: #313636 !important;
     box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3) !important;
@@ -321,6 +321,7 @@ button[type=submit]:hover {
 
 }
 
+/* removes the mapbox info button and labels */
 .mapboxgl-control-container {
     display: none !important;
 }

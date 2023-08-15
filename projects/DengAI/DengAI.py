@@ -44,18 +44,25 @@ with st.container():
 # Project Map
 # --------------------------------------------------------------
 
+# create csutom css for map height
+map_height = 300
+map_css = f"""
+    <style>
+        .mapboxgl-map {{
+            height: {map_height}px !important;
+        }}
+        #deckgl-overlay {{
+            height: {map_height}px !important;
+        }}
+        .stDeckGlJsonChart {{
+            height: {map_height}px !important;
+        }}
+    </style>
+    """
+st.markdown(map_css, unsafe_allow_html=True)
+
 df_city_longlat = pd.read_csv(f"{this_project}/data/city_longlat.csv")
-
-# custom_css = """
-
-# """
-
-# Applying custom CSS
-# st.markdown(custom_css, unsafe_allow_html=True)
-
-# Wrapping the map in a custom-styled container
-# with st.container():
-st.map(df_city_longlat, size=100000, zoom=3.5)
+st.map(df_city_longlat, size=100000, zoom=3)
 
 # --------------------------------------------------------------
 # Project Description
