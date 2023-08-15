@@ -106,6 +106,7 @@ city_options = {"San Juan, Puerto Rico": "sj", "Iquitos, Peru": "iq"}
 feature_options = {
     "Temperature": "station_avg_temp_c",
     "Precipitation": "station_precip_mm",
+    "Humidity": "reanalysis_relative_humidity_percent",
 }
 
 
@@ -127,6 +128,16 @@ with st.container():
         horizontal=False,
         label_visibility="visible",
     )
+    left_space, log_col, right_space = st.columns([1, 3, 1])
+
+    log_features = log_col.checkbox(
+        "Apply log to 'Total Cases'?",
+        key="log_features",
+    )
+    if log_features:
+        cases_column = "total_cases_logged"
+    else:
+        cases_column = "total_cases"
 
     city_data = train_data[train_data["city"] == city_options[selected_city_name]]
     feature = feature_options[selected_feature]
@@ -134,7 +145,7 @@ with st.container():
     # Create a figure
     fig = go.Figure()
 
-    # Add the station_avg_temp_c line on the primary y-axis (right), with red color
+    # Add the feature line on the primary y-axis (right), with red color
     fig.add_trace(
         go.Scatter(
             x=city_data["week_start_date"],
@@ -148,14 +159,13 @@ with st.container():
     fig.add_trace(
         go.Scatter(
             x=city_data["week_start_date"],
-            y=city_data["total_cases"],
+            y=city_data[cases_column],
             name="Total Cases",
             yaxis="y2",
             line=dict(color="rgba(176, 107, 199, 1.0)"),
         )
     )
 
-    # Update the layout to create a secondary y-axis on the left and add a date slider
     fig.update_layout(
         autosize=True,
         margin=dict(l=40, r=40),
@@ -174,15 +184,15 @@ with st.container():
             tickfont=dict(color="rgba(83, 180, 200, 1.0)"),
         ),
         legend=dict(
-            orientation="h",  # Horizontal orientation
+            orientation="h",
             yanchor="bottom",
             y=1,
             xanchor="center",
             x=0.5,
         ),
         title=f"{selected_feature} Trends",
-        title_x=0.5,  # Center the title at the middle of the x-axis
-        title_xanchor="center",  # Anchor the title at its center
+        title_x=0.5,
+        title_xanchor="center",
         xaxis=dict(
             gridcolor="white",
             rangeslider=dict(visible=True),
