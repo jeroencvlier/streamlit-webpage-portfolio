@@ -59,7 +59,7 @@ map_css = f"""
         }}
     </style>
     """
-st.markdown(map_css, unsafe_allow_html=True)
+# st.markdown(map_css, unsafe_allow_html=True)
 
 df_city_longlat = pd.read_csv(f"{this_project}/data/city_longlat.csv")
 st.map(df_city_longlat, size=100000, zoom=3)
