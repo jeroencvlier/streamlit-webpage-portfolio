@@ -40,7 +40,7 @@ with st.container():
 
 # create csutom css for map height on this project
 # also removet the fullscreen button so the iphone display doesnt drift
-map_height = 260
+map_height = 270
 map_css = f"""
     <style>
         button[title="View fullscreen"].css-1xulgw9 {{
@@ -82,21 +82,17 @@ train_data = pd.read_parquet(
     f"{this_project}/data/dengai_cleaned.parquet"
 ).reset_index()
 city_options = {"San Juan, Puerto Rico": "sj", "Iquitos, Peru": "iq"}
-# st.markdown('<div class="PortMarker">', unsafe_allow_html=True)
 
 custom_css = """
 <style>
-
 div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVerticalBlock"].e1f1d6gn0 {
     background-color: #313636 !important;
     box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3) !important;
     border: 1px solid #7a7c7c !important;
     border-radius: 15px !important;
-    padding: 3% 5% 5% 5% !important;
 }
 </style>
 """
-
 st.markdown(custom_css, unsafe_allow_html=True)
 
 
@@ -105,7 +101,10 @@ with st.container():
     left_space, center_col, right_space = st.columns([1, 2, 1])
 
     selected_city_name = center_col.radio(
-        "", options=list(city_options.keys()), horizontal=True
+        "Select City",
+        options=list(city_options.keys()),
+        horizontal=True,
+        label_visibility="hidden",
     )
     city_data = train_data[train_data["city"] == city_options[selected_city_name]]
 
@@ -136,28 +135,20 @@ with st.container():
     # Update the layout to create a secondary y-axis on the left and add a date slider
     fig.update_layout(
         autosize=True,
-        # width=600,
-        # margin_pad=60,
-        # title_pad=dict(l=20, r=20, t=20, b=20),  # Adjust the values as needed
-        # margin=dict(t=500),
-        # newshape_label_padding=600,
-        paper_bgcolor="rgba(49, 54, 54, 1)",  # Adjust the color as needed
-        plot_bgcolor="rgba(49, 54, 54, 1)",  # Adjust the color as needed
+        margin=dict(l=40, r=40),
+        paper_bgcolor="rgba(49, 54, 54, 1)",
+        plot_bgcolor="rgba(49, 54, 54, 1)",
         yaxis2=dict(
-            title="Total Cases",
-            titlefont=dict(color="white"),
-            tickfont=dict(color="white"),
             overlaying="y",
             side="left",
             gridcolor="white",
-            showgrid=False,  # Hide gridlines for the secondary y-axis
+            tickmode="sync",
+            tickfont=dict(color="rgba(176, 107, 199, 1.0)"),
         ),
         yaxis=dict(
-            title="Average Temperature",
-            titlefont=dict(color="white"),
-            tickfont=dict(color="white"),
             side="right",
             gridcolor="white",
+            tickfont=dict(color="rgba(83, 180, 200, 1.0)"),
         ),
         legend=dict(
             orientation="h",  # Horizontal orientation
@@ -171,31 +162,12 @@ with st.container():
         title_xanchor="center",  # Anchor the title at its center
         xaxis=dict(
             gridcolor="white",
-            rangeselector=dict(
-                buttons=list(
-                    [
-                        dict(count=1, label="1M", step="month", stepmode="backward"),
-                        dict(count=6, label="6M", step="month", stepmode="backward"),
-                        dict(count=1, label="1Y", step="year", stepmode="backward"),
-                        dict(step="all"),
-                    ]
-                )
-            ),
             rangeslider=dict(visible=True),
             type="date",
         ),
     )
-    # Create columns with specific proportions
-    # left_space, center_col, right_space = st.columns(
-    #     [1, 10, 1]
-    # )  # Adjust these values to your preference
 
-    # # Plot the Plotly chart in the center column
-    # with center_col:
-    #     st.plotly_chart(fig)
     st.plotly_chart(fig, use_container_width=True)
-    # Displaying the chart in Streamlit
-    # st.plotly_chart(fig)  # Displaying the chart in Streamlit
 
 
 # --------------------------------------------------------------
