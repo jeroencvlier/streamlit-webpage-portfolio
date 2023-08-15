@@ -78,10 +78,8 @@ with st.container():
 # --------------------------------------------------------------
 # Comparison between cities and their properties
 # --------------------------------------------------------------
-train_data = pd.read_parquet(
-    f"{this_project}/data/dengai_cleaned.parquet"
-).reset_index()
-city_options = {"San Juan, Puerto Rico": "sj", "Iquitos, Peru": "iq"}
+with open(f"{this_project}/analysis.md", "r") as f:
+    project_analysis = f.read()
 
 custom_css = """
 <style>
@@ -90,23 +88,48 @@ div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVertical
     box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3) !important;
     border: 1px solid #7a7c7c !important;
     border-radius: 15px !important;
+    padding: 3% 5% 5% 5% !important;
+}
+
+.modebar-container{
+    display: none !important;
 }
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
+train_data = pd.read_parquet(
+    f"{this_project}/data/dengai_cleaned.parquet"
+).reset_index()
+
+city_options = {"San Juan, Puerto Rico": "sj", "Iquitos, Peru": "iq"}
+feature_options = {
+    "Temperature": "station_avg_temp_c",
+    "Precipitation": "station_precip_mm",
+}
+
 
 with st.container():
+    st.write("##")
+    st.markdown(project_analysis, unsafe_allow_html=True)
     # Create columns to control the layout
-    left_space, center_col, right_space = st.columns([1, 2, 1])
+    left_space, city_col, feature_col, right_space = st.columns([2, 3, 3, 1])
 
-    selected_city_name = center_col.radio(
+    selected_city_name = city_col.radio(
         "Select City",
         options=list(city_options.keys()),
-        horizontal=True,
-        label_visibility="hidden",
+        horizontal=False,
+        label_visibility="visible",
     )
+    selected_feature = feature_col.radio(
+        "Select Feauture",
+        options=list(feature_options.keys()),
+        horizontal=False,
+        label_visibility="visible",
+    )
+
     city_data = train_data[train_data["city"] == city_options[selected_city_name]]
+    feature = feature_options[selected_feature]
 
     # Create a figure
     fig = go.Figure()
@@ -115,7 +138,7 @@ with st.container():
     fig.add_trace(
         go.Scatter(
             x=city_data["week_start_date"],
-            y=city_data["station_avg_temp_c"],
+            y=city_data[feature],
             name="Average Temperature",
             line=dict(color="rgba(83, 180, 200, 1.0)"),
         )
@@ -157,7 +180,7 @@ with st.container():
             xanchor="center",
             x=0.5,
         ),
-        title="Temperature Trends",
+        title=f"{selected_feature} Trends",
         title_x=0.5,  # Center the title at the middle of the x-axis
         title_xanchor="center",  # Anchor the title at its center
         xaxis=dict(
@@ -168,93 +191,12 @@ with st.container():
     )
 
     st.plotly_chart(fig, use_container_width=True)
+    st.write("\n")
 
 
 # --------------------------------------------------------------
 # forecasting with variable proprties to show how cases are effected
 # --------------------------------------------------------------
-# Start of the custom container with "PortMarker" class
-
-# train_data = pd.read_parquet(
-#     f"{this_project}/data/dengai_cleaned.parquet"
-# ).reset_index()
-# city_options = {"San Juan, Puerto Rico": "sj", "Iquitos, Peru": "iq"}
-
-# # Create columns inside the custom container
-# left_space, center_col, right_space = st.columns([1, 2, 1])
-
-# # Add radio buttons to the center column
-# selected_city_name = center_col.radio(
-#     "Select the City",
-#     options=list(city_options.keys()),
-#     horizontal=True,
-#     label_visibility="hidden",
-# )
-# city_data = train_data[train_data["city"] == city_options[selected_city_name]]
-
-# fig = go.Figure()
-# # Add the station_avg_temp_c line on the primary y-axis (right), with red color
-# fig.add_trace(
-#     go.Scatter(
-#         x=city_data["week_start_date"],
-#         y=city_data["station_avg_temp_c"],
-#         name="Average Temperature",
-#         line=dict(color="red"),
-#     )
-# )
-
-# # Add the total_cases line on the secondary y-axis (left), with blue color
-# fig.add_trace(
-#     go.Scatter(
-#         x=city_data["week_start_date"],
-#         y=city_data["total_cases"],
-#         name="Total Cases",
-#         yaxis="y2",
-#         line=dict(color="blue"),
-#     )
-# )
-
-# # Update the layout to create a secondary y-axis on the left and add a date slider
-# fig.update_layout(
-#     yaxis2=dict(
-#         title="Total Cases",
-#         titlefont=dict(color="blue"),
-#         tickfont=dict(color="blue"),
-#         overlaying="y",
-#         side="left",
-#     ),
-#     yaxis=dict(
-#         title="Average Temperature",
-#         titlefont=dict(color="red"),
-#         tickfont=dict(color="red"),
-#         side="right",
-#     ),
-#     legend=dict(
-#         orientation="h",  # Horizontal orientation
-#         yanchor="bottom",
-#         y=1,
-#         xanchor="center",
-#         x=0.5,
-#     ),
-#     title="Temperature Trends",
-#     xaxis=dict(
-#         rangeselector=dict(
-#             buttons=list(
-#                 [
-#                     dict(count=1, label="1M", step="month", stepmode="backward"),
-#                     dict(count=6, label="6M", step="month", stepmode="backward"),
-#                     dict(count=1, label="1Y", step="year", stepmode="backward"),
-#                     dict(step="all"),
-#                 ]
-#             )
-#         ),
-#         rangeslider=dict(visible=True),
-#         type="date",
-#     ),
-# )
-
-# # Displaying the chart in Streamlit
-# st.plotly_chart(fig)  # Displaying the chart in Streamlit
 
 
 # --------------------------------------------------------------
