@@ -150,7 +150,7 @@ with st.container():
         go.Scatter(
             x=city_data["week_start_date"],
             y=city_data[feature],
-            name="Average Temperature",
+            name=f"Average {selected_feature}",
             line=dict(color="rgba(83, 180, 200, 1.0)"),
         )
     )
