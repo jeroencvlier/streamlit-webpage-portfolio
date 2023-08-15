@@ -193,7 +193,7 @@ with st.container():
     # # Plot the Plotly chart in the center column
     # with center_col:
     #     st.plotly_chart(fig)
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
     # Displaying the chart in Streamlit
     # st.plotly_chart(fig)  # Displaying the chart in Streamlit
 
