@@ -87,7 +87,7 @@ city_options = {"San Juan, Puerto Rico": "sj", "Iquitos, Peru": "iq"}
 custom_css = """
 <style>
 
-div[data-testid="stVerticalBlock"].css-1n76uvr.e1f1d6gn0 > div > div[data-testid="stVerticalBlock"].css-1n76uvr.e1f1d6gn0 {
+div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVerticalBlock"].e1f1d6gn0 {
     background-color: #313636 !important;
     box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3) !important;
     border: 1px solid #7a7c7c !important;
