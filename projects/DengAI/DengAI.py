@@ -6,6 +6,8 @@ from pages.utils import (
     im,
 )
 
+from datetime import timedelta
+
 import streamlit as st
 
 st.set_page_config(
@@ -16,10 +18,14 @@ st.set_page_config(
 
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 
 load_css()
 title_header("Forecasting Dengue Fever", title_class="title3", line=False)
 this_project = project_folder / "DengAI"
+
+# from pathlib import Path
+# this_project = Path(__file__).parent
 
 
 # --------------------------------------------------------------
@@ -83,6 +89,12 @@ with open(f"{this_project}/analysis.md", "r") as f:
 
 custom_css = """
 <style>
+
+
+.modebar-container{
+    display: none !important;
+}
+
 div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVerticalBlock"].e1f1d6gn0 {
     background-color: #313636 !important;
     box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3) !important;
@@ -90,12 +102,22 @@ div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVertical
     border-radius: 15px !important;
     padding: 3% 5% 5% 5% !important;
 }
-
-.modebar-container{
-    display: none !important;
+.stSlider {
+    width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
 }
-</style>
+
+.main-svg {
+    width: 98% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+                   
+<style>
 """
+
+
 st.markdown(custom_css, unsafe_allow_html=True)
 
 train_data = pd.read_parquet(
@@ -134,10 +156,9 @@ with st.container():
         "Apply log to 'Total Cases'?",
         key="log_features",
     )
-    if log_features:
-        cases_column = "total_cases_logged"
-    else:
-        cases_column = "total_cases"
+
+    cases_column = "total_cases"
+    y2_type = "log" if log_features else "linear"
 
     city_data = train_data[train_data["city"] == city_options[selected_city_name]]
     feature = feature_options[selected_feature]
@@ -156,6 +177,7 @@ with st.container():
     )
 
     # Add the total_cases line on the secondary y-axis (left), with blue color
+    cases_label = "Total Cases (logged)" if log_features else "Total Cases"
     fig.add_trace(
         go.Scatter(
             x=city_data["week_start_date"],
@@ -166,12 +188,21 @@ with st.container():
         )
     )
 
+    # Window fixtures
+    last_date = city_data["week_start_date"].max()
+    first_date_in_last_six_months = last_date - timedelta(
+        days=(36 * 30)
+    )  # Approximation
+    one_month = timedelta(days=30)
+
     fig.update_layout(
         autosize=True,
         margin=dict(l=40, r=40),
+        width=800,
         paper_bgcolor="rgba(49, 54, 54, 1)",
         plot_bgcolor="rgba(49, 54, 54, 1)",
         yaxis2=dict(
+            type=y2_type,
             overlaying="y",
             side="left",
             gridcolor="white",
@@ -195,8 +226,9 @@ with st.container():
         title_xanchor="center",
         xaxis=dict(
             gridcolor="white",
-            rangeslider=dict(visible=True),
+            rangeslider=dict(visible=True, autorange=True),
             type="date",
+            range=[first_date_in_last_six_months, last_date],
         ),
     )
 
@@ -207,10 +239,157 @@ with st.container():
 # --------------------------------------------------------------
 # forecasting with variable proprties to show how cases are effected
 # --------------------------------------------------------------
+custom_css2 = """
+<style>
+
+div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"] {
+    padding: 0% 10% 0% 10% !important;
+}
+
+.modebar-container{
+    display: none !important;
+}
+
+.row-widget.stButton {
+    padding: 0% 5% 0% 5% !important;
+}
+
+div.row-widget.stRadio > div[role="radiogroup"] > label[data-baseweb="radio"] > div:first-child {
+    background-color: rgba(83, 180, 200, 1);
+}
+div[data-testid="stTickBar"] {
+    display: none !important;
+}
+
+</style>
+"""
+st.markdown(custom_css2, unsafe_allow_html=True)
+
+
+def load_data():
+    return pd.read_csv(f"{this_project}/data/complete_scenario_sj.csv")
+
+
+with open(f"{this_project}/weather_variables.md", "r") as f:
+    weather_variables = f.read()
+
+
+with st.container():
+    st.markdown(weather_variables, unsafe_allow_html=True)
+
+    data = load_data()
+    data["week_start_date"] = pd.to_datetime(data["week_start_date"])
+
+    # Determine y-axis limits
+    y_min = data.drop(columns="week_start_date").min().min()
+    y_max = data.drop(columns="week_start_date").max().max()
+
+    # Determine scenarios with most and least cases
+    scenario_most_cases = data.drop(columns="week_start_date").sum().idxmax()
+    scenario_least_cases = data.drop(columns="week_start_date").sum().idxmin()
+    most_cases = eval(scenario_most_cases)
+    least_cases = eval(scenario_least_cases)
+
+    # State to hold the selected scenario
+    selected_scenario = st.session_state.get("selected_scenario", (0, 0, 0))
+
+    col1, col2, col3 = st.columns([1, 1, 1])
+    # Buttons to select scenarios with most and least cases
+
+    if col1.button("Lowest Cases", use_container_width=True):
+        selected_scenario = least_cases
+    if col2.button("Reset", use_container_width=True):
+        selected_scenario = (0, 0, 0)
+    if col3.button("Highest Cases", use_container_width=True):
+        selected_scenario = most_cases
+
+    st.session_state.selected_scenario = selected_scenario
+
+    # Sliders for selecting scenarios
+    selected_scenario = (
+        st.slider("Humidity", -2, 2, selected_scenario[0]),
+        st.slider("Precipitation", -2, 2, selected_scenario[1]),
+        st.slider("Temperature", -2, 2, selected_scenario[2]),
+    )
+
+    selected_column = str(selected_scenario)
+
+    # Calculate total cases and average for the selected scenario
+    total_cases = round(data[selected_column].sum())
+    average_cases = round(total_cases / len(data), 2)
+
+    cases_printout = f"""
+    <div style="padding-left: 3%; padding-right: 5%; text-align: center;">
+        Total Cases: {total_cases} <br>
+        Average Cases (per week): {average_cases:.2f}
+    </div>
+    """
+    st.markdown(cases_printout, unsafe_allow_html=True)
+
+    fig = go.Figure()
+
+    # Add the total_cases line on the secondary y-axis (left), with blue color
+    fig.add_trace(
+        go.Scatter(
+            x=data["week_start_date"],
+            y=data[str(most_cases)],
+            line=dict(color="rgba(176, 107, 199, 0.3)"),
+        )
+    )
+    # Add the total_cases line on the secondary y-axis (left), with blue color
+    fig.add_trace(
+        go.Scatter(
+            x=data["week_start_date"],
+            y=data[str(least_cases)],
+            line=dict(color="rgba(176, 107, 199, 0.3)"),
+            fill="tonexty",
+            fillcolor="rgba(176, 107, 199, 0.1)",
+        )
+    )
+    # Add the feature line on the primary y-axis (right), with red color
+    fig.add_trace(
+        go.Scatter(
+            x=data["week_start_date"],
+            y=data[selected_column],
+            line=dict(color="rgba(176, 107, 199, 1)"),
+        )
+    )
+
+    # Window fixtures
+    last_date = data["week_start_date"].max()
+    first_date_in_last_six_months = last_date - timedelta(
+        days=(36 * 30)
+    )  # Approximation
+    one_month = timedelta(days=30)
+
+    fig.update_layout(
+        autosize=True,
+        margin=dict(l=40, r=40),
+        paper_bgcolor="rgba(49, 54, 54, 1)",
+        plot_bgcolor="rgba(49, 54, 54, 1)",
+        yaxis=dict(
+            side="right",
+            gridcolor="white",
+            # tickfont=dict(color="rgba(83, 180, 200, 1.0)"),
+        ),
+        showlegend=False,
+        title_text="Variable Predicted Cases",
+        title_automargin=True,
+        title_x=0.5,
+        title_xanchor="center",
+        title_pad=dict(l=10, r=10, t=10, b=5),
+        xaxis=dict(
+            gridcolor="white",
+            rangeslider=dict(visible=True, autorange=True),
+            type="date",
+        ),
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 
 
 # --------------------------------------------------------------
 # Buttons
 # --------------------------------------------------------------
-github_link = "https://www.github.com/jeroencvlier/MultiAgent-Tennis-MADDPG"
+github_link = "https://www.github.com/jeroencvlier/DengAI"
 project_buttons(github_link)

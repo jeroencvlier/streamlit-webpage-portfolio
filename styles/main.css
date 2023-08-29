@@ -28,7 +28,10 @@ body {
     margin: 0px;
     font-weight: 400;
     line-height: 1.5;
+    color: #53B4C8
 }
+
+
 
 /* CSS Snippet from W3schools: https://www.w3schools.com/howto/howto_css_contact_form.asp */
 /* Style inputs with type="text", select elements and textareas */
@@ -65,6 +68,16 @@ header {
     border: 1px solid #7a7c7c;
     border-radius: 15px;
     padding: 3% 5% 5% 5%;
+}
+
+.PortMakerNoBorder {
+    border-radius: 15px;
+    padding: 3% 5% 5% 5%;
+}
+
+.PortMakerNoBorderNoTopPadding {
+    border-radius: 15px;
+    padding: 0% 5% 5% 5%;
 }
 
 .skill {
@@ -324,4 +337,3 @@ button[type=submit]:hover {
 .mapboxgl-control-container {
     display: none !important;
 }
-

@@ -1,6 +1,6 @@
-<div class='PortMakerNoBorderNoTopPadding'>
+<div class='PortMakerNoBorder'>
 
-### Data Explorer
+### Climate Variables
 
 <div class='StyledHR StyledHRProjects'></div>
 
