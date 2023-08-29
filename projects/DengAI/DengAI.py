@@ -136,19 +136,20 @@ with st.container():
     st.write("##")
     st.markdown(project_analysis, unsafe_allow_html=True)
     # Create columns to control the layout
-    left_space, city_col, feature_col, right_space = st.columns([2, 3, 3, 1])
+    left_space, city_col, feature_col, right_space = st.columns([1, 8, 8, 2])
+    # city_col, feature_col = st.columns([1, 1])
 
     selected_city_name = city_col.radio(
         "Select City",
         options=list(city_options.keys()),
         horizontal=False,
-        label_visibility="visible",
+        label_visibility="hidden",
     )
     selected_feature = feature_col.radio(
         "Select Feauture",
         options=list(feature_options.keys()),
         horizontal=False,
-        label_visibility="visible",
+        label_visibility="hidden",
     )
     left_space, log_col, right_space = st.columns([1, 3, 1])
 
@@ -266,18 +267,40 @@ div[data-testid="stTickBar"] {
 st.markdown(custom_css2, unsafe_allow_html=True)
 
 
-def load_data():
-    return pd.read_csv(f"{this_project}/data/complete_scenario_sj.csv")
+def load_data(selected_city_name_wv):
+    return pd.read_csv(
+        f"{this_project}/data/complete_scenario_{city_options[selected_city_name_wv]}.csv"
+    )
 
 
 with open(f"{this_project}/weather_variables.md", "r") as f:
     weather_variables = f.read()
 
+st.markdown(
+    """
+    <style>
+        .stRadio {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+""",
+    unsafe_allow_html=True,
+)
+
 
 with st.container():
     st.markdown(weather_variables, unsafe_allow_html=True)
 
-    data = load_data()
+    selected_city_name_wv = st.radio(
+        "Select City",
+        key="weather_variables",
+        options=list(city_options.keys()),
+        horizontal=True,
+        label_visibility="hidden",
+    )
+
+    data = load_data(selected_city_name_wv)
     data["week_start_date"] = pd.to_datetime(data["week_start_date"])
 
     # Determine y-axis limits
@@ -311,20 +334,8 @@ with st.container():
         st.session_state.selected_scenario = most_cases
         st.session_state.reset_clicked = False
 
-    # Sliders for selecting scenarios
-    humidity, precipitation, temperature = (
-        st.slider("Humidity", -2, 2, st.session_state.selected_scenario[0]),
-        st.slider("Precipitation", -2, 2, st.session_state.selected_scenario[1]),
-        st.slider("Temperature", -2, 2, st.session_state.selected_scenario[2]),
-    )
-
-    # Only update session state based on slider values if reset was not clicked
-    if not st.session_state.reset_clicked:
-        st.session_state.selected_scenario = (humidity, precipitation, temperature)
-    else:
-        # Set the reset_clicked back to False so the next interaction with sliders updates the state again.
-        st.session_state.reset_clicked = False
-
+    if "selected_scenario" not in st.session_state:
+        st.session_state.selected_scenario = (0, 0, 0)
     selected_column = str(st.session_state.selected_scenario)
 
     # Calculate total cases and average for the selected scenario
@@ -338,6 +349,26 @@ with st.container():
     </div>
     """
     st.markdown(cases_printout, unsafe_allow_html=True)
+
+    # Sliders for selecting scenarios
+    humidity = st.slider(
+        "Humidity", -2, 2, st.session_state.selected_scenario[0], step=1
+    )
+    precipitation = st.slider(
+        "Precipitation", -2, 2, st.session_state.selected_scenario[1], step=1
+    )
+    temperature = st.slider(
+        "Temperature", -2, 2, st.session_state.selected_scenario[2], step=1
+    )
+
+    # Only update session state based on slider values if reset was not clicked
+    if not st.session_state.reset_clicked:
+        st.session_state.selected_scenario = (humidity, precipitation, temperature)
+    else:
+        # Set the reset_clicked back to False so the next interaction with sliders updates the state again.
+        st.session_state.reset_clicked = False
+
+    selected_column = str(st.session_state.selected_scenario)
 
     fig = go.Figure()
 
@@ -386,14 +417,14 @@ with st.container():
             # tickfont=dict(color="rgba(83, 180, 200, 1.0)"),
         ),
         showlegend=False,
-        title_text="Total Predicted Cases",
+        title_text=f"Total Predicted Cases {selected_city_name_wv}",
         title_automargin=True,
         title_x=0.5,
         title_xanchor="center",
-        title_pad=dict(l=10, r=10, t=10, b=5),
+        title_pad=dict(l=10, r=10, t=5, b=5),
         xaxis=dict(
             gridcolor="white",
-            rangeslider=dict(visible=True, autorange=True),
+            rangeslider=dict(visible=False, autorange=True),
             type="date",
         ),
     )
