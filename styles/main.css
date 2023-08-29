@@ -55,11 +55,30 @@ textarea {
 }
 
 footer {
+    font-size: 0px;
     visibility: hidden;
+    height: 0%;
+    padding: 0% 0% 0% 0%;
 }
 
 header {
     visibility: hidden;
+}
+/* Header footer removal */
+.css-1xfit2v.ezrtsby2 {
+    font-size: 0px;
+    height: 0%;
+    padding: 0% 0% 0% 0%;
+}
+/* Header footer removal */
+.css-11yu3z8.ea3mdgi1 {
+    font-size: 0px;
+    height: 0%;
+    padding: 0% 0% 0% 0%;
+}
+/* main div apdding */
+.css-1y4p8pa {
+    padding: 2rem 1rem 3rem;
 }
 
 .PortMarker {

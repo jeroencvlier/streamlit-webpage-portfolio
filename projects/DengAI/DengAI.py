@@ -291,28 +291,41 @@ with st.container():
     least_cases = eval(scenario_least_cases)
 
     # State to hold the selected scenario
-    selected_scenario = st.session_state.get("selected_scenario", (0, 0, 0))
+    if "selected_scenario" not in st.session_state:
+        st.session_state.selected_scenario = (0, 0, 0)
 
-    col1, col2, col3 = st.columns([1, 1, 1])
-    # Buttons to select scenarios with most and least cases
+    if "reset_clicked" not in st.session_state:
+        st.session_state.reset_clicked = False
 
+    # Create columns to control the layout
+    col1, col2, col3 = st.columns(3)
+
+    # Handle button presses
     if col1.button("Lowest Cases", use_container_width=True):
-        selected_scenario = least_cases
+        st.session_state.selected_scenario = least_cases
+        st.session_state.reset_clicked = False
     if col2.button("Reset", use_container_width=True):
-        selected_scenario = (0, 0, 0)
+        st.session_state.selected_scenario = (0, 0, 0)
+        st.session_state.reset_clicked = True
     if col3.button("Highest Cases", use_container_width=True):
-        selected_scenario = most_cases
-
-    st.session_state.selected_scenario = selected_scenario
+        st.session_state.selected_scenario = most_cases
+        st.session_state.reset_clicked = False
 
     # Sliders for selecting scenarios
-    selected_scenario = (
-        st.slider("Humidity", -2, 2, selected_scenario[0]),
-        st.slider("Precipitation", -2, 2, selected_scenario[1]),
-        st.slider("Temperature", -2, 2, selected_scenario[2]),
+    humidity, precipitation, temperature = (
+        st.slider("Humidity", -2, 2, st.session_state.selected_scenario[0]),
+        st.slider("Precipitation", -2, 2, st.session_state.selected_scenario[1]),
+        st.slider("Temperature", -2, 2, st.session_state.selected_scenario[2]),
     )
 
-    selected_column = str(selected_scenario)
+    # Only update session state based on slider values if reset was not clicked
+    if not st.session_state.reset_clicked:
+        st.session_state.selected_scenario = (humidity, precipitation, temperature)
+    else:
+        # Set the reset_clicked back to False so the next interaction with sliders updates the state again.
+        st.session_state.reset_clicked = False
+
+    selected_column = str(st.session_state.selected_scenario)
 
     # Calculate total cases and average for the selected scenario
     total_cases = round(data[selected_column].sum())
@@ -373,7 +386,7 @@ with st.container():
             # tickfont=dict(color="rgba(83, 180, 200, 1.0)"),
         ),
         showlegend=False,
-        title_text="Variable Predicted Cases",
+        title_text="Total Predicted Cases",
         title_automargin=True,
         title_x=0.5,
         title_xanchor="center",
