@@ -10,8 +10,7 @@
 
 June 2021 - Present
 
-
-At Flash, I play a key role in creating machine-learning models such as time series analysis for outlier detections for fraud prevention, as well as detecting traders with a high risk of churn by implementing various strategies for prevention. I also help define the company's data science workflow and the automation of CI/CD pipelines using Docker and Azure.
+At Flash, I play a key role in creating machine-learning models, including time series analysis for fraud prevention. Additionally, I identify traders at high risk of churn and implement various preventative strategies, using A/B testing to optimise retention strategies. I also helped define the company's data science workflow and automated CI/CD pipelines using Docker and Azure.
 
 <div class='StyledHR'></div>
 

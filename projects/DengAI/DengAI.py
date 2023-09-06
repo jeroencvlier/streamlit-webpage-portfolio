@@ -89,13 +89,11 @@ with open(f"{this_project}/analysis.md", "r") as f:
 
 custom_css = """
 <style>
-
-
 .modebar-container{
     display: none !important;
 }
 
-div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVerticalBlock"].e1f1d6gn0 {
+div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVerticalBlock"].e1f1d6gn0:not(:has(div>div>div>.PortMarker)) {
     background-color: #313636 !important;
     box-shadow: 10px 10px 15px 1px rgba(0, 0, 0, 0.3) !important;
     border: 1px solid #7a7c7c !important;
@@ -106,6 +104,10 @@ div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVertical
     width: 90% !important;
     margin-left: auto;
     margin-right: auto;
+    # margin-top: -0.75rem;
+}
+.css-geph28 {
+    margin-bottom: -0.25rem;
 }
 
 .main-svg {
@@ -408,7 +410,8 @@ with st.container():
 
     fig.update_layout(
         autosize=True,
-        margin=dict(l=40, r=40),
+        height=300,
+        margin=dict(l=40, r=40, b=0, t=25),
         paper_bgcolor="rgba(49, 54, 54, 1)",
         plot_bgcolor="rgba(49, 54, 54, 1)",
         yaxis=dict(
@@ -417,20 +420,32 @@ with st.container():
             # tickfont=dict(color="rgba(83, 180, 200, 1.0)"),
         ),
         showlegend=False,
-        title_text=f"Total Predicted Cases {selected_city_name_wv}",
-        title_automargin=True,
+        title_text=f"Total Predicted Cases",
+        # title_automargin=True,
         title_x=0.5,
         title_xanchor="center",
-        title_pad=dict(l=10, r=10, t=5, b=5),
+        # title_pad=dict(l=0, r=0, t=1000, b=0),
         xaxis=dict(
             gridcolor="white",
-            rangeslider=dict(visible=False, autorange=True),
+            # rangeslider=dict(visible=True, autorange=True),
             type="date",
         ),
     )
 
     st.plotly_chart(fig, use_container_width=True)
+    st.write("##")
 
+# --------------------------------------------------------------
+# Credits
+# --------------------------------------------------------------
+# st.write("##")
+
+with open(f"{this_project}/credits.md", "r") as f:
+    credits_readme = f.read()
+
+
+with st.container():
+    st.markdown(credits_readme, unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # Buttons

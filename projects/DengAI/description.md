@@ -4,29 +4,8 @@
 
 <div class='StyledHR StyledHRProjects'></div>
 
-1. Problem Statement
-Predict the number of Dengue cases in San Juan and Iquitos using environmental variables. The goal is to predict the total_cases label for each combination of (city, year, weekofyear) in the test set.
+Utilizing environmental datasets provided by U.S. Federal Government agencies, this initiative seeks to delve deeper into the relationship between meteorological changes and the spread of Dengue fever. The data ranges from humidity shifts to vegetation alterations, is a goldmine for epidemiological study.
 
-2. Data Sources
-Data for this project comes from multiple sources, including:
+Our methodological approach focuses on harnessing statistical and machine learning techniques. By developing predictive algorithms, we aim to gauge the weekly trajectory of Dengue cases in two distinct geographical areas: San Juan and Iquitos. These locations, while separated by miles, share alarming spikes in Dengue incidence, making them pivotal study points.
 
-U.S. Centers for Disease Control and Prevention: Provides Dengue surveillance data.
-National Oceanic and Atmospheric Administration (NOAA): Supplies environmental and climate data.
-3. Features
-The dataset includes various features on a (year, weekofyear) timescale, such as:
-
-Climate data: Temperature (max, min, avg), precipitation, diurnal temperature range.
-Satellite measurements: Precipitation amounts, dew point temperature, air temperature, humidity, vegetation index (NDVI).
-4. Target Cities
-Predictions are made for two cities:
-
-San Juan, Puerto Rico (sj)
-Iquitos, Peru (iq)
-5. Performance Metric
-The performance of the model is evaluated using the Mean Absolute Error (MAE).
-
-6. Significance
-Accurate predictions of Dengue spread can help public health workers and governments take steps to reduce the impact of epidemics. This project aligns with the Predict the Next Pandemic Initiative, consolidating various data sets to tackle the complex task of predicting Dengue fever.
-
-7. Project Deployment
-The findings are planned to be displayed interactively through a Streamlit web application, showcasing relationships between features and labels for each city and enabling direct comparisons between cities.
+Success in this project offers more than just numbers. Accurate predictions mean timely interventions, empowering local health authorities with the foresight needed for impactful preventive measures. Furthermore, it paves the way for similar studies on other diseases, broadening the scope of climate-health research.
