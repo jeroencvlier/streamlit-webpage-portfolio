@@ -1,5 +1,7 @@
 from PIL import Image
 from pages.utils import (
+    text_loader,
+    v_space,
     load_css,
     title_header,
     project_folder,
@@ -25,19 +27,28 @@ this_project = project_folder / "StreamlitPortfolio"
 # Project Description
 # --------------------------------------------------------------
 
-with open(f"{this_project}/project_readme.md", "r") as f:
-    project_readme = f.read()
-
-
+project_readme = text_loader(this_project, "project_readme")
 with st.container():
     st.markdown(project_readme, unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # Project Image
 # --------------------------------------------------------------
-st.write("##")
+v_space(1)
+
 image_file_path = f"{this_project}/streamlit-logo.png"
 st.markdown(load_png(image_file_path), unsafe_allow_html=True)
+
+# --------------------------------------------------------------
+# Credits
+# --------------------------------------------------------------
+v_space(1)
+
+credit_readme = text_loader(this_project, "credit")
+
+with st.container():
+    st.markdown(credit_readme, unsafe_allow_html=True)
+
 
 # --------------------------------------------------------------
 # Buttons

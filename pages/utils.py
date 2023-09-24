@@ -12,7 +12,6 @@ page_icon = base_directory / "assets" / "page_icon.ico"
 project_folder = base_directory / "projects"
 
 
-# @st.cache_data()
 def cache_page_icon(page_icon):
     from PIL import Image
 
@@ -37,9 +36,16 @@ def load_css():
     return
 
 
-def v_space(lines):
-    for _ in range(lines):
-        st.write("&nbsp;")
+def v_space(height):
+    st.markdown(f"<div style='padding: {height}px;'></div>", unsafe_allow_html=True)
+    # for _ in range(lines):
+    # st.write("&nbsp;")
+
+
+def text_loader(portfolio_folder, filename):
+    with open(f"{portfolio_folder}/{filename}.md", "r") as f:
+        loaded_text = f.read()
+    return loaded_text
 
 
 def title_header(title, title_class="title1", line=True):
@@ -95,7 +101,6 @@ def skill_builder(skills, level=None):
             skill_set = skills[skill_section]
             skills_html += f"<h3>{skill_section}</h3>"
             skills_html += skill_score(skill_set)
-
     return skills_html
 
 
@@ -133,8 +138,7 @@ def load_png(image_file_path):
 
 def project_buttons(project_link):
     """Add back button and code link button to the project page"""
-    st.write("##")
-
+    v_space(1)
     back_button = """
         <p><a href="https://www.jeroencvlier.com/Projects" target="_self">
             <button class='PortMarker homepageButton singleButton'><<< Back to project page</button>

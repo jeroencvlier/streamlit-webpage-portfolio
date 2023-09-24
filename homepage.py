@@ -1,4 +1,5 @@
 from pages.utils import (
+    text_loader,
     v_space,
     load_css,
     skill_builder,
@@ -20,13 +21,6 @@ st.set_page_config(
     page_icon=im,
 )
 load_css()
-
-
-def text_loader(portfolio_folder, filename):
-    with open(f"{portfolio_folder}/{filename}.md", "r") as f:
-        loaded_text = f.read()
-    return loaded_text
-
 
 # --------------------------------------------------------------
 # PAGE TITLE

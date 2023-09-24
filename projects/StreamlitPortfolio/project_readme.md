@@ -2,6 +2,7 @@
 
 ### Description
 
+<div class='StyledHR StyledHRProjects'></div>
 
 The primary focus of this project was to create a fully integrated web application, leveraging the capabilities of the Streamlit library within Python. Conceived to function as a digital resume, this app dynamically presents various Data Science projects, encapsulating them in an engaging, interactive format.
 

@@ -1,4 +1,6 @@
 from pages.utils import (
+    text_loader,
+    v_space,
     load_css,
     title_header,
     project_folder,
@@ -21,74 +23,10 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 load_css()
-title_header("Forecasting Dengue Fever", title_class="title3", line=False)
-this_project = project_folder / "DengAI"
 
-# from pathlib import Path
-# this_project = Path(__file__).parent
-
-
-# --------------------------------------------------------------
-# Project Introduction
-# --------------------------------------------------------------
-
-with open(f"{this_project}/introduction.md", "r") as f:
-    project_readme = f.read()
-
-
-with st.container():
-    st.markdown(project_readme, unsafe_allow_html=True)
-
-
-# --------------------------------------------------------------
-# Project Map
-# --------------------------------------------------------------
-
-# create csutom css for map height on this project
-# also removet the fullscreen button so the iphone display doesnt drift
-map_height = 270
-map_css = f"""
-    <style>
-        button[title="View fullscreen"].css-1xulgw9 {{
-            display: none !important;
-        }}
-        .mapboxgl-map {{
-            height: {map_height}px !important;
-        }}
-        #deckgl-overlay {{
-            height: {map_height}px !important;
-        }}
-        .stDeckGlJsonChart {{
-            height: {map_height}px !important;
-        }}
-    </style>
-    """
-st.markdown(map_css, unsafe_allow_html=True)
-
-df_city_longlat = pd.read_csv(f"{this_project}/data/city_coordinates.csv")
-st.map(df_city_longlat, size=100000, zoom=2.5)
-
-# --------------------------------------------------------------
-# Project Description
-# --------------------------------------------------------------
-# st.write("##")
-
-with open(f"{this_project}/description.md", "r") as f:
-    project_readme = f.read()
-
-
-with st.container():
-    st.markdown(project_readme, unsafe_allow_html=True)
-
-
-# --------------------------------------------------------------
-# Comparison between cities and their properties
-# --------------------------------------------------------------
-with open(f"{this_project}/analysis.md", "r") as f:
-    project_analysis = f.read()
-
-custom_css = """
+custom_css2 = """
 <style>
+
 .modebar-container{
     display: none !important;
 }
@@ -115,12 +53,89 @@ div[data-testid="stVerticalBlock"].e1f1d6gn0 > div > div[data-testid="stVertical
     margin-left: auto;
     margin-right: auto;
 }
-                   
-<style>
+
+div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"] {
+    padding: 0% 10% 0% 10% !important;
+}
+
+.modebar-container{
+    display: none !important;
+}
+
+.row-widget.stButton {
+    padding: 0% 5% 0% 5% !important;
+}
+
+div.row-widget.stRadio > div[role="radiogroup"] > label[data-baseweb="radio"] > div:first-child {
+    background-color: rgba(83, 180, 200, 1);
+}
+div[data-testid="stTickBar"] {
+    display: none !important;
+}
+.stRadio {
+            display: flex;
+            justify-content: center;
+        }
+
+</style>
 """
+map_height = 270
+
+map_css = f"""
+    <style>
+        button[title="View fullscreen"].css-1xulgw9 {{
+            display: none !important;
+        }}
+        .mapboxgl-map {{
+            height: {map_height}px !important;
+        }}
+        #deckgl-overlay {{
+            height: {map_height}px !important;
+        }}
+        .stDeckGlJsonChart {{
+            height: {map_height}px !important;
+        }}
+    </style>
+    """
+st.markdown(map_css, unsafe_allow_html=True)
+st.markdown(custom_css2, unsafe_allow_html=True)
 
 
-st.markdown(custom_css, unsafe_allow_html=True)
+title_header("Forecasting Dengue Fever", title_class="title3", line=False)
+this_project = project_folder / "DengAI"
+
+# --------------------------------------------------------------
+# Project Introduction
+# --------------------------------------------------------------
+v_space(1)
+
+project_readme = text_loader(this_project, "introduction")
+with st.container():
+    st.markdown(project_readme, unsafe_allow_html=True)
+
+# --------------------------------------------------------------
+# Project Map
+# --------------------------------------------------------------
+# create csutom css for map height on this project
+# also removet the fullscreen button so the iphone display doesnt drift
+v_space(1)
+
+df_city_longlat = pd.read_csv(f"{this_project}/data/city_coordinates.csv")
+st.map(df_city_longlat, size=100000, zoom=2.5)
+
+# --------------------------------------------------------------
+# Project Description
+# --------------------------------------------------------------
+v_space(1)
+
+project_description = text_loader(this_project, "description")
+with st.container():
+    st.markdown(project_description, unsafe_allow_html=True)
+
+# --------------------------------------------------------------
+# Comparison between cities and their properties
+# --------------------------------------------------------------
+v_space(1)
 
 train_data = pd.read_parquet(
     f"{this_project}/data/dengai_cleaned.parquet"
@@ -132,10 +147,10 @@ feature_options = {
     "Precipitation": "station_precip_mm",
     "Humidity": "reanalysis_relative_humidity_percent",
 }
+project_analysis = text_loader(this_project, "analysis")
 
 
 with st.container():
-    st.write("##")
     st.markdown(project_analysis, unsafe_allow_html=True)
     # Create columns to control the layout
     left_space, city_col, feature_col, right_space = st.columns([1, 8, 8, 2])
@@ -236,37 +251,12 @@ with st.container():
     )
 
     st.plotly_chart(fig, use_container_width=True)
-    st.write("\n")
 
 
 # --------------------------------------------------------------
 # forecasting with variable proprties to show how cases are effected
 # --------------------------------------------------------------
-custom_css2 = """
-<style>
-
-div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"] {
-    padding: 0% 10% 0% 10% !important;
-}
-
-.modebar-container{
-    display: none !important;
-}
-
-.row-widget.stButton {
-    padding: 0% 5% 0% 5% !important;
-}
-
-div.row-widget.stRadio > div[role="radiogroup"] > label[data-baseweb="radio"] > div:first-child {
-    background-color: rgba(83, 180, 200, 1);
-}
-div[data-testid="stTickBar"] {
-    display: none !important;
-}
-
-</style>
-"""
-st.markdown(custom_css2, unsafe_allow_html=True)
+v_space(1)
 
 
 def load_data(selected_city_name_wv):
@@ -275,21 +265,7 @@ def load_data(selected_city_name_wv):
     )
 
 
-with open(f"{this_project}/weather_variables.md", "r") as f:
-    weather_variables = f.read()
-
-st.markdown(
-    """
-    <style>
-        .stRadio {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
-""",
-    unsafe_allow_html=True,
-)
-
+weather_variables = text_loader(this_project, "weather_variables")
 
 with st.container():
     st.markdown(weather_variables, unsafe_allow_html=True)
@@ -433,19 +409,16 @@ with st.container():
     )
 
     st.plotly_chart(fig, use_container_width=True)
-    st.write("##")
+
 
 # --------------------------------------------------------------
 # Credits
 # --------------------------------------------------------------
-# st.write("##")
-
-with open(f"{this_project}/credits.md", "r") as f:
-    credits_readme = f.read()
-
+v_space(1)
+credit_readme = text_loader(this_project, "credit")
 
 with st.container():
-    st.markdown(credits_readme, unsafe_allow_html=True)
+    st.markdown(credit_readme, unsafe_allow_html=True)
 
 # --------------------------------------------------------------
 # Buttons
