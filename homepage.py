@@ -70,10 +70,6 @@ st.write("\n")
 # --------------------------------------------------------------
 # HERO SECTIOM
 # --------------------------------------------------------------
-# def load_hero(portfolio_folder):
-#     with open(f"{portfolio_folder}/hero.md", "r") as f:
-#         hero_text = f.read()
-#     return hero_text
 
 
 def load_pp(profile_pic):
@@ -86,7 +82,6 @@ def load_pp(profile_pic):
 
 
 pp_local_file = load_pp(profile_pic)
-# hero_text = load_hero(portfolio_folder)
 hero_text = text_loader(portfolio_folder, "hero")
 
 
@@ -124,7 +119,6 @@ def load_image(file_path):
     return base64.b64encode(open(file_path, "rb").read()).decode()
 
 
-# @st.cache_data()
 def load_logos(social_media):
     linkedin_logo = load_image(social_media["LinkedIn"]["logo"])
     github_logo = load_image(social_media["GitHub"]["logo"])
@@ -152,7 +146,6 @@ st.markdown(social_links, unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Projects
 # --------------------------------------------------------------
-
 project_html = """
     <p><a href="https://www.jeroencvlier.com/Projects" target="_self" class='PortMarker homepageButton singleButton'>
         >>>  Check out my projects  <<<
@@ -205,13 +198,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Qualifications
 # --------------------------------------------------------------
-# def qualifications_loader(portfolio_folder):
-#     with open(f"{portfolio_folder}/qualifications.md", "r") as f:
-#         qualifications_text = f.read()
-#     return qualifications_text
-
-
-# qualifications_text = qualifications_loader(portfolio_folder)
 qualifications_text = text_loader(portfolio_folder, "qualifications")
 
 
@@ -223,13 +209,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # WORK HISTORY
 # --------------------------------------------------------------
-# def experience_loader(portfolio_folder):
-#     with open(f"{portfolio_folder}/experience.md", "r") as f:
-#         experience_text = f.read()
-#     return experience_text
-
-
-# experience_text = experience_loader(portfolio_folder)
 experience_text = text_loader(portfolio_folder, "experience")
 
 
@@ -241,13 +220,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Certificates
 # --------------------------------------------------------------
-# def certificates_loader(portfolio_folder):
-#     with open(f"{portfolio_folder}/certificates.md", "r") as f:
-#         certificates_text = f.read()
-#     return certificates_text
-
-
-# certificates_text = certificates_loader(portfolio_folder)
 certificates_text = text_loader(portfolio_folder, "certificates")
 
 with st.container():
@@ -258,8 +230,6 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Languages
 # --------------------------------------------------------------
-
-
 lang = skill_builder(skills_json, level="Languages")
 
 with st.container():
