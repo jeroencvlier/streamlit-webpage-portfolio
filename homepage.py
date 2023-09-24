@@ -1,4 +1,5 @@
 from pages.utils import (
+    v_space,
     load_css,
     skill_builder,
     title_header,
@@ -12,12 +13,12 @@ import base64
 import streamlit as st
 import json
 
+
 st.set_page_config(
     initial_sidebar_state="collapsed",
     page_title="Jeroen | Web Portfolio!",
     page_icon=im,
 )
-
 load_css()
 
 
@@ -64,8 +65,7 @@ with col3:
         </a>
     """
     st.markdown(contact_html, unsafe_allow_html=True)
-st.write("\n")
-
+v_space(1)
 
 # --------------------------------------------------------------
 # HERO SECTIOM
@@ -93,7 +93,7 @@ with col1:
 with col2:
     st.markdown(hero_text, unsafe_allow_html=True)
 
-st.write("##")
+v_space(1)
 
 # --------------------------------------------------------------
 # SOCIAL BUTTONS

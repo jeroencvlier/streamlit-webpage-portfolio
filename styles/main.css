@@ -283,6 +283,10 @@ button[type=submit]:hover {
     background-image: linear-gradient(135deg, rgba(176, 107, 199, 0.7), rgba(83, 180, 200, 0.7));
 } */
 
+div[data-testid="collapsedControl"] {
+    display: none !important;
+}
+
 
 .homepageButton {
 

@@ -37,6 +37,11 @@ def load_css():
     return
 
 
+def v_space(lines):
+    for _ in range(lines):
+        st.write("&nbsp;")
+
+
 def title_header(title, title_class="title1", line=True):
     t = st.markdown(
         f"""
@@ -44,7 +49,7 @@ def title_header(title, title_class="title1", line=True):
     """,
         unsafe_allow_html=True,
     )
-    st.write("###")
+    v_space(1)
     if line:
         st.write("---")
 

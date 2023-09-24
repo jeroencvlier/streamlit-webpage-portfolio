@@ -22,7 +22,7 @@ At Flash, I play a key role in creating machine-learning models, including time 
 
 December 2020 - March 2023
 
-During my time at Option Intelligence, I constructed reinforcement learning DQN agents to optimise various options trading strategies, significantly outperforming traditional buy-and-hold strategies. In addition, I engineered an options trading prediction tool, with a concentrated focus on earnings, and successfully deployed this predictive model to the cloud, enabling real-time predictions. To further enhance the user experience, I integrated a Telegram bot sending out personalised trade alerts.
+During my time at Quant Analytics, I constructed reinforcement learning DQN agents to optimise various options trading strategies, significantly outperforming traditional buy-and-hold strategies. In addition, I engineered an options trading prediction tool, with a concentrated focus on earnings, and successfully deployed this predictive model to the cloud, enabling real-time predictions. To further enhance the user experience, I integrated a Telegram bot sending out personalised trade alerts.
 
 <div class='StyledHR StyledHRProjects'></div>
 
