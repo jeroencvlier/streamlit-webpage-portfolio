@@ -20,6 +20,13 @@ st.set_page_config(
 
 load_css()
 
+
+def text_loader(portfolio_folder, filename):
+    with open(f"{portfolio_folder}/{filename}.md", "r") as f:
+        loaded_text = f.read()
+    return loaded_text
+
+
 # --------------------------------------------------------------
 # PAGE TITLE
 # --------------------------------------------------------------
@@ -63,10 +70,10 @@ st.write("\n")
 # --------------------------------------------------------------
 # HERO SECTIOM
 # --------------------------------------------------------------
-def load_hero(portfolio_folder):
-    with open(f"{portfolio_folder}/hero.md", "r") as f:
-        hero_text = f.read()
-    return hero_text
+# def load_hero(portfolio_folder):
+#     with open(f"{portfolio_folder}/hero.md", "r") as f:
+#         hero_text = f.read()
+#     return hero_text
 
 
 def load_pp(profile_pic):
@@ -79,9 +86,11 @@ def load_pp(profile_pic):
 
 
 pp_local_file = load_pp(profile_pic)
-hero_text = load_hero(portfolio_folder)
+# hero_text = load_hero(portfolio_folder)
+hero_text = text_loader(portfolio_folder, "hero")
 
-col1, col2 = st.columns([0.325, 0.675], gap="large")
+
+col1, col2 = st.columns([0.325, 0.675], gap="medium")
 with col1:
     st.write("\n")
     st.markdown(pp_local_file, unsafe_allow_html=True)
@@ -151,6 +160,14 @@ project_html = """
 """
 st.markdown(project_html, unsafe_allow_html=True)
 
+# --------------------------------------------------------------
+# ABOUT ME
+# --------------------------------------------------------------
+aboutme_text = text_loader(portfolio_folder, "aboutme")
+with st.container():
+    st.markdown(aboutme_text, unsafe_allow_html=True)
+st.markdown("<p></p>", unsafe_allow_html=True)
+
 
 # --------------------------------------------------------------
 # SKILLS
@@ -177,7 +194,8 @@ def education_loader(portfolio_folder):
     return education_text
 
 
-education_text = education_loader(portfolio_folder)
+# education_text = education_loader(portfolio_folder)
+education_text = text_loader(portfolio_folder, "education")
 
 with st.container():
     st.markdown(education_text, unsafe_allow_html=True)
@@ -187,13 +205,15 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Qualifications
 # --------------------------------------------------------------
-def qualifications_loader(portfolio_folder):
-    with open(f"{portfolio_folder}/qualifications.md", "r") as f:
-        qualifications_text = f.read()
-    return qualifications_text
+# def qualifications_loader(portfolio_folder):
+#     with open(f"{portfolio_folder}/qualifications.md", "r") as f:
+#         qualifications_text = f.read()
+#     return qualifications_text
 
 
-qualifications_text = qualifications_loader(portfolio_folder)
+# qualifications_text = qualifications_loader(portfolio_folder)
+qualifications_text = text_loader(portfolio_folder, "qualifications")
+
 
 with st.container():
     st.markdown(qualifications_text, unsafe_allow_html=True)
@@ -203,13 +223,15 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # WORK HISTORY
 # --------------------------------------------------------------
-def experience_loader(portfolio_folder):
-    with open(f"{portfolio_folder}/experience.md", "r") as f:
-        experience_text = f.read()
-    return experience_text
+# def experience_loader(portfolio_folder):
+#     with open(f"{portfolio_folder}/experience.md", "r") as f:
+#         experience_text = f.read()
+#     return experience_text
 
 
-experience_text = experience_loader(portfolio_folder)
+# experience_text = experience_loader(portfolio_folder)
+experience_text = text_loader(portfolio_folder, "experience")
+
 
 with st.container():
     st.markdown(experience_text, unsafe_allow_html=True)
@@ -219,13 +241,14 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 # --------------------------------------------------------------
 # Certificates
 # --------------------------------------------------------------
-def certificates_loader(portfolio_folder):
-    with open(f"{portfolio_folder}/certificates.md", "r") as f:
-        certificates_text = f.read()
-    return certificates_text
+# def certificates_loader(portfolio_folder):
+#     with open(f"{portfolio_folder}/certificates.md", "r") as f:
+#         certificates_text = f.read()
+#     return certificates_text
 
 
-certificates_text = certificates_loader(portfolio_folder)
+# certificates_text = certificates_loader(portfolio_folder)
+certificates_text = text_loader(portfolio_folder, "certificates")
 
 with st.container():
     st.markdown(certificates_text, unsafe_allow_html=True)

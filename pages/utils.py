@@ -69,6 +69,7 @@ def skill_builder(skills, level=None):
     if level == "Top Skills":
         skills = skills[level]
         skills_html += f"<h2>Skills</h2>"
+        skills_html += "<div class='StyledHR StyledHRProjects'></div>"
         skills_html += "<br>"
 
         # skills_html += "<div class='StyledHR'></div>"
@@ -77,6 +78,7 @@ def skill_builder(skills, level=None):
     elif level == "Languages":
         skills = skills[level]
         skills_html += f"<h2>Languages</h2>"
+        skills_html += "<div class='StyledHR StyledHRProjects'></div>"
         skills_html += "<br>"
         # skills_html += "<div class='StyledHR'></div>"
         skills_html += skill_score(skills)

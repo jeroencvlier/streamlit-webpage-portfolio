@@ -17,6 +17,7 @@ a:hover {
 
 ul {
     list-style-type: none;
+    padding-left: 0px;
 }
 
 hr {
@@ -64,18 +65,21 @@ footer {
 header {
     visibility: hidden;
 }
+
 /* Header footer removal */
 .css-1xfit2v.ezrtsby2 {
     font-size: 0px;
     height: 0%;
     padding: 0% 0% 0% 0%;
 }
+
 /* Header footer removal */
 .css-11yu3z8.ea3mdgi1 {
     font-size: 0px;
     height: 0%;
     padding: 0% 0% 0% 0%;
 }
+
 /* main div apdding */
 .css-1y4p8pa {
     padding: 2rem 1rem 3rem;
@@ -355,4 +359,22 @@ button[type=submit]:hover {
 /* removes the mapbox info button and labels */
 .mapboxgl-control-container {
     display: none !important;
+}
+
+.gradientHoverLink {
+    color: white !important;
+    /* Default color */
+    text-decoration: none;
+    display: inline-block;
+    transition: background-position 0.5s ease;
+}
+
+.gradientHoverLink:hover {
+    /* Gradient and clip properties for hover effect */
+    background-image: linear-gradient(135deg, rgba(176, 107, 199, 1), rgba(83, 180, 200, 1));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    background-size: 200% 200%;
+    animation: Gradient 4s ease infinite;
 }

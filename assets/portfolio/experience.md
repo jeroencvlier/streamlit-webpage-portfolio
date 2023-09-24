@@ -2,9 +2,10 @@
 
 ## Work Experience
 
-<div class='StyledHR'></div>
+<div class='StyledHR StyledHRProjects'></div>
 
-### Flash
+<h3><a href="https://flash.co.za/" class="gradientHoverLink">Flash</a></h4>
+
 
 ###### Data Scientist
 
@@ -12,10 +13,10 @@ June 2021 - Present
 
 At Flash, I play a key role in creating machine-learning models, including time series analysis for fraud prevention. Additionally, I identify traders at high risk of churn and implement various preventative strategies, using A/B testing to optimise retention strategies. I also helped define the company's data science workflow and automated CI/CD pipelines using Docker and Azure.
 
-<div class='StyledHR'></div>
+<div class='StyledHR StyledHRProjects'></div>
 
 
-### Option Intelligence
+<h3><a href="https://www.google.co.za/" class="gradientHoverLink">Quant Analytics</a></h4>
 
 ###### Data Scientist
 
@@ -23,9 +24,9 @@ December 2020 - March 2023
 
 During my time at Option Intelligence, I constructed reinforcement learning DQN agents to optimise various options trading strategies, significantly outperforming traditional buy-and-hold strategies. In addition, I engineered an options trading prediction tool, with a concentrated focus on earnings, and successfully deployed this predictive model to the cloud, enabling real-time predictions. To further enhance the user experience, I integrated a Telegram bot sending out personalised trade alerts.
 
-<div class='StyledHR'></div>
+<div class='StyledHR StyledHRProjects'></div>
 
-### Ironhack
+<h3><a href="https://www.ironhack.com/ww/en" class="gradientHoverLink">Ironhack</a></h4>
 
 ###### Data Analytics Teaching Assistant
 
@@ -35,9 +36,9 @@ December 2020 - March 20203
 As a Teaching Assistant at Ironhack, I was actively involved in mentoring students through complex boot camp challenges in statistics, data analysis, and machine learning. I guided projects and helped improve students' coding practices and data analytics understanding. In addition, I supported the lead teacher in administrative tasks and organized online icebreakers and team events.
 
 
-<div class='StyledHR'></div>
+<div class='StyledHR StyledHRProjects'></div>
 
-### Mapxact
+<h3><a href="https://mapxact.com/" class="gradientHoverLink">Mapxact</a></h4>
 
 ###### Research Geophysicist
 
