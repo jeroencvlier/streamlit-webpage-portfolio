@@ -28,7 +28,7 @@ I maintain all the data streams and pipelines ensuring best practices for storag
 
 December 2020 - March 2023
 
-During my time at Quant Analytics, I constructed reinforcement learning DQN agents to optimise various options trading strategies, significantly outperforming traditional buy-and-hold strategies. In addition, I engineered an options trading prediction tool, with a concentrated focus on earnings, and successfully deployed this predictive model to the cloud, enabling real-time predictions. To further enhance the user experience, I integrated a Telegram bot sending out personalised trade alerts.
+I constructed reinforcement learning DQN agents to optimise various options trading strategies, significantly outperforming traditional buy-and-hold strategies. In addition, I engineered an options trading prediction tool, with a concentrated focus on earnings, and successfully deployed this predictive model to the cloud, enabling real-time predictions. To further enhance the user experience, I integrated a Telegram bot sending out personalised trade alerts.
 
 <div class='StyledHR StyledHRProjects'></div>
 
@@ -38,7 +38,7 @@ During my time at Quant Analytics, I constructed reinforcement learning DQN agen
 
 January 2021 - March 2021
 
-As a Teaching Assistant at Ironhack, I was actively involved in mentoring students through complex boot camp challenges in statistics, data analysis, and machine learning. I guided projects and helped improve students' coding practices and data analytics understanding. In addition, I supported the lead teacher in administrative tasks and organized online icebreakers and team events.
+I was actively involved in mentoring students through complex boot camp challenges in statistics, data analysis, and machine learning. I guided projects and helped improve students' coding practices and data analytics understanding. In addition, I supported the lead teacher in administrative tasks and organized online icebreakers and team events.
 
 
 <div class='StyledHR StyledHRProjects'></div>
@@ -49,7 +49,7 @@ As a Teaching Assistant at Ironhack, I was actively involved in mentoring studen
 
 June 2018 - September 2020
 
-As a Research Geophysicist at MapXact, I led the research department and collaborated with two universities to investigate the limitations of ground-penetrating radars. I also mentored PhD students and facilitated geophysical interpretations. A significant part of my role involved advising on the integration of artificial intelligence to automate interpretations of geophysical data.
+I led the research department and collaborated with two universities to investigate the limitations of ground-penetrating radars. I also mentored PhD students and facilitated geophysical interpretations. A significant part of my role involved advising on the integration of artificial intelligence to automate interpretations of geophysical data.
 
 
 

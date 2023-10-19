@@ -13,6 +13,7 @@ from streamlit_extras.let_it_rain import rain
 gif_url = "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"
 title_header("Message Recieved!", line=False)
 
+v_space(1)
 
 # Centering the image
 left_col, cent_col, last_col = st.columns(3)
@@ -21,8 +22,12 @@ with cent_col:
     st.image(gif_url)
 
 v_space(1)
-st.write("Thank you for reaching out, I will get back to you as soon as possible.")
 
+# Centering the text block
+left_col, cent_col, right_col = st.columns([1, 3, 1])
+
+with cent_col:
+    st.write("Thank you for reaching out, I will get back to you as soon as possible.")
 
 # --------------------------------------------------------------
 # Home
