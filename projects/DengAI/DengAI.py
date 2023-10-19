@@ -73,9 +73,14 @@ div[data-testid="stTickBar"] {
     display: none !important;
 }
 .stRadio {
-            display: flex;
-            justify-content: center;
+            padding: 0% 5% 0% 5% !important;
         }
+
+.stCheckbox {
+            padding: 0% 5% 0% 5% !important;
+        }
+
+
 
 </style>
 """
@@ -151,26 +156,29 @@ project_analysis = text_loader(this_project, "analysis")
 
 
 with st.container():
+    v_space(1)
+
     st.markdown(project_analysis, unsafe_allow_html=True)
     # Create columns to control the layout
-    left_space, city_col, feature_col, right_space = st.columns([1, 8, 8, 2])
+    # left_space, city_col, feature_col, right_space = st.columns([1, 8, 8, 2])
     # city_col, feature_col = st.columns([1, 1])
 
-    selected_city_name = city_col.radio(
+    selected_city_name = st.radio(
         "Select City",
         options=list(city_options.keys()),
         horizontal=False,
         label_visibility="hidden",
     )
-    selected_feature = feature_col.radio(
+    selected_feature = st.radio(
         "Select Feauture",
         options=list(feature_options.keys()),
         horizontal=False,
         label_visibility="hidden",
     )
+
     left_space, log_col, right_space = st.columns([1, 3, 1])
 
-    log_features = log_col.checkbox(
+    log_features = st.checkbox(
         "Apply log to 'Total Cases'?",
         key="log_features",
     )
@@ -274,9 +282,10 @@ with st.container():
         "Select City",
         key="weather_variables",
         options=list(city_options.keys()),
-        horizontal=True,
+        horizontal=False,
         label_visibility="hidden",
     )
+    v_space(1)
 
     data = load_data(selected_city_name_wv)
     data["week_start_date"] = pd.to_datetime(data["week_start_date"])
@@ -295,58 +304,70 @@ with st.container():
     if "selected_scenario" not in st.session_state:
         st.session_state.selected_scenario = (0, 0, 0)
 
-    if "reset_clicked" not in st.session_state:
-        st.session_state.reset_clicked = False
-
     # Create columns to control the layout
     col1, col2, col3 = st.columns(3)
 
     # Handle button presses
     if col1.button("Lowest Cases", use_container_width=True):
         st.session_state.selected_scenario = least_cases
-        st.session_state.reset_clicked = False
+
     if col2.button("Reset", use_container_width=True):
         st.session_state.selected_scenario = (0, 0, 0)
-        st.session_state.reset_clicked = True
+
     if col3.button("Highest Cases", use_container_width=True):
         st.session_state.selected_scenario = most_cases
-        st.session_state.reset_clicked = False
-
-    if "selected_scenario" not in st.session_state:
-        st.session_state.selected_scenario = (0, 0, 0)
-    selected_column = str(st.session_state.selected_scenario)
-
-    # Calculate total cases and average for the selected scenario
-    total_cases = round(data[selected_column].sum())
-    average_cases = round(total_cases / len(data), 2)
-
-    cases_printout = f"""
-    <div style="padding-left: 3%; padding-right: 5%; text-align: center;">
-        Total Cases: {total_cases} <br>
-        Average Cases (per week): {average_cases:.2f}
-    </div>
-    """
-    st.markdown(cases_printout, unsafe_allow_html=True)
 
     # Sliders for selecting scenarios
     humidity = st.slider(
-        "Humidity", -2, 2, st.session_state.selected_scenario[0], step=1
+        "Humidity",
+        -2,
+        2,
+        st.session_state.get("humidity", 0),
+        step=1,
+        key="humidity_slider",
     )
     precipitation = st.slider(
-        "Precipitation", -2, 2, st.session_state.selected_scenario[1], step=1
+        "Precipitation",
+        -2,
+        2,
+        st.session_state.get("precipitation", 0),
+        step=1,
+        key="precipitation_slider",
     )
     temperature = st.slider(
-        "Temperature", -2, 2, st.session_state.selected_scenario[2], step=1
+        "Temperature",
+        -2,
+        2,
+        st.session_state.get("temperature", 0),
+        step=1,
+        key="temperature_slider",
+    )
+    # Check if slider values have changed and update the session state
+    if (
+        st.session_state.get("humidity", None) != humidity
+        or st.session_state.get("precipitation", None) != precipitation
+        or st.session_state.get("temperature", None) != temperature
+    ):
+        st.session_state["humidity"] = humidity
+        st.session_state["precipitation"] = precipitation
+        st.session_state["temperature"] = temperature
+        # Manually trigger a rerun with updated session state values
+        st.experimental_rerun()
+
+    # Set the selected_scenario based on the session state variables
+    st.session_state.selected_scenario = (
+        st.session_state["humidity"],
+        st.session_state["precipitation"],
+        st.session_state["temperature"],
     )
 
-    # Only update session state based on slider values if reset was not clicked
-    if not st.session_state.reset_clicked:
-        st.session_state.selected_scenario = (humidity, precipitation, temperature)
-    else:
-        # Set the reset_clicked back to False so the next interaction with sliders updates the state again.
-        st.session_state.reset_clicked = False
-
-    selected_column = str(st.session_state.selected_scenario)
+    selected_column = str(
+        (
+            st.session_state["humidity"],
+            st.session_state["precipitation"],
+            st.session_state["temperature"],
+        )
+    )
 
     fig = go.Figure()
 
@@ -386,7 +407,7 @@ with st.container():
 
     fig.update_layout(
         autosize=True,
-        height=300,
+        height=200,
         margin=dict(l=40, r=40, b=0, t=25),
         paper_bgcolor="rgba(49, 54, 54, 1)",
         plot_bgcolor="rgba(49, 54, 54, 1)",
@@ -407,8 +428,21 @@ with st.container():
             type="date",
         ),
     )
-
+    v_space(1)
     st.plotly_chart(fig, use_container_width=True)
+
+    # Calculate total cases and average for the selected scenario
+    total_cases = round(data[selected_column].sum())
+    average_cases = round(total_cases / len(data), 2)
+
+    cases_printout = f"""
+    <div style="padding-left: 3%; padding-right: 5%; text-align: center;">
+        Total Cases: {total_cases} <br>
+        Average Cases (per week): {average_cases:.2f}
+    </div>
+    """
+    st.markdown(cases_printout, unsafe_allow_html=True)
+    v_space(20)
 
 
 # --------------------------------------------------------------
