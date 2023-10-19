@@ -4,12 +4,17 @@
 
 <div class='StyledHR StyledHRProjects'></div>
 
-South African born with Dutch and South African nationality. I have studied and worked in South Africa, Germany, Spain and the Netherlands. I am very passionate
-about the outdoors and love to travel. 
+Born in South African, I hold dual nationality with the netherlands. My academic and 
+professional journey has been a global and diverse adventure taking me thorugh 
+many cultures and landscapes including those of South Africa, Germany, Spain and the Netherlands. I am passionate about the outdoors and exploring comes second nature to me. 
 
 I have a background in Geology and have worked in the mining industry for 4 years. 
 Leveraging my background in geology, I've pivoted to data science, infusing my 
 work with a unique perspective in problem-solving and analysis. 
+
+**Citizenships:**
+- :flag-nl: Dutch
+- :flag-za: South African
 
 **Hobbies:**
 - :snow_capped_mountain: Hiking

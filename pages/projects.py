@@ -12,10 +12,10 @@ title_header("Projects")
 
 
 project_items = {
+    "Forecasting Dengue Fever": "DengAI",
     "Streamlit Portfolio": "Streamlit Portfolio",
     "Multi-agent Reinforcement Learning": "Multi-agent Reinforcement Learning",
     "Continuous Control Reinforcement Learning": "Continuous Control Reinforcement Learning",
-    "Forecasting Dengue Fever": "DengAI",
 }
 
 

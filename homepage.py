@@ -61,11 +61,10 @@ with col3:
     st.markdown(contact_html, unsafe_allow_html=True)
 v_space(1)
 
+
 # --------------------------------------------------------------
 # HERO SECTIOM
 # --------------------------------------------------------------
-
-
 def load_pp(profile_pic):
     with open(profile_pic, "rb") as f:
         pp = f.read()
@@ -173,6 +172,17 @@ st.markdown("<p></p>", unsafe_allow_html=True)
 
 
 # --------------------------------------------------------------
+# WORK HISTORY
+# --------------------------------------------------------------
+experience_text = text_loader(portfolio_folder, "experience")
+
+
+with st.container():
+    st.markdown(experience_text, unsafe_allow_html=True)
+st.markdown("<p></p>", unsafe_allow_html=True)
+
+
+# --------------------------------------------------------------
 # EDUCATION
 # --------------------------------------------------------------
 def education_loader(portfolio_folder):
@@ -197,17 +207,6 @@ qualifications_text = text_loader(portfolio_folder, "qualifications")
 
 with st.container():
     st.markdown(qualifications_text, unsafe_allow_html=True)
-st.markdown("<p></p>", unsafe_allow_html=True)
-
-
-# --------------------------------------------------------------
-# WORK HISTORY
-# --------------------------------------------------------------
-experience_text = text_loader(portfolio_folder, "experience")
-
-
-with st.container():
-    st.markdown(experience_text, unsafe_allow_html=True)
 st.markdown("<p></p>", unsafe_allow_html=True)
 
 

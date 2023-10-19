@@ -11,7 +11,7 @@ icon = ":books:"
 [[pages]]
 path = "pages/thanks.py"
 name = "Thanks"
-icon = ":wave:"
+icon = ":clap:"
 
 [[pages]]
 path = "pages/skills.py"

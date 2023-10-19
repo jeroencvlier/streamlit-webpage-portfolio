@@ -7,7 +7,7 @@
 <h3><a href="https://flash.co.za/" class="gradientHoverLink">Flash</a></h4>
 
 
-###### Data Scientist
+##### Data Scientist
 
 June 2021 - Present
 
@@ -16,9 +16,15 @@ At Flash, I play a key role in creating machine-learning models, including time 
 <div class='StyledHR StyledHRProjects'></div>
 
 
-<h3><a href="https://www.google.co.za/" class="gradientHoverLink">Quant Analytics</a></h4>
+<h3><a href="https://www.quantanalytics.tech" class="gradientHoverLink">Quant Analytics</a></h4>
 
-###### Data Scientist
+##### Data Engineer
+
+March 2023 - Present
+
+I maintain all the data streams and pipelines ensuring best practices for storage and backups with AWS. I also maintain and optimise existing Python scripts to output the processed datasets on the cloud for model retraining through Paperspace cloud services.
+
+##### Data Scientist
 
 December 2020 - March 2023
 
@@ -28,10 +34,9 @@ During my time at Quant Analytics, I constructed reinforcement learning DQN agen
 
 <h3><a href="https://www.ironhack.com/ww/en" class="gradientHoverLink">Ironhack</a></h4>
 
-###### Data Analytics Teaching Assistant
+##### Data Analytics Teaching Assistant
 
-December 2020 - March 20203
-
+January 2021 - March 2021
 
 As a Teaching Assistant at Ironhack, I was actively involved in mentoring students through complex boot camp challenges in statistics, data analysis, and machine learning. I guided projects and helped improve students' coding practices and data analytics understanding. In addition, I supported the lead teacher in administrative tasks and organized online icebreakers and team events.
 
@@ -40,10 +45,9 @@ As a Teaching Assistant at Ironhack, I was actively involved in mentoring studen
 
 <h3><a href="https://mapxact.com/" class="gradientHoverLink">Mapxact</a></h4>
 
-###### Research Geophysicist
+##### Research Geophysicist
 
-December 2020 - March 20203
-
+June 2018 - September 2020
 
 As a Research Geophysicist at MapXact, I led the research department and collaborated with two universities to investigate the limitations of ground-penetrating radars. I also mentored PhD students and facilitated geophysical interpretations. A significant part of my role involved advising on the integration of artificial intelligence to automate interpretations of geophysical data.
 

@@ -29,7 +29,7 @@ def cache_css(css_file):
 def load_css():
     from st_pages import hide_pages, show_pages_from_config
 
-    hide_pages(["Thanks"])
+    # hide_pages(["Thanks"])
     css_loaded = cache_css(css_file)
     st.markdown("<style>{}</style>".format(css_loaded), unsafe_allow_html=True)
     show_pages_from_config()
