@@ -4,7 +4,7 @@
 
 <div class='StyledHR StyledHRProjects'></div>
 
-<h3><a href="https://flash.co.za/" class="gradientHoverLink">Flash</a></h4>
+<h3><a href="https://flash.co.za/" class="gradientHoverLink" target="_blank">Flash</a></h4>
 
 
 ##### Data Scientist
@@ -16,7 +16,7 @@ At Flash, I play a key role in creating machine-learning models, including time 
 <div class='StyledHR StyledHRProjects'></div>
 
 
-<h3><a href="https://www.quantanalytics.tech" class="gradientHoverLink">Quant Analytics</a></h4>
+<h3><a href="https://www.quantanalytics.tech" class="gradientHoverLink" target="_blank">Quant Analytics</a></h4>
 
 ##### Data Engineer
 
@@ -32,7 +32,7 @@ I constructed reinforcement learning DQN agents to optimise various options trad
 
 <div class='StyledHR StyledHRProjects'></div>
 
-<h3><a href="https://www.ironhack.com/ww/en" class="gradientHoverLink">Ironhack</a></h4>
+<h3><a href="https://www.ironhack.com/ww/en" class="gradientHoverLink" target="_blank">Ironhack</a></h4>
 
 ##### Data Analytics Teaching Assistant
 
@@ -43,7 +43,7 @@ I was actively involved in mentoring students through complex boot camp challeng
 
 <div class='StyledHR StyledHRProjects'></div>
 
-<h3><a href="https://mapxact.com/" class="gradientHoverLink">Mapxact</a></h4>
+<h3><a href="https://mapxact.com/" class="gradientHoverLink" target="_blank">Mapxact</a></h4>
 
 ##### Research Geophysicist
 
