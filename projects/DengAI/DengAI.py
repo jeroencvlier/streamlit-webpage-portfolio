@@ -290,38 +290,92 @@ with st.container():
     data = load_data(selected_city_name_wv)
     data["week_start_date"] = pd.to_datetime(data["week_start_date"])
 
-    # Determine scenarios with most and least cases
     scenario_most_cases = data.drop(columns="week_start_date").sum().idxmax()
     scenario_least_cases = data.drop(columns="week_start_date").sum().idxmin()
     most_cases = eval(scenario_most_cases)
     least_cases = eval(scenario_least_cases)
 
-    # Create columns to control the layout
     col1, col2, col3 = st.columns(3)
 
-    # Update the scenario based on button presses
-    if col1.button("Lowest Cases", use_container_width=True):
-        st.session_state.selected_scenario = least_cases
-    elif col2.button("Reset", use_container_width=True):
-        st.session_state.selected_scenario = (0, 0, 0)
-    elif col3.button("Highest Cases", use_container_width=True):
-        st.session_state.selected_scenario = most_cases
+    # Initializing session state variables if they don't exist
+    if "humidity" not in st.session_state:
+        st.session_state.humidity = 0
+        st.rerun()
 
-    scenario = st.session_state.get("selected_scenario", (0, 0, 0))
+    if "precipitation" not in st.session_state:
+        st.session_state.precipitation = 0
+        st.rerun()
+
+    if "temperature" not in st.session_state:
+        st.session_state.temperature = 0
+        st.rerun()
+
+    # Handle button presses
+    if col1.button("Lowest Cases", use_container_width=True):
+        (
+            st.session_state.humidity,
+            st.session_state.precipitation,
+            st.session_state.temperature,
+        ) = least_cases
+
+    if col2.button("Reset", use_container_width=True):
+        st.session_state.humidity = (
+            st.session_state.precipitation
+        ) = st.session_state.temperature = 0
+
+    if col3.button("Highest Cases", use_container_width=True):
+        (
+            st.session_state.humidity,
+            st.session_state.precipitation,
+            st.session_state.temperature,
+        ) = most_cases
 
     # Sliders for selecting scenarios
-    humidity = st.slider("Humidity", -2, 2, scenario[0], step=1, key="humidity_slider")
-    precipitation = st.slider(
-        "Precipitation", -2, 2, scenario[1], step=1, key="precipitation_slider"
-    )
-    temperature = st.slider(
-        "Temperature", -2, 2, scenario[2], step=1, key="temperature_slider"
+    new_humidity = st.slider(
+        "Humidity",
+        -2,
+        2,
+        st.session_state.humidity,
+        step=1,
+        key="humidity_slider",
     )
 
-    # Update the session state with the slider values
-    st.session_state.selected_scenario = (humidity, precipitation, temperature)
+    new_precipitation = st.slider(
+        "Precipitation",
+        -2,
+        2,
+        st.session_state.precipitation,
+        step=1,
+        key="precipitation_slider",
+    )
 
-    selected_column = str((humidity, precipitation, temperature))
+    new_temperature = st.slider(
+        "Temperature",
+        -2,
+        2,
+        st.session_state.temperature,
+        step=1,
+        key="temperature_slider",
+    )
+
+    if (
+        new_humidity != st.session_state.humidity
+        or new_precipitation != st.session_state.precipitation
+        or new_temperature != st.session_state.temperature
+    ):
+        st.session_state.humidity = new_humidity
+        st.session_state.precipitation = new_precipitation
+        st.session_state.temperature = new_temperature
+
+        st.rerun()
+
+    selected_column = str(
+        (
+            st.session_state.humidity,
+            st.session_state.precipitation,
+            st.session_state.temperature,
+        )
+    )
 
     fig = go.Figure()
 
