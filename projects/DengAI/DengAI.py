@@ -290,84 +290,38 @@ with st.container():
     data = load_data(selected_city_name_wv)
     data["week_start_date"] = pd.to_datetime(data["week_start_date"])
 
-    # Determine y-axis limits
-    y_min = data.drop(columns="week_start_date").min().min()
-    y_max = data.drop(columns="week_start_date").max().max()
-
     # Determine scenarios with most and least cases
     scenario_most_cases = data.drop(columns="week_start_date").sum().idxmax()
     scenario_least_cases = data.drop(columns="week_start_date").sum().idxmin()
     most_cases = eval(scenario_most_cases)
     least_cases = eval(scenario_least_cases)
 
-    # State to hold the selected scenario
-    if "selected_scenario" not in st.session_state:
-        st.session_state.selected_scenario = (0, 0, 0)
-
     # Create columns to control the layout
     col1, col2, col3 = st.columns(3)
 
-    # Handle button presses
+    # Update the scenario based on button presses
     if col1.button("Lowest Cases", use_container_width=True):
         st.session_state.selected_scenario = least_cases
-
-    if col2.button("Reset", use_container_width=True):
+    elif col2.button("Reset", use_container_width=True):
         st.session_state.selected_scenario = (0, 0, 0)
-
-    if col3.button("Highest Cases", use_container_width=True):
+    elif col3.button("Highest Cases", use_container_width=True):
         st.session_state.selected_scenario = most_cases
 
+    scenario = st.session_state.get("selected_scenario", (0, 0, 0))
+
     # Sliders for selecting scenarios
-    humidity = st.slider(
-        "Humidity",
-        -2,
-        2,
-        st.session_state.get("humidity", 0),
-        step=1,
-        key="humidity_slider",
-    )
+    humidity = st.slider("Humidity", -2, 2, scenario[0], step=1, key="humidity_slider")
     precipitation = st.slider(
-        "Precipitation",
-        -2,
-        2,
-        st.session_state.get("precipitation", 0),
-        step=1,
-        key="precipitation_slider",
+        "Precipitation", -2, 2, scenario[1], step=1, key="precipitation_slider"
     )
     temperature = st.slider(
-        "Temperature",
-        -2,
-        2,
-        st.session_state.get("temperature", 0),
-        step=1,
-        key="temperature_slider",
-    )
-    # Check if slider values have changed and update the session state
-    if (
-        st.session_state.get("humidity", None) != humidity
-        or st.session_state.get("precipitation", None) != precipitation
-        or st.session_state.get("temperature", None) != temperature
-    ):
-        st.session_state["humidity"] = humidity
-        st.session_state["precipitation"] = precipitation
-        st.session_state["temperature"] = temperature
-        # Manually trigger a rerun with updated session state values
-        st.experimental_rerun()
-
-    # Set the selected_scenario based on the session state variables
-    st.session_state.selected_scenario = (
-        st.session_state["humidity"],
-        st.session_state["precipitation"],
-        st.session_state["temperature"],
+        "Temperature", -2, 2, scenario[2], step=1, key="temperature_slider"
     )
 
-    selected_column = str(
-        (
-            st.session_state["humidity"],
-            st.session_state["precipitation"],
-            st.session_state["temperature"],
-        )
-    )
+    # Update the session state with the slider values
+    st.session_state.selected_scenario = (humidity, precipitation, temperature)
+
+    selected_column = str((humidity, precipitation, temperature))
 
     fig = go.Figure()
 
