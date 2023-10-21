@@ -53,5 +53,5 @@ with st.container():
 # --------------------------------------------------------------
 # Buttons
 # --------------------------------------------------------------
-github_link = "https://www.github.com/jeroencvlier/DDPG-Continuous-Control"
+github_link = "https://www.github.com/jeroencvlier/streamlit-webpage-portfolio"
 project_buttons(github_link)

@@ -6,6 +6,7 @@ from pages.utils import (
     portfolio_folder,
     back_button,
     skill_builder,
+    v_space,
 )
 import json
 
@@ -24,8 +25,7 @@ with open(f"{portfolio_folder}/skills.json", "r") as f:
 
 with st.container():
     st.markdown(skill_builder(skills_json, level="All Skills"), unsafe_allow_html=True)
-st.write("##")
-
+v_space(1)
 
 # --------------------------------------------------------------
 # Home
