@@ -58,10 +58,6 @@ div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"] {
     padding: 0% 10% 0% 10% !important;
 }
 
-.modebar-container{
-    display: none !important;
-}
-
 .row-widget.stButton {
     padding: 0% 5% 0% 5% !important;
 }
@@ -69,6 +65,7 @@ div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"] {
 div.row-widget.stRadio > div[role="radiogroup"] > label[data-baseweb="radio"] > div:first-child {
     background-color: rgba(83, 180, 200, 1);
 }
+
 div[data-testid="stTickBar"] {
     display: none !important;
 }

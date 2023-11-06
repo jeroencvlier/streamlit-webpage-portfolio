@@ -15,6 +15,13 @@ At Flash, I play a key role in creating machine-learning models, including time 
 
 <div class='StyledHR StyledHRProjects'></div>
 
+<h3><a href="https://www.omdena.com" class="gradientHoverLink" target="_blank">Omdena</a></h4>
+
+##### Machine Learning Engineer
+
+September 2023 - Present
+
+Collaborated with a global volunteer team on forecasting Nigeria's food prices to facilitate officials in famine anticipation and prompt resource deployment. Responsibilities encompassed engineering features, constructing an XGBoost model pipeline, and integrating it into an interactive app for real-time prediction of food price trends.
 
 <h3><a href="https://www.quantanalytics.tech" class="gradientHoverLink" target="_blank">Quant Analytics</a></h4>
 
