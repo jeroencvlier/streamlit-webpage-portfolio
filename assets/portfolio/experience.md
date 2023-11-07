@@ -23,6 +23,8 @@ September 2023 - Present
 
 Collaborated with a global volunteer team on forecasting Nigeria's food prices to facilitate officials in famine anticipation and prompt resource deployment. Responsibilities encompassed engineering features, constructing an XGBoost model pipeline, and integrating it into an interactive app for real-time prediction of food price trends.
 
+<div class='StyledHR StyledHRProjects'></div>
+
 <h3><a href="https://www.quantanalytics.tech" class="gradientHoverLink" target="_blank">Quant Analytics</a></h4>
 
 ##### Data Engineer
