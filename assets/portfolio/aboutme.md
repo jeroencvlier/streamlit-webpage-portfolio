@@ -24,4 +24,9 @@ work with a unique perspective in problem-solving and analysis.
 **Podcasts:**
 - :brain: Freakonomics
 - :robot_face: Lex Fridman
-- :microscope: Huberman Lab
+- :dna: Huberman Lab
+
+**YouTube:**
+- :test_tube: Veritasium
+- :abacus: StatQuest
+- :ringed_planet: Astrum
