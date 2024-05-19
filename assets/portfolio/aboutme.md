@@ -4,13 +4,9 @@
 
 <div class='StyledHR StyledHRProjects'></div>
 
-Born in South African, I hold dual nationality with the netherlands. My academic and 
-professional journey has been a global and diverse adventure taking me thorugh 
-many cultures and landscapes including those of South Africa, Germany, Spain and the Netherlands. I am passionate about the outdoors and exploring comes second nature to me. 
+Born in South Africa, I hold dual nationality with the Netherlands. My academic and professional journey has been a global and diverse adventure taking me through many cultures and landscapes including those of South Africa, Germany, Spain and the Netherlands. I am passionate about the outdoors and exploring comes second nature to me.
 
-I have a background in Geology and have worked in the mining industry for 4 years. 
-Leveraging my background in geology, I've pivoted to data science, infusing my 
-work with a unique perspective in problem-solving and analysis. 
+I have a background in Geology and have worked in the mining industry for 4 years. Leveraging my background in geology, I've pivoted to data science, infusing my work with a unique perspective in problem-solving and analysis.
 
 **Citizenships:**
 - :flag-nl: Dutch
