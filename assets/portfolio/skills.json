@@ -4,6 +4,7 @@
         "Pandas": 8,
         "PySpark": 7,
         "Scikit-Learn": 7,
+        "MLFlow": 7,
         "SQL": 6
     },
     "All Skills": {
@@ -25,6 +26,7 @@
         "Python Machine Learning Libraries": {
             "Scikit-Learn": 7,
             "Ray[RLLIB]": 6,
+            "MLFlow": 7,
             "Pytorch": 5,
             "Gym": 7,
             "XGBoost": 6,
